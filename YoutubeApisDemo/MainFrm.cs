@@ -113,28 +113,28 @@ namespace YoutubeApisDemo
             switch (id)
             {
                 case "1":
-                    lblCategory.Text = "Thể loại: Phim & Hoạt họa";
+                    lblCategory.Text = "Thể loại: Phim && Hoạt họa";
                     break;
                 case "2":
-                    lblCategory.Text = "Thể loại: Xe & Phương tiện";
+                    lblCategory.Text = "Thể loại: Xe && Phương tiện";
                     break;
                 case "10":
                     lblCategory.Text = "Thể loại : Âm nhạc";
                     break;
                 case "15":
-                    lblCategory.Text = "Thể loại: Thú cưng & Động vật";
+                    lblCategory.Text = "Thể loại: Thú cưng && Động vật";
                     break;
                 case "17":
                     lblCategory.Text = "Thể loại: Thể thao";
                     break;
                 case "19":
-                    lblCategory.Text = "Thể loại: Du lịch và sự kiện";
+                    lblCategory.Text = "Thể loại: Du lịch && sự kiện";
                     break;
                 case "20":
                     lblCategory.Text = "Thể loại: Trò chơi";
                     break;
                 case "22":
-                    lblCategory.Text = "Thể loại: Mọi người & Nhật ký";
+                    lblCategory.Text = "Thể loại: Mọi người && Nhật ký";
                     break;
                 case "23":
                     lblCategory.Text = "Thể loại: Hài kịch";
@@ -146,16 +146,16 @@ namespace YoutubeApisDemo
                     lblCategory.Text = "Thể loại: Tin tức và chính trị";
                     break;
                 case "26":
-                    lblCategory.Text = "Thể loại: Phong cách & Lối sống";
+                    lblCategory.Text = "Thể loại: Phong cách && Lối sống";
                     break;
                 case "27":
                     lblCategory.Text = "Thể loại: Giáo dục";
                     break;
                 case "28":
-                    lblCategory.Text = "Thể loại: Khoa học & Công nghệ";
+                    lblCategory.Text = "Thể loại: Khoa học && Công nghệ";
                     break;
                 case "29":
-                    lblCategory.Text = "Thể loại: Hoạt động & Phi lợi nhuận";
+                    lblCategory.Text = "Thể loại: Hoạt động && Phi lợi nhuận";
                     break;
                 
                 default: lblCategory.Text = "Thể loại: Không xác định";
@@ -228,8 +228,8 @@ namespace YoutubeApisDemo
 
         private void lblPub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ChannelInfo ci = new ChannelInfo();
-            ci.getChannelId(ChannelId);
+            ChannelInfo ci = new ChannelInfo(ChannelId);
+            
             ci.ShowDialog();
         }
 

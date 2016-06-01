@@ -13,10 +13,10 @@ namespace YoutubeApisDemo
 {
     public partial class ChannelInfo : Form
     {
-        public ChannelInfo()
+        public ChannelInfo(string id)
         {
-            InitializeComponent();
-            getChannelId = new SendChannelID(GetChannelID);
+            InitializeComponent();           
+            ChannelID = id;
             GetChannelInfo(ChannelID);
         }
 
@@ -38,20 +38,17 @@ namespace YoutubeApisDemo
 
         public string ChannelID;
 
-        private void GetChannelID (string id)
-        {
-            ChannelID = id;
-        }
-
+        
         private void GetChannelInfo(string Id)
         {
-            //YouTubeChannel channel = new YouTubeChannel(Id);
-            //lblChannelName.Text = channel.ChannelName;
+            YouTubeChannel channel = new YouTubeChannel(Id);
+            lblChannelName.Text = channel.ChannelName;
             //lblCommentCounter.Text = channel.CommentCounter.Value.ToString("N0") + " bình luận";
-            //lblView.Text = channel.ViewCounter.Value.ToString("N0") + " lượt xem";
-            //lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " video";
-            //btnSubscriberCounter.Text = channel.SubscribeCounter.Value.ToString("N0");
-
+            lblView.Text = channel.ViewCounter.Value.ToString("N0") + " lượt xem";
+            lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " video";
+            btnSubscriberCounter.Text = channel.SubscribeCounter.Value.ToString("N0");
+            picAvatar.ImageLocation = channel.AvatarUrl;
+            picBanner.ImageLocation = channel.CoverPhotoUrl;
         }
 
         private void ChannelInfo_MouseDown(object sender, MouseEventArgs e)

@@ -78,9 +78,9 @@
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(637, 53);
+            this.btnSearch.Location = new System.Drawing.Point(627, 53);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(55, 27);
+            this.btnSearch.Size = new System.Drawing.Size(65, 27);
             this.btnSearch.TabIndex = 2;
             this.toolTip1.SetToolTip(this.btnSearch, "Thực thi");
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -462,7 +462,7 @@
             this.txtboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtboxSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtboxSearch.ForeColor = System.Drawing.Color.Red;
-            this.txtboxSearch.Location = new System.Drawing.Point(68, 53);
+            this.txtboxSearch.Location = new System.Drawing.Point(63, 53);
             this.txtboxSearch.Name = "txtboxSearch";
             this.txtboxSearch.PlaceholderText = "YouTube URL...";
             this.txtboxSearch.Size = new System.Drawing.Size(568, 27);

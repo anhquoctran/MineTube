@@ -53,39 +53,48 @@ namespace YoutubeApisDemo
             }
         }
 
-        //public static void GetChannelInfo(YouTubeChannel channel)
-        //{
-        //    try
-        //    {
-                
+        public static void GetChannelInfo(YouTubeChannel channel)
+        {
+            try
+            {
 
-        //        var StatisticsRequest = services.Channels.List("statistics");
-        //        StatisticsRequest.Id = channel.Id;
-        //        var StatisticsResponse = StatisticsRequest.Execute();
+                var StatisticsRequest = ytService.Channels.List("statistics");
+                StatisticsRequest.Id = channel.Id;
+                var StatisticsResponse = StatisticsRequest.Execute();
 
-        //        if (StatisticsResponse.Items.Count > 0)
-        //        {
-        //            channel.SubscribeCounter = StatisticsResponse.Items[0].Statistics.SubscriberCount;
-        //            channel.VideoCounter = StatisticsResponse.Items[0].Statistics.VideoCount;
-        //            channel.ViewCounter = StatisticsResponse.Items[0].Statistics.ViewCount;
-        //            channel.CommentCounter = StatisticsResponse.Items[0].Statistics.CommentCount;
-        //        }
+                if (StatisticsResponse.Items.Count > 0)
+                {
+                    channel.SubscribeCounter = StatisticsResponse.Items[0].Statistics.SubscriberCount;
+                    channel.VideoCounter = StatisticsResponse.Items[0].Statistics.VideoCount;
+                    channel.ViewCounter = StatisticsResponse.Items[0].Statistics.ViewCount;
+                    channel.CommentCounter = StatisticsResponse.Items[0].Statistics.CommentCount;
+                    
+                }
 
-        //        var SnippetRequest = ytService.Channels.List("snippet");
-        //        SnippetRequest.Id = channel.Id;
-        //        var SnippetResponse = SnippetRequest.Execute();
+                var BrandingRequest = ytService.Channels.List("brandingSettings");
+                BrandingRequest.Id = channel.Id;
+                var BrandingResponse = BrandingRequest.Execute();
 
-        //        if (SnippetResponse.Items.Count > 0)
-        //        {
-        //            channel.ChannelName = SnippetResponse.Items[0].Snippet.Title;
-        //            channel.AvatarUrl = SnippetResponse.Items[0].Snippet.Thumbnails.Standard.Url;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, Application.ProductName);
-        //    }
-        //}
+                if (BrandingResponse.Items.Count > 0)
+                {
+                    channel.CoverPhotoUrl = BrandingResponse.Items[0].BrandingSettings.Image.BannerImageUrl;
+                }
+
+                var SnippetRequest = ytService.Channels.List("snippet");
+                SnippetRequest.Id = channel.Id;
+                var SnippetResponse = SnippetRequest.Execute();
+
+                if (SnippetResponse.Items.Count > 0)
+                {
+                    channel.ChannelName = SnippetResponse.Items[0].Snippet.Title;
+                    channel.AvatarUrl = SnippetResponse.Items[0].Snippet.Thumbnails.Medium.Url;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
 
         public static void GetVideoInfo(YoutubeVideo video)
         {
