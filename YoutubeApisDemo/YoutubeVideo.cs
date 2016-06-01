@@ -7,10 +7,10 @@ namespace YoutubeApisDemo
 {
     public class YoutubeVideo
     {
-        public string Id, Title, Description, ChannelTitle, ChannelId, Url, Dimension, Quality;
+        public string Id, Title, Description, ChannelTitle, ChannelId, Url, Dimension, Quality, CategoryId;
         public ulong? View, Like, Dislike, CommentCount;
         public DateTime DatePublished;
-        public string Thumb;
+        public string ThumbUrl;
         public string Duration;
         
         public string[] VideoTags;

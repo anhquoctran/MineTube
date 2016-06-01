@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,8 @@ namespace YoutubeApisDemo
         public MainFrm()
         {
             InitializeComponent();
-
+            picIcon.Image = Icon.ToBitmap();
+            lblTitle.Text = Text;
             if (IsInternetAvailable())
                 btnSearch.Enabled = true;
             else btnSearch.Enabled = false;
@@ -36,7 +38,17 @@ namespace YoutubeApisDemo
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             btnReset.Enabled = false;
+            lblCategory.Text = "Thể loại: ";
         }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
 
         protected string VideoUrl = "";
 
@@ -77,13 +89,13 @@ namespace YoutubeApisDemo
             lblDate.Text = "Thời gian đăng: " + Video.DatePublished.Hour.ToString() + " giờ " + Video.DatePublished.Month + " phút " + Video.DatePublished.Second.ToString() + " giây / ngày " + Video.DatePublished.Day.ToString() + " tháng " + Video.DatePublished.Month.ToString() + " năm " + Video.DatePublished.Year.ToString();
             lblDescription.Text = Video.Description;
             lblDuration.Visible = true;
-            if (Video.Thumb == null)
+            if (Video.ThumbUrl == null)
             {
                 picVideoThumb.Image = Properties.Resources.thumbnail_video;
             }
             else
             {
-                picVideoThumb.ImageLocation = Video.Thumb;
+                picVideoThumb.ImageLocation = Video.ThumbUrl;
             }
 
             if (Video.Quality == "HD")
@@ -96,6 +108,60 @@ namespace YoutubeApisDemo
                 lblDefinition.Visible = false;
                
             }
+            string id = Video.CategoryId;
+
+            switch (id)
+            {
+                case "1":
+                    lblCategory.Text = "Thể loại: Phim & Hoạt họa";
+                    break;
+                case "2":
+                    lblCategory.Text = "Thể loại: Xe & Phương tiện";
+                    break;
+                case "10":
+                    lblCategory.Text = "Thể loại : Âm nhạc";
+                    break;
+                case "15":
+                    lblCategory.Text = "Thể loại: Thú cưng & Động vật";
+                    break;
+                case "17":
+                    lblCategory.Text = "Thể loại: Thể thao";
+                    break;
+                case "19":
+                    lblCategory.Text = "Thể loại: Du lịch và sự kiện";
+                    break;
+                case "20":
+                    lblCategory.Text = "Thể loại: Trò chơi";
+                    break;
+                case "22":
+                    lblCategory.Text = "Thể loại: Mọi người & Nhật ký";
+                    break;
+                case "23":
+                    lblCategory.Text = "Thể loại: Hài kịch";
+                    break;
+                case "24":
+                    lblCategory.Text = "Thể loại: Giải trí";
+                    break;
+                case "25":
+                    lblCategory.Text = "Thể loại: Tin tức và chính trị";
+                    break;
+                case "26":
+                    lblCategory.Text = "Thể loại: Phong cách & Lối sống";
+                    break;
+                case "27":
+                    lblCategory.Text = "Thể loại: Giáo dục";
+                    break;
+                case "28":
+                    lblCategory.Text = "Thể loại: Khoa học & Công nghệ";
+                    break;
+                case "29":
+                    lblCategory.Text = "Thể loại: Hoạt động & Phi lợi nhuận";
+                    break;
+                
+                default: lblCategory.Text = "Thể loại: Không xác định";
+                    break;
+            }
+
 
             lblComment.Text = Video.CommentCount.Value.ToString("N0") + " bình luận";
             lblView.Text = Video.View.Value.ToString("N0") + " lượt xem";
@@ -162,7 +228,9 @@ namespace YoutubeApisDemo
 
         private void lblPub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.youtube.com/channel/" + ChannelId);
+            ChannelInfo ci = new ChannelInfo();
+            ci.getChannelId(ChannelId);
+            ci.ShowDialog();
         }
 
         private void btnPaste_Click(object sender, EventArgs e)
@@ -218,6 +286,67 @@ namespace YoutubeApisDemo
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             txtboxSearch.Clear();
+            lblCategory.Text = "Thể loại: ";
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void pnlFrm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void lblTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void pnlVideoInfo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public static implicit operator Point(POINT point)
+            {
+                return new Point(point.X, point.Y);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the cursor's position, in screen coordinates.
+        /// </summary>
+        /// <see>See MSDN documentation for further information.</see>
+        [DllImport("user32.dll")]
+        public static extern bool GetCursorPos(out POINT lpPoint);
+
+        
+
+        
     }
 }

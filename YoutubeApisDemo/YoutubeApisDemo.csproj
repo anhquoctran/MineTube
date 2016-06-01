@@ -139,6 +139,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChannelInfo.Designer.cs">
+      <DependentUpon>ChannelInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,7 +163,11 @@
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="YoutubeApis.cs" />
+    <Compile Include="YouTubeChannel.cs" />
     <Compile Include="YoutubeVideo.cs" />
+    <EmbeddedResource Include="ChannelInfo.resx">
+      <DependentUpon>ChannelInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>

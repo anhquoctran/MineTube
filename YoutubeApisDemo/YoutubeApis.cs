@@ -11,14 +11,30 @@ using Google.Apis.YouTube.v3;
 using System.IO;
 using System.Threading;
 using System.Xml;
-using System.Text.RegularExpressions;
-using System.Globalization;
+
 
 namespace YoutubeApisDemo
 {
     public class YoutubeApis
     {
         private static YouTubeService ytService = Auth();
+        //private static YouTubeService services = ChannelAuth();
+
+        //private static YouTubeService ChannelAuth()
+        //{
+        //    UserCredential creds;
+        //    using (var stream = new FileStream("client_scret.json", FileMode.Open, FileAccess.Read))
+        //    {
+        //        creds = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, new[] { YouTubeService.Scope.YoutubeReadonly }, "user", CancellationToken.None, new FileDataStore("ChannelInfo")).Result;
+
+        //        var services = new YouTubeService(new BaseClientService.Initializer()
+        //        {
+        //            HttpClientInitializer = creds,
+        //            ApplicationName = "YoutubeApiChannelDemo"
+        //        });
+        //        return services;
+        //    }
+        //}
 
         private static YouTubeService Auth()
         {
@@ -36,6 +52,40 @@ namespace YoutubeApisDemo
                 return services;
             }
         }
+
+        //public static void GetChannelInfo(YouTubeChannel channel)
+        //{
+        //    try
+        //    {
+                
+
+        //        var StatisticsRequest = services.Channels.List("statistics");
+        //        StatisticsRequest.Id = channel.Id;
+        //        var StatisticsResponse = StatisticsRequest.Execute();
+
+        //        if (StatisticsResponse.Items.Count > 0)
+        //        {
+        //            channel.SubscribeCounter = StatisticsResponse.Items[0].Statistics.SubscriberCount;
+        //            channel.VideoCounter = StatisticsResponse.Items[0].Statistics.VideoCount;
+        //            channel.ViewCounter = StatisticsResponse.Items[0].Statistics.ViewCount;
+        //            channel.CommentCounter = StatisticsResponse.Items[0].Statistics.CommentCount;
+        //        }
+
+        //        var SnippetRequest = ytService.Channels.List("snippet");
+        //        SnippetRequest.Id = channel.Id;
+        //        var SnippetResponse = SnippetRequest.Execute();
+
+        //        if (SnippetResponse.Items.Count > 0)
+        //        {
+        //            channel.ChannelName = SnippetResponse.Items[0].Snippet.Title;
+        //            channel.AvatarUrl = SnippetResponse.Items[0].Snippet.Thumbnails.Standard.Url;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, Application.ProductName);
+        //    }
+        //}
 
         public static void GetVideoInfo(YoutubeVideo video)
         {
@@ -69,8 +119,9 @@ namespace YoutubeApisDemo
                     video.Description = response.Items[0].Snippet.Description;
                     video.DatePublished = response.Items[0].Snippet.PublishedAt.Value;
                     video.ChannelTitle = response.Items[0].Snippet.ChannelTitle;
-                    video.Thumb = response.Items[0].Snippet.Thumbnails.High.Url;
+                    video.ThumbUrl = response.Items[0].Snippet.Thumbnails.High.Url;
                     video.ChannelId = response.Items[0].Snippet.ChannelId;
+                    video.CategoryId = response.Items[0].Snippet.CategoryId;
 
                     if (response.Items[0].Snippet.Tags != null)
                     {
