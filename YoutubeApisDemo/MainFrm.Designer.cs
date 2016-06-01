@@ -85,7 +85,7 @@
             this.pnlVideoInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlVideoInfo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlVideoInfo.BackColor = System.Drawing.Color.White;
             this.pnlVideoInfo.Controls.Add(this.btnReset);
             this.pnlVideoInfo.Controls.Add(this.lblDefinition);
             this.pnlVideoInfo.Controls.Add(this.lblDimension);
@@ -110,12 +110,15 @@
             // 
             // btnReset
             // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReset.BackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
-            this.btnReset.Location = new System.Drawing.Point(614, 168);
+            this.btnReset.Location = new System.Drawing.Point(613, 175);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(32, 32);
             this.btnReset.TabIndex = 15;
@@ -149,7 +152,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.rchtxtTags);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -163,7 +166,7 @@
             // 
             // rchtxtTags
             // 
-            this.rchtxtTags.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rchtxtTags.BackColor = System.Drawing.Color.White;
             this.rchtxtTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rchtxtTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rchtxtTags.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -238,7 +241,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDescription.AutoScroll = true;
-            this.pnlDescription.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlDescription.BackColor = System.Drawing.Color.White;
             this.pnlDescription.Controls.Add(this.lblDescription);
             this.pnlDescription.Location = new System.Drawing.Point(0, 203);
             this.pnlDescription.Name = "pnlDescription";
@@ -250,7 +253,7 @@
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescription.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDescription.BackColor = System.Drawing.Color.White;
             this.lblDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -336,7 +339,6 @@
             // 
             // btnPaste
             // 
-            this.btnPaste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPaste.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnPaste.FlatAppearance.BorderSize = 0;
             this.btnPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
@@ -371,7 +373,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 581);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.pnlVideoInfo);

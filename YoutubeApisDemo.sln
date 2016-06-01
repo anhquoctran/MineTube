@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeApisDemo", "YoutubeA
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "YouTubeVideoInstaller", "YouTubeVideoInstaller\YouTubeVideoInstaller.isproj", "{BB681474-F49E-4394-A353-4938A645DEB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeApiTest", "YouTubeApiTest\YouTubeApiTest.csproj", "{955CFB48-752E-4735-98E3-7ACA5A148CD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -62,6 +64,26 @@ Global
 		{BB681474-F49E-4394-A353-4938A645DEB2}.SingleImage|Any CPU.Build.0 = SingleImage
 		{BB681474-F49E-4394-A353-4938A645DEB2}.SingleImage|x86.ActiveCfg = SingleImage
 		{BB681474-F49E-4394-A353-4938A645DEB2}.SingleImage|x86.Build.0 = SingleImage
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.CD_ROM|x86.Build.0 = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Debug|x86.Build.0 = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.DVD-5|x86.Build.0 = Debug|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Release|x86.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.Release|x86.Build.0 = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
