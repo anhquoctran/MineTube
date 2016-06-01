@@ -31,28 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChannelInfo));
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.close = new System.Windows.Forms.PictureBox();
             this.btnSubscriberCounter = new System.Windows.Forms.Button();
             this.lblView = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblCommentCounter = new System.Windows.Forms.Label();
             this.lblVideoCounter = new System.Windows.Forms.Label();
             this.lblChannelName = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.close = new System.Windows.Forms.PictureBox();
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.picBanner = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.picVerified = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVerified)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.picVerified);
             this.pnlMain.Controls.Add(this.close);
             this.pnlMain.Controls.Add(this.btnSubscriberCounter);
             this.pnlMain.Controls.Add(this.lblView);
@@ -69,21 +66,6 @@
             this.pnlMain.TabIndex = 0;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
             // 
-            // close
-            // 
-            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.close.BackColor = System.Drawing.Color.Transparent;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
-            this.close.Location = new System.Drawing.Point(502, 11);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(15, 15);
-            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.close.TabIndex = 10;
-            this.close.TabStop = false;
-            this.toolTip1.SetToolTip(this.close, "Đóng");
-            this.close.Click += new System.EventHandler(this.close_Click);
-            // 
             // btnSubscriberCounter
             // 
             this.btnSubscriberCounter.BackColor = System.Drawing.Color.Transparent;
@@ -93,9 +75,9 @@
             this.btnSubscriberCounter.ForeColor = System.Drawing.Color.Silver;
             this.btnSubscriberCounter.Location = new System.Drawing.Point(206, 119);
             this.btnSubscriberCounter.Name = "btnSubscriberCounter";
-            this.btnSubscriberCounter.Size = new System.Drawing.Size(75, 22);
+            this.btnSubscriberCounter.Size = new System.Drawing.Size(85, 22);
             this.btnSubscriberCounter.TabIndex = 9;
-            this.btnSubscriberCounter.Text = "1,584,985";
+            this.btnSubscriberCounter.Text = "0";
             this.btnSubscriberCounter.UseVisualStyleBackColor = false;
             // 
             // lblView
@@ -107,15 +89,16 @@
             this.lblView.ForeColor = System.Drawing.Color.Gray;
             this.lblView.Location = new System.Drawing.Point(390, 190);
             this.lblView.Name = "lblView";
-            this.lblView.Size = new System.Drawing.Size(127, 17);
+            this.lblView.Size = new System.Drawing.Size(64, 17);
             this.lblView.TabIndex = 8;
-            this.lblView.Text = "2,548,548,547 lượt xem";
+            this.lblView.Text = "0 lượt xem";
             this.lblView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(132, 119);
@@ -132,37 +115,52 @@
             this.lblCommentCounter.ForeColor = System.Drawing.Color.Gray;
             this.lblCommentCounter.Location = new System.Drawing.Point(21, 190);
             this.lblCommentCounter.Name = "lblCommentCounter";
-            this.lblCommentCounter.Size = new System.Drawing.Size(74, 17);
+            this.lblCommentCounter.Size = new System.Drawing.Size(68, 17);
             this.lblCommentCounter.TabIndex = 5;
-            this.lblCommentCounter.Text = "50 bình luận";
+            this.lblCommentCounter.Text = "0 bình luận";
             // 
             // lblVideoCounter
             // 
             this.lblVideoCounter.AutoSize = true;
             this.lblVideoCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVideoCounter.ForeColor = System.Drawing.Color.Gray;
-            this.lblVideoCounter.Location = new System.Drawing.Point(186, 190);
+            this.lblVideoCounter.Location = new System.Drawing.Point(206, 190);
             this.lblVideoCounter.Name = "lblVideoCounter";
-            this.lblVideoCounter.Size = new System.Drawing.Size(65, 17);
+            this.lblVideoCounter.Size = new System.Drawing.Size(47, 17);
             this.lblVideoCounter.TabIndex = 4;
-            this.lblVideoCounter.Text = "1584 video";
+            this.lblVideoCounter.Text = "0 video";
             this.lblVideoCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblChannelName
             // 
             this.lblChannelName.AutoEllipsis = true;
             this.lblChannelName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChannelName.Location = new System.Drawing.Point(132, 91);
+            this.lblChannelName.Location = new System.Drawing.Point(127, 91);
             this.lblChannelName.Name = "lblChannelName";
             this.lblChannelName.Size = new System.Drawing.Size(372, 25);
             this.lblChannelName.TabIndex = 2;
             this.lblChannelName.Text = "Channel name";
             // 
+            // close
+            // 
+            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.close.BackColor = System.Drawing.Color.Transparent;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
+            this.close.Location = new System.Drawing.Point(502, 11);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(15, 15);
+            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.close.TabIndex = 10;
+            this.close.TabStop = false;
+            this.toolTip1.SetToolTip(this.close, "Đóng");
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // picAvatar
             // 
             this.picAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picAvatar.Image = ((System.Drawing.Image)(resources.GetObject("picAvatar.Image")));
-            this.picAvatar.Location = new System.Drawing.Point(21, 48);
+            this.picAvatar.Location = new System.Drawing.Point(21, 43);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(100, 100);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,24 +170,14 @@
             // picBanner
             // 
             this.picBanner.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picBanner.Image = ((System.Drawing.Image)(resources.GetObject("picBanner.Image")));
+            this.picBanner.Image = global::YoutubeApisDemo.Properties.Resources.blackPanel;
+            this.picBanner.InitialImage = global::YoutubeApisDemo.Properties.Resources.blackPanel;
             this.picBanner.Location = new System.Drawing.Point(0, 0);
             this.picBanner.Name = "picBanner";
             this.picBanner.Size = new System.Drawing.Size(528, 88);
-            this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBanner.TabIndex = 0;
             this.picBanner.TabStop = false;
-            // 
-            // picVerified
-            // 
-            this.picVerified.BackColor = System.Drawing.Color.Transparent;
-            this.picVerified.Image = ((System.Drawing.Image)(resources.GetObject("picVerified.Image")));
-            this.picVerified.Location = new System.Drawing.Point(97, 124);
-            this.picVerified.Name = "picVerified";
-            this.picVerified.Size = new System.Drawing.Size(24, 24);
-            this.picVerified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picVerified.TabIndex = 11;
-            this.picVerified.TabStop = false;
             // 
             // ChannelInfo
             // 
@@ -213,7 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVerified)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,6 +218,5 @@
         private System.Windows.Forms.Button btnSubscriberCounter;
         private System.Windows.Forms.Label lblView;
         private System.Windows.Forms.PictureBox close;
-        private System.Windows.Forms.PictureBox picVerified;
     }
 }

@@ -48,7 +48,15 @@ namespace YoutubeApisDemo
             lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " video";
             btnSubscriberCounter.Text = channel.SubscribeCounter.Value.ToString("N0");
             picAvatar.ImageLocation = channel.AvatarUrl;
-            picBanner.ImageLocation = channel.CoverPhotoUrl;
+
+            if (channel.CoverPhotoUrl.Contains("default_banner"))
+            {
+                picBanner.Image = Properties.Resources.blackPanel;
+            }
+            else
+            {
+                picBanner.ImageLocation = channel.CoverPhotoUrl;
+            }          
         }
 
         private void ChannelInfo_MouseDown(object sender, MouseEventArgs e)

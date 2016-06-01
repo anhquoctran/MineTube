@@ -71,6 +71,15 @@ namespace YoutubeApisDemo
                     
                 }
 
+                var StatusRequest = ytService.Channels.List("status");
+                StatusRequest.Id = channel.Id;
+                var StatusResponse = StatusRequest.Execute();
+
+                if(StatusResponse.Items.Count > 0)
+                {
+                    channel.IsLinked = StatusResponse.Items[0].Status.IsLinked;
+                }
+
                 var BrandingRequest = ytService.Channels.List("brandingSettings");
                 BrandingRequest.Id = channel.Id;
                 var BrandingResponse = BrandingRequest.Execute();

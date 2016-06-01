@@ -240,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1441267378_youtube_circle_color.ico" />
+    <None Include="Resources\blackPanel.png" />
     <Content Include="youtube-logotype.ico" />
   </ItemGroup>
   <ItemGroup>

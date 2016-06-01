@@ -70,6 +70,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.BackColor = System.Drawing.Color.Gray;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
@@ -90,6 +91,9 @@
             // 
             // pnlVideoInfo
             // 
+            this.pnlVideoInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlVideoInfo.BackColor = System.Drawing.Color.White;
             this.pnlVideoInfo.Controls.Add(this.lblCategory);
             this.pnlVideoInfo.Controls.Add(this.btnReset);
@@ -459,6 +463,8 @@
             // 
             // txtboxSearch
             // 
+            this.txtboxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtboxSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtboxSearch.ForeColor = System.Drawing.Color.Red;
@@ -481,7 +487,7 @@
             this.MinimumSize = new System.Drawing.Size(687, 620);
             this.Name = "MainFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Youtube API v3 Demo - Get Video Info";
+            this.Text = "Youtube API v3 Demo";
             this.pnlVideoInfo.ResumeLayout(false);
             this.pnlVideoInfo.PerformLayout();
             this.groupBox2.ResumeLayout(false);

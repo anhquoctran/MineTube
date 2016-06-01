@@ -12,7 +12,7 @@ namespace YoutubeApisDemo
         public ulong? SubscribeCounter { get; set; }
         public ulong? ViewCounter { get; set; }
         public ulong? CommentCounter { get; set; }
-
+        public bool? IsLinked { get; set; }
         /// <summary>
         /// Get or set name of current channel by ChannelID
         /// </summary>
