@@ -345,8 +345,14 @@ namespace YoutubeApisDemo
         [DllImport("user32.dll")]
         public static extern bool GetCursorPos(out POINT lpPoint);
 
-        
+        private void chkMin_CheckedChanged(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
 
-        
+        private void pnlRightSide_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
     }
 }

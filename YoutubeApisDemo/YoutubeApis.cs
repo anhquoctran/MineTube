@@ -18,39 +18,34 @@ namespace YoutubeApisDemo
     public class YoutubeApis
     {
         private static YouTubeService ytService = Auth();
-        //private static YouTubeService services = ChannelAuth();
-
-        //private static YouTubeService ChannelAuth()
-        //{
-        //    UserCredential creds;
-        //    using (var stream = new FileStream("client_scret.json", FileMode.Open, FileAccess.Read))
-        //    {
-        //        creds = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, new[] { YouTubeService.Scope.YoutubeReadonly }, "user", CancellationToken.None, new FileDataStore("ChannelInfo")).Result;
-
-        //        var services = new YouTubeService(new BaseClientService.Initializer()
-        //        {
-        //            HttpClientInitializer = creds,
-        //            ApplicationName = "YoutubeApiChannelDemo"
-        //        });
-        //        return services;
-        //    }
-        //}
+        
 
         private static YouTubeService Auth()
         {
-            UserCredential creds;
-            using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            try
             {
-                creds = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets, new[] { YouTubeService.Scope.YoutubeReadonly }, "user", CancellationToken.None, new FileDataStore("YoutubeApiDemo")).Result;
-
-                var services = new YouTubeService(new BaseClientService.Initializer()
+                UserCredential creds;
+                using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
                 {
-                    HttpClientInitializer = creds, ApplicationName = "YoutubeApiDemo"
-                });
+                    creds = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                        GoogleClientSecrets.Load(stream).Secrets, new[] { YouTubeService.Scope.YoutubeReadonly }, "user", CancellationToken.None, new FileDataStore("YoutubeApiDemo")).Result;
 
-                return services;
+                    var services = new YouTubeService(new BaseClientService.Initializer()
+                    {
+                        HttpClientInitializer = creds,
+                        ApplicationName = "YoutubeApiDemo"
+                    });
+                    return services;
+                    
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+                return null;
+            }
+
+            
         }
 
         public static void GetChannelInfo(YouTubeChannel channel)
@@ -101,7 +96,7 @@ namespace YoutubeApisDemo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -130,7 +125,6 @@ namespace YoutubeApisDemo
                     video.Dislike = response1.Items[0].Statistics.DislikeCount;
                     
                 }
-
                 if (response.Items.Count > 0)
                 {
                     video.Title = response.Items[0].Snippet.Title;
@@ -157,6 +151,7 @@ namespace YoutubeApisDemo
                     video.Quality = response2.Items[0].ContentDetails.Definition.ToUpper();
                     string s = response2.Items[0].ContentDetails.Duration;
                     TimeSpan ts = XmlConvert.ToTimeSpan(s);
+                    
                     video.Duration = ts.Hours.ToString() + ":" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
                 }
                 else
