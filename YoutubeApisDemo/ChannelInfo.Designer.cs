@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChannelInfo));
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.PictureBox();
             this.btnSubscriberCounter = new System.Windows.Forms.Button();
             this.lblView = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblCommentCounter = new System.Windows.Forms.Label();
             this.lblVideoCounter = new System.Windows.Forms.Label();
             this.lblChannelName = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.close = new System.Windows.Forms.PictureBox();
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.picBanner = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
@@ -49,6 +49,7 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMain.Controls.Add(this.close);
             this.pnlMain.Controls.Add(this.btnSubscriberCounter);
@@ -66,10 +67,26 @@
             this.pnlMain.TabIndex = 0;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
             // 
+            // close
+            // 
+            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.close.BackColor = System.Drawing.Color.Transparent;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
+            this.close.Location = new System.Drawing.Point(502, 11);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(15, 15);
+            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.close.TabIndex = 10;
+            this.close.TabStop = false;
+            this.toolTip1.SetToolTip(this.close, "Đóng");
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // btnSubscriberCounter
             // 
             this.btnSubscriberCounter.BackColor = System.Drawing.Color.Transparent;
-            this.btnSubscriberCounter.Enabled = false;
+            this.btnSubscriberCounter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSubscriberCounter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSubscriberCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubscriberCounter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSubscriberCounter.ForeColor = System.Drawing.Color.Silver;
@@ -77,6 +94,7 @@
             this.btnSubscriberCounter.Name = "btnSubscriberCounter";
             this.btnSubscriberCounter.Size = new System.Drawing.Size(85, 22);
             this.btnSubscriberCounter.TabIndex = 9;
+            this.btnSubscriberCounter.TabStop = false;
             this.btnSubscriberCounter.Text = "0";
             this.toolTip1.SetToolTip(this.btnSubscriberCounter, "Tổng số lượt đăng ký");
             this.btnSubscriberCounter.UseVisualStyleBackColor = false;
@@ -147,21 +165,6 @@
             this.lblChannelName.TabIndex = 2;
             this.lblChannelName.Text = "Channel name";
             this.toolTip1.SetToolTip(this.lblChannelName, "Tên kênh");
-            // 
-            // close
-            // 
-            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.close.BackColor = System.Drawing.Color.Transparent;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
-            this.close.Location = new System.Drawing.Point(502, 11);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(15, 15);
-            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.close.TabIndex = 10;
-            this.close.TabStop = false;
-            this.toolTip1.SetToolTip(this.close, "Đóng");
-            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // picAvatar
             // 
