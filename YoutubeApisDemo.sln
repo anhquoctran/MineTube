@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeApisDemo", "YoutubeA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeApiTest", "YouTubeApiTest\YouTubeApiTest.csproj", "{955CFB48-752E-4735-98E3-7ACA5A148CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayer4Net", "MediaPlayer4Net\MediaPlayer4Net.csproj", "{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -64,26 +62,6 @@ Global
 		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|x86.ActiveCfg = Release|Any CPU
 		{955CFB48-752E-4735-98E3-7ACA5A148CD1}.SingleImage|x86.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.CD_ROM|x86.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.CD_ROM|x86.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Debug|x86.Build.0 = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.DVD-5|x86.ActiveCfg = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.DVD-5|x86.Build.0 = Debug|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Release|x86.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.Release|x86.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.SingleImage|x86.ActiveCfg = Release|Any CPU
-		{4AFC8367-DA96-45B9-8CAA-D186DB300BDF}.SingleImage|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

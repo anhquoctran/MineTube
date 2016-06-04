@@ -161,7 +161,7 @@ namespace YoutubeApisDemo
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Error");
+                MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

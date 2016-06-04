@@ -18,7 +18,7 @@ namespace YoutubeApisDemo
             InitializeComponent();
             SendVideoUrl = new SendUrl(GetUrl);
             SendVideoTitle = new SendTitle(GetTitle);
-            playerVideo.playlist.play();
+           // playerVideo.playlist.play();
             
         }
 
@@ -30,7 +30,7 @@ namespace YoutubeApisDemo
 
         private void GetUrl(string url)
         {
-            playerVideo.playlist.add(url);
+            //playerVideo.playlist.add(url);
         }
 
         private void GetTitle(string title)

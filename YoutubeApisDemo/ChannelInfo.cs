@@ -48,7 +48,7 @@ namespace YoutubeApisDemo
             lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " video";
             btnSubscriberCounter.Text = channel.SubscribeCounter.Value.ToString("N0");
             picAvatar.ImageLocation = channel.AvatarUrl;
-
+            lblCommentCounter.Text = channel.CommentCounter.Value.ToString("N0") + " bình luận";
             if (channel.CoverPhotoUrl.Contains("default_banner"))
             {
                 picBanner.Image = Properties.Resources.blackPanel;
