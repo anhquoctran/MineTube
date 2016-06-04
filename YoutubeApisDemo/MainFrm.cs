@@ -73,9 +73,7 @@ namespace YoutubeApisDemo
             }
             else
             {
-                GetInfo(input);
-                //picVideoThumb.Image = Video.Thumb.Standard
-                VideoUrl = "https://www.youtube.com/v/" + input;
+                MessageBox.Show("YouTube URL is not correct!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -353,6 +351,14 @@ namespace YoutubeApisDemo
         private void pnlRightSide_MouseMove(object sender, MouseEventArgs e)
         {
             
+        }
+
+        private void txtboxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(sender, e);
+            }
         }
     }
 }
