@@ -44,8 +44,7 @@ namespace YoutubeApisDemo
                 MessageBox.Show(ex.Message, Application.ProductName);
                 return null;
             }
-
-            
+        
         }
 
         public static void GetChannelInfo(YouTubeChannel channel)

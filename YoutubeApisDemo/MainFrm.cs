@@ -218,10 +218,10 @@ namespace YoutubeApisDemo
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            VideoPlayer play = new VideoPlayer();
-            play.SendVideoUrl(VideoUrl);
-            play.SendVideoTitle(lblVideoTitle.Text);
-            play.ShowDialog();
+            //VideoPlayer play = new VideoPlayer();
+            //play.SendVideoUrl(VideoUrl);
+            //play.SendVideoTitle(lblVideoTitle.Text);
+            //play.ShowDialog();
         }
 
         private void lblPub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
