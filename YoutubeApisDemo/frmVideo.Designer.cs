@@ -1,6 +1,6 @@
 ﻿namespace YoutubeApisDemo
 {
-    partial class MainFrm
+    partial class frmVideo
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVideo));
             this.pnlVideoInfo = new System.Windows.Forms.Panel();
             this.lblCategory = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
@@ -39,7 +39,6 @@
             this.rchtxtTags = new System.Windows.Forms.RichTextBox();
             this.lblPub = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnPlay = new System.Windows.Forms.Button();
             this.lblDuration = new System.Windows.Forms.Label();
             this.pnlDescription = new System.Windows.Forms.Panel();
             this.lblDescription = new System.Windows.Forms.RichTextBox();
@@ -55,15 +54,12 @@
             this.btnPaste = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlFrm = new System.Windows.Forms.Panel();
-            this.pnlLeftSide = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.pnlBottomSide = new System.Windows.Forms.Panel();
-            this.pnlRightSide = new System.Windows.Forms.Panel();
             this.chkMin = new System.Windows.Forms.CheckBox();
             this.chkMax = new System.Windows.Forms.CheckBox();
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.txtboxSearch = new YoutubeApisDemo.PlaceholderTextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblLoadStatus = new System.Windows.Forms.Label();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
@@ -78,6 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlVideoInfo.BackColor = System.Drawing.Color.White;
+            this.pnlVideoInfo.Controls.Add(this.lblLoadStatus);
             this.pnlVideoInfo.Controls.Add(this.lblCategory);
             this.pnlVideoInfo.Controls.Add(this.btnReset);
             this.pnlVideoInfo.Controls.Add(this.lblDefinition);
@@ -85,7 +82,6 @@
             this.pnlVideoInfo.Controls.Add(this.groupBox2);
             this.pnlVideoInfo.Controls.Add(this.lblPub);
             this.pnlVideoInfo.Controls.Add(this.label1);
-            this.pnlVideoInfo.Controls.Add(this.btnPlay);
             this.pnlVideoInfo.Controls.Add(this.lblDuration);
             this.pnlVideoInfo.Controls.Add(this.pnlDescription);
             this.pnlVideoInfo.Controls.Add(this.lblPublisher);
@@ -206,25 +202,6 @@
             this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Mô tả:";
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnPlay.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPlay.FlatAppearance.BorderSize = 0;
-            this.btnPlay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.btnPlay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlay.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnPlay.ForeColor = System.Drawing.Color.White;
-            this.btnPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.Image")));
-            this.btnPlay.Location = new System.Drawing.Point(90, 78);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(46, 32);
-            this.btnPlay.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.btnPlay, "Phát");
-            this.btnPlay.UseVisualStyleBackColor = false;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // lblDuration
             // 
@@ -396,10 +373,7 @@
             // pnlFrm
             // 
             this.pnlFrm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFrm.Controls.Add(this.pnlLeftSide);
             this.pnlFrm.Controls.Add(this.btnClose);
-            this.pnlFrm.Controls.Add(this.pnlBottomSide);
-            this.pnlFrm.Controls.Add(this.pnlRightSide);
             this.pnlFrm.Controls.Add(this.chkMin);
             this.pnlFrm.Controls.Add(this.chkMax);
             this.pnlFrm.Controls.Add(this.picIcon);
@@ -408,21 +382,12 @@
             this.pnlFrm.Controls.Add(this.btnSearch);
             this.pnlFrm.Controls.Add(this.btnPaste);
             this.pnlFrm.Controls.Add(this.pnlVideoInfo);
-            this.pnlFrm.Controls.Add(this.panel1);
             this.pnlFrm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFrm.Location = new System.Drawing.Point(0, 0);
             this.pnlFrm.Name = "pnlFrm";
             this.pnlFrm.Size = new System.Drawing.Size(706, 673);
             this.pnlFrm.TabIndex = 8;
             this.pnlFrm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlFrm_MouseDown);
-            // 
-            // pnlLeftSide
-            // 
-            this.pnlLeftSide.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlLeftSide.Location = new System.Drawing.Point(0, 2);
-            this.pnlLeftSide.Name = "pnlLeftSide";
-            this.pnlLeftSide.Size = new System.Drawing.Size(2, 667);
-            this.pnlLeftSide.TabIndex = 17;
             // 
             // btnClose
             // 
@@ -439,26 +404,6 @@
             this.btnClose.TabIndex = 8;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // pnlBottomSide
-            // 
-            this.pnlBottomSide.Cursor = System.Windows.Forms.Cursors.SizeNS;
-            this.pnlBottomSide.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottomSide.Location = new System.Drawing.Point(0, 669);
-            this.pnlBottomSide.Name = "pnlBottomSide";
-            this.pnlBottomSide.Size = new System.Drawing.Size(702, 2);
-            this.pnlBottomSide.TabIndex = 18;
-            // 
-            // pnlRightSide
-            // 
-            this.pnlRightSide.BackColor = System.Drawing.Color.Transparent;
-            this.pnlRightSide.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.pnlRightSide.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightSide.Location = new System.Drawing.Point(702, 2);
-            this.pnlRightSide.Name = "pnlRightSide";
-            this.pnlRightSide.Size = new System.Drawing.Size(2, 669);
-            this.pnlRightSide.TabIndex = 17;
-            this.pnlRightSide.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlRightSide_MouseMove);
             // 
             // chkMin
             // 
@@ -513,13 +458,15 @@
             this.txtboxSearch.Click += new System.EventHandler(this.txtboxSearch_Click);
             this.txtboxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtboxSearch_KeyDown);
             // 
-            // panel1
+            // lblLoadStatus
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(704, 2);
-            this.panel1.TabIndex = 17;
+            this.lblLoadStatus.AutoSize = true;
+            this.lblLoadStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblLoadStatus.Location = new System.Drawing.Point(567, 193);
+            this.lblLoadStatus.Name = "lblLoadStatus";
+            this.lblLoadStatus.Size = new System.Drawing.Size(60, 15);
+            this.lblLoadStatus.TabIndex = 17;
+            this.lblLoadStatus.Text = "Đang tải...";
             // 
             // MainFrm
             // 
@@ -559,7 +506,6 @@
         private System.Windows.Forms.Label lblPublisher;
         private System.Windows.Forms.Panel pnlDescription;
         private System.Windows.Forms.Label lblDuration;
-        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox lblDescription;
         private System.Windows.Forms.LinkLabel lblPub;
@@ -577,10 +523,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox chkMax;
         private System.Windows.Forms.CheckBox chkMin;
-        private System.Windows.Forms.Panel pnlRightSide;
-        private System.Windows.Forms.Panel pnlBottomSide;
-        private System.Windows.Forms.Panel pnlLeftSide;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblLoadStatus;
     }
 }
 

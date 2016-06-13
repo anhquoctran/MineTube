@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace YoutubeApisDemo
 {
-    public partial class MainFrm : Form
+    public partial class frmVideo : Form
     {
-        public MainFrm()
+        public frmVideo()
         {
             InitializeComponent();
             picIcon.Image = Icon.ToBitmap();
@@ -23,7 +23,7 @@ namespace YoutubeApisDemo
             if (IsInternetAvailable())
                 btnSearch.Enabled = true;
             else btnSearch.Enabled = false;
-
+            lblVideoTitle.Text = "Chưa nhận được thông tin";
             lblDate.Text = "Ngày xuất bản: ";
             lblDescription.Text = "";
             lblLikeDislike.Text = "0 like - 0 dislike";
@@ -32,13 +32,14 @@ namespace YoutubeApisDemo
             lblView.Text = "0 lượt xem";
             lblComment.Text = "0 bình luận";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
-            btnPlay.Visible = false;
+            //btnPlay.Visible = false;
             lblPub.Text = "";
             lblDimension.Visible = false;
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             btnReset.Enabled = false;
             lblCategory.Text = "Thể loại: ";
+            lblLoadStatus.Visible = false;
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -55,6 +56,7 @@ namespace YoutubeApisDemo
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string input = txtboxSearch.Text;
+            lblLoadStatus.Visible = true;
             if (input == "")
                 MessageBox.Show("Không được bỏ trống ô tìm kiểm!");
             else if (input.Contains("https://www.youtube.com/watch?v="))
@@ -75,6 +77,8 @@ namespace YoutubeApisDemo
             {
                 MessageBox.Show("YouTube URL is not correct!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            lblLoadStatus.Visible = false;
         }
 
         string ChannelId = "";
@@ -156,7 +160,7 @@ namespace YoutubeApisDemo
                     lblCategory.Text = "Thể loại: Hoạt động && Phi lợi nhuận";
                     break;
                 
-                default: lblCategory.Text = "Thể loại: Không xác định";
+                default: lblCategory.Text = "Thể loại: Không thể xác định";
                     break;
             }
 
@@ -164,7 +168,7 @@ namespace YoutubeApisDemo
             lblComment.Text = Video.CommentCount.Value.ToString("N0") + " bình luận";
             lblView.Text = Video.View.Value.ToString("N0") + " lượt xem";
             lblLikeDislike.Text = Video.Like.Value.ToString("N0") + " lượt thích - " + Video.Dislike.Value.ToString("N0") + " lượt không thích";
-            btnPlay.Visible = true;
+            //btnPlay.Visible = true;
             ChannelId = Video.ChannelId;
             lblDuration.Text = Video.Duration;
             lblDimension.Visible = true;
@@ -218,15 +222,12 @@ namespace YoutubeApisDemo
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            //VideoPlayer play = new VideoPlayer();
-            //play.SendVideoUrl(VideoUrl);
-            //play.SendVideoTitle(lblVideoTitle.Text);
-            //play.ShowDialog();
+            
         }
 
         private void lblPub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ChannelInfo ci = new ChannelInfo(ChannelId);
+            frmChannelInfo ci = new frmChannelInfo(ChannelId);
             
             ci.ShowDialog();
         }
@@ -278,18 +279,22 @@ namespace YoutubeApisDemo
             lblView.Text = "0 lượt xem";
             lblComment.Text = "0 bình luận";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
-            btnPlay.Visible = false;
+            //btnPlay.Visible = false;
             lblPub.Text = "";
             lblDimension.Visible = false;
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             txtboxSearch.Clear();
             lblCategory.Text = "Thể loại: ";
+            lblVideoTitle.Text = "Chưa nhận được thông tin";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            frmHome home = new frmHome();
+            home.ShowDialog();
+            this.Close();
         }
 
         private void btnMin_Click(object sender, EventArgs e)

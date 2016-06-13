@@ -182,17 +182,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChannelInfo.cs">
+    <Compile Include="frmChannelInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChannelInfo.Designer.cs">
-      <DependentUpon>ChannelInfo.cs</DependentUpon>
+    <Compile Include="frmChannelInfo.Designer.cs">
+      <DependentUpon>frmChannelInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainFrm.cs">
+    <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainFrm.Designer.cs">
-      <DependentUpon>MainFrm.cs</DependentUpon>
+    <Compile Include="frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVideo.Designer.cs">
+      <DependentUpon>frmVideo.cs</DependentUpon>
     </Compile>
     <Compile Include="PlaceholderTextBox.cs">
       <SubType>Component</SubType>
@@ -205,11 +211,14 @@
     <Compile Include="YoutubeApis.cs" />
     <Compile Include="YouTubeChannel.cs" />
     <Compile Include="YoutubeVideo.cs" />
-    <EmbeddedResource Include="ChannelInfo.resx">
-      <DependentUpon>ChannelInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmChannelInfo.resx">
+      <DependentUpon>frmChannelInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainFrm.resx">
-      <DependentUpon>MainFrm.cs</DependentUpon>
+    <EmbeddedResource Include="frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVideo.resx">
+      <DependentUpon>frmVideo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

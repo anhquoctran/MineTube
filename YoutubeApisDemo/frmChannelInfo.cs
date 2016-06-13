@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace YoutubeApisDemo
 {
-    public partial class ChannelInfo : Form
+    public partial class frmChannelInfo : Form
     {
-        public ChannelInfo(string id)
+        public frmChannelInfo(string id)
         {
             InitializeComponent();           
             ChannelID = id;
