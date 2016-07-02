@@ -16,6 +16,7 @@ namespace YoutubeApisDemo
         public frmHome()
         {
             InitializeComponent();
+            lblSoftversion.Text = "Current version: " + Application.ProductVersion;
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -68,6 +69,11 @@ namespace YoutubeApisDemo
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void btnChannel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

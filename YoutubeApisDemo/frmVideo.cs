@@ -287,6 +287,7 @@ namespace YoutubeApisDemo
             txtboxSearch.Clear();
             lblCategory.Text = "Thể loại: ";
             lblVideoTitle.Text = "Chưa nhận được thông tin";
+            rchtxtTags.Clear();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
