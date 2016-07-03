@@ -8,7 +8,13 @@ namespace YoutubeApisDemo
 {
     public class YouTubeChannel
     {
+        /// <summary>
+        /// Get all of videos
+        /// </summary>
         public ulong? VideoCounter { get; set; }
+        /// <summary>
+        /// Get number of subcribers
+        /// </summary>
         public ulong? SubscribeCounter { get; set; }
         public ulong? ViewCounter { get; set; }
         public ulong? CommentCounter { get; set; }
