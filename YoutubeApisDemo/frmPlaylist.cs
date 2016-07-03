@@ -16,6 +16,7 @@ namespace YoutubeApisDemo
         public frmPlaylist()
         {
             InitializeComponent();
+            lblTitle.Text = Text;
         }
 
         OLVColumn ThumbCol;

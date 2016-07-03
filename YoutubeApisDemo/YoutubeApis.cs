@@ -99,6 +99,21 @@ namespace YoutubeApisDemo
             }
         }
 
+        public static YoutubeVideo[] GetPlaylistInfo(YoutubePlaylist playlist)
+        {
+            try
+            {
+                var playlistRequest = ytService.PlaylistItems.List("");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return null;
+        }
+
         public static void GetVideoInfo(YoutubeVideo video)
         {
             try

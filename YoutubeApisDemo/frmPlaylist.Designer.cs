@@ -33,6 +33,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtboxUrl = new System.Windows.Forms.TextBox();
             this.btnGet = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvPlaylist)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.lblTitle);
             this.pnlMain.Controls.Add(this.btnGet);
             this.pnlMain.Controls.Add(this.txtboxUrl);
             this.pnlMain.Controls.Add(this.btnClose);
@@ -52,7 +54,8 @@
             // 
             // olvPlaylist
             // 
-            this.olvPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.olvPlaylist.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+            this.olvPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.olvPlaylist.CellEditUseWholeCell = false;
             this.olvPlaylist.HighlightBackgroundColor = System.Drawing.Color.Empty;
             this.olvPlaylist.HighlightForegroundColor = System.Drawing.Color.Empty;
@@ -71,9 +74,9 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(669, -1);
+            this.btnClose.Location = new System.Drawing.Point(658, -1);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(41, 29);
+            this.btnClose.Size = new System.Drawing.Size(52, 29);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -94,12 +97,21 @@
             this.btnGet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnGet.ForeColor = System.Drawing.Color.White;
-            this.btnGet.Location = new System.Drawing.Point(631, 53);
+            this.btnGet.Location = new System.Drawing.Point(623, 53);
             this.btnGet.Name = "btnGet";
-            this.btnGet.Size = new System.Drawing.Size(67, 25);
+            this.btnGet.Size = new System.Drawing.Size(75, 25);
             this.btnGet.TabIndex = 3;
             this.btnGet.Text = "Get";
             this.btnGet.UseVisualStyleBackColor = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(11, 7);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(38, 15);
+            this.lblTitle.TabIndex = 4;
+            this.lblTitle.Text = "label1";
             // 
             // frmPlaylist
             // 
@@ -114,7 +126,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPlaylist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmPlaylist";
+            this.Text = "YouTube Playlist Information";
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvPlaylist)).EndInit();
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.TextBox txtboxUrl;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
