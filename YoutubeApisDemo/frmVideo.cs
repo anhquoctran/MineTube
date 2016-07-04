@@ -38,7 +38,7 @@ namespace YoutubeApisDemo
             lblView.Text = "0 views";
             lblComment.Text = "0 comments";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
-            //btnPlay.Visible = false;
+            
             lblPub.Text = "";
             lblDimension.Visible = false;
             lblDefinition.Visible = false;
@@ -47,15 +47,6 @@ namespace YoutubeApisDemo
             lblCategory.Text = "Category: ";
             lblLoadStatus.Visible = false;
         }
-
-        //public const int WM_NCLBUTTONDOWN = 0xA1;
-        //public const int HT_CAPTION = 0x2;
-
-        //[DllImportAttribute("user32.dll")]
-        //public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        //[DllImportAttribute("user32.dll")]
-        //public static extern bool ReleaseCapture();
-
 
         protected string VideoUrl = "";
 
@@ -174,7 +165,7 @@ namespace YoutubeApisDemo
             lblComment.Text = Video.CommentCount.Value.ToString("N0") + " comments";
             lblView.Text = Video.View.Value.ToString("N0") + " views";
             lblLikeDislike.Text = Video.Like.Value.ToString("N0") + " likes - " + Video.Dislike.Value.ToString("N0") + " dislikes";
-            //btnPlay.Visible = true;
+            
             ChannelId = Video.ChannelId;
             lblDuration.Text = Video.Duration;
             lblDimension.Visible = true;
@@ -285,7 +276,7 @@ namespace YoutubeApisDemo
             lblView.Text = "0 views";
             lblComment.Text = "0 comments";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
-            //btnPlay.Visible = false;
+            
             lblPub.Text = "";
             lblDimension.Visible = false;
             lblDefinition.Visible = false;
@@ -359,16 +350,6 @@ namespace YoutubeApisDemo
             {
                 btnSearch_Click(sender, e);
             }
-        }
-
-        private void frmVideo_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-            this.Hide();
-            frmHome home = new frmHome();
-            home.ShowDialog();
-            this.Close();
-            
         }
     }
 }

@@ -184,15 +184,18 @@
             // 
             // lblPub
             // 
+            this.lblPub.ActiveLinkColor = System.Drawing.Color.DarkRed;
             this.lblPub.AutoSize = true;
             this.lblPub.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblPub.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lblPub.LinkColor = System.Drawing.Color.Red;
             this.lblPub.Location = new System.Drawing.Point(290, 37);
             this.lblPub.Name = "lblPub";
             this.lblPub.Size = new System.Drawing.Size(97, 17);
             this.lblPub.TabIndex = 11;
             this.lblPub.TabStop = true;
             this.lblPub.Text = "publisherName";
+            this.lblPub.VisitedLinkColor = System.Drawing.Color.Maroon;
             this.lblPub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPub_LinkClicked);
             // 
             // label1
@@ -347,6 +350,7 @@
             // btnPaste
             // 
             this.btnPaste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPaste.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPaste.Depth = 0;
             this.btnPaste.Location = new System.Drawing.Point(540, 72);
             this.btnPaste.MouseState = MaterialSkin.MouseState.HOVER;
@@ -361,6 +365,7 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Depth = 0;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSearch.Location = new System.Drawing.Point(612, 72);
@@ -376,6 +381,7 @@
             // btnBack
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.Depth = 0;
             this.btnBack.Location = new System.Drawing.Point(593, 697);
             this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
@@ -414,11 +420,11 @@
             this.Controls.Add(this.btnPaste);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(687, 620);
+            this.MaximumSize = new System.Drawing.Size(701, 747);
+            this.MinimumSize = new System.Drawing.Size(701, 747);
             this.Name = "frmVideo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YouTube Video Information";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVideo_FormClosing);
             this.pnlVideoInfo.ResumeLayout(false);
             this.pnlVideoInfo.PerformLayout();
             this.groupBox2.ResumeLayout(false);

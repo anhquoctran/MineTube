@@ -93,13 +93,15 @@ namespace YoutubeApisDemo
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            Hide();
             frmSearch search = new frmSearch();
             search.ShowDialog();
-            Hide();
+            
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
+            
             frmAbout about = new frmAbout();
             about.ShowDialog();
         }
@@ -129,6 +131,11 @@ namespace YoutubeApisDemo
         }
 
         private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmHome_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

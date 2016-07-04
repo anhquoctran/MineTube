@@ -85,6 +85,7 @@
             // btnGet
             // 
             this.btnGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGet.Depth = 0;
             this.btnGet.Location = new System.Drawing.Point(671, 149);
             this.btnGet.MouseState = MaterialSkin.MouseState.HOVER;
