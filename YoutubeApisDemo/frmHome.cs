@@ -78,5 +78,12 @@ namespace YoutubeApisDemo
             playlist.ShowDialog();
             
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            frmSearch search = new frmSearch();
+            search.ShowDialog();
+            Hide();
+        }
     }
 }
