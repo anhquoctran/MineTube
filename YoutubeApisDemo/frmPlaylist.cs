@@ -19,7 +19,7 @@ namespace YoutubeApisDemo
             lblTitle.Text = Text;
         }
 
-        OLVColumn ThumbCol;
-        OLVColumn InfoCol;
+        //OLVColumn ThumbCol;
+        //OLVColumn InfoCol;
     }
 }

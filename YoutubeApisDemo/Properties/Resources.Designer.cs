@@ -73,6 +73,16 @@ namespace YoutubeApisDemo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap f3 {
+            get {
+                object obj = ResourceManager.GetObject("f3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fast_forward {
             get {
                 object obj = ResourceManager.GetObject("fast_forward", resourceCulture);

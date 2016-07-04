@@ -205,6 +205,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\CirclePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmChannelInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,7 +232,7 @@
     <Compile Include="frmVideo.Designer.cs">
       <DependentUpon>frmVideo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlaceholderTextBox.cs">
+    <Compile Include="CustomControls\PlaceholderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -342,6 +345,7 @@
   <ItemGroup>
     <Content Include="1441267378_youtube_circle_color.ico" />
     <None Include="Resources\blackPanel.png" />
+    <None Include="Resources\f3.png" />
     <Content Include="youtube-logotype.ico" />
   </ItemGroup>
   <ItemGroup>

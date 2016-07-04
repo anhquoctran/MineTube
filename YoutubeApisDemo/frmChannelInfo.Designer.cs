@@ -31,19 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChannelInfo));
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.close = new System.Windows.Forms.PictureBox();
             this.btnSubscriberCounter = new System.Windows.Forms.Button();
             this.lblView = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblCommentCounter = new System.Windows.Forms.Label();
             this.lblVideoCounter = new System.Windows.Forms.Label();
             this.lblChannelName = new System.Windows.Forms.Label();
-            this.picAvatar = new System.Windows.Forms.PictureBox();
-            this.picBanner = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.picAvatar = new YoutubeApisDemo.CirclePictureBox();
+            this.close = new System.Windows.Forms.PictureBox();
+            this.picBanner = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +51,7 @@
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.picAvatar);
             this.pnlMain.Controls.Add(this.close);
             this.pnlMain.Controls.Add(this.btnSubscriberCounter);
             this.pnlMain.Controls.Add(this.lblView);
@@ -58,7 +59,6 @@
             this.pnlMain.Controls.Add(this.lblCommentCounter);
             this.pnlMain.Controls.Add(this.lblVideoCounter);
             this.pnlMain.Controls.Add(this.lblChannelName);
-            this.pnlMain.Controls.Add(this.picAvatar);
             this.pnlMain.Controls.Add(this.picBanner);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
@@ -66,21 +66,6 @@
             this.pnlMain.Size = new System.Drawing.Size(530, 203);
             this.pnlMain.TabIndex = 0;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
-            // 
-            // close
-            // 
-            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.close.BackColor = System.Drawing.Color.Transparent;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
-            this.close.Location = new System.Drawing.Point(502, 11);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(15, 15);
-            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.close.TabIndex = 10;
-            this.close.TabStop = false;
-            this.toolTip1.SetToolTip(this.close, "Đóng");
-            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // btnSubscriberCounter
             // 
@@ -168,15 +153,29 @@
             // 
             // picAvatar
             // 
-            this.picAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picAvatar.Image = ((System.Drawing.Image)(resources.GetObject("picAvatar.Image")));
-            this.picAvatar.Location = new System.Drawing.Point(21, 43);
+            this.picAvatar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picAvatar.Image = global::YoutubeApisDemo.Properties.Resources.f3;
+            this.picAvatar.Location = new System.Drawing.Point(21, 41);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(100, 100);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAvatar.TabIndex = 1;
+            this.picAvatar.TabIndex = 11;
             this.picAvatar.TabStop = false;
-            this.toolTip1.SetToolTip(this.picAvatar, "Ảnh đại diện");
+            // 
+            // close
+            // 
+            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.close.BackColor = System.Drawing.Color.Transparent;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
+            this.close.Location = new System.Drawing.Point(502, 11);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(15, 15);
+            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.close.TabIndex = 10;
+            this.close.TabStop = false;
+            this.toolTip1.SetToolTip(this.close, "Đóng");
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // picBanner
             // 
@@ -190,7 +189,7 @@
             this.picBanner.TabIndex = 0;
             this.picBanner.TabStop = false;
             // 
-            // ChannelInfo
+            // frmChannelInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,15 +201,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ChannelInfo";
+            this.Name = "frmChannelInfo";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Channel Info";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChannelInfo_MouseDown);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).EndInit();
             this.ResumeLayout(false);
 
@@ -219,7 +218,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.PictureBox picBanner;
         private System.Windows.Forms.Label lblChannelName;
         private System.Windows.Forms.Label lblCommentCounter;
@@ -229,5 +227,6 @@
         private System.Windows.Forms.Button btnSubscriberCounter;
         private System.Windows.Forms.Label lblView;
         private System.Windows.Forms.PictureBox close;
+        private CirclePictureBox picAvatar;
     }
 }
