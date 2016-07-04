@@ -18,28 +18,14 @@ namespace YoutubeApisDemo
         public frmSearch()
         {
             InitializeComponent();
+            lblVersion.Text = "Current version: " + Application.ProductVersion + " - Copyright © 2016 Anh Quoc Tran";
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             prbStatus.Visible = false;
-        }
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            radioBtnVideo.Checked = true;
+            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -48,6 +34,25 @@ namespace YoutubeApisDemo
             frmHome home = new frmHome();
             home.ShowDialog();
             Close();
+        }
+
+        private void radioBtnVideo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtnVideo.Checked == true)
+            {
+                radioBtnShort.Enabled = true;
+                radioBtnLong.Enabled = true;
+            }
+            else
+            {
+                radioBtnShort.Enabled = false;
+                radioBtnLong.Enabled = false;
+            }
+        }
+
+        private void prbStatus_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

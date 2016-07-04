@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="materialLabel6.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae tincidunt ex, sit amet venenatis neque. Mauris tempus nulla laoreet nisl lobortis dignissim. Cras sed bibendum tortor, ut fermentum odio. Fusce semper neque augue, nec imperdiet arcu condimentum at. Sed auctor aliquam sapien, ac molestie dolor sollicitudin eu. Sed erat purus, egestas a consectetur eu, mollis et tellus. Maecenas maximus est posuere leo egestas, sed consequat enim pellentesque. Curabitur et tempor felis. Integer lorem nunc, tempus eu consequat ac, tincidunt vitae diam. Maecenas ornare in ante sed convallis. Aliquam ut libero nec mi maximus tempor eu sed velit. Suspendisse porta est a dui efficitur, vel auctor nisi dapibus. Praesent tempus eu turpis quis ullamcorper.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

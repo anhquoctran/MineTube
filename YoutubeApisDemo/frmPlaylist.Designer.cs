@@ -28,41 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlaylist));
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnGet = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
             this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.frmPlaylistBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
+            this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnGet = new MaterialSkin.Controls.MaterialRaisedButton();
             this.listVideo = new MaterialSkin.Controls.MaterialListView();
-            this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.frmPlaylistBindingSource)).BeginInit();
+            this.btnBack = new MaterialSkin.Controls.MaterialFlatButton();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // pnlMain
+            // prbStatus
             // 
-            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.btnBack);
-            this.pnlMain.Controls.Add(this.prbStatus);
-            this.pnlMain.Controls.Add(this.lblStatus);
-            this.pnlMain.Controls.Add(this.txtboxUrl);
-            this.pnlMain.Controls.Add(this.btnGet);
-            this.pnlMain.Controls.Add(this.listVideo);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(732, 645);
-            this.pnlMain.TabIndex = 0;
-            this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
+            this.prbStatus.Depth = 0;
+            this.prbStatus.Location = new System.Drawing.Point(278, 411);
+            this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.prbStatus.Name = "prbStatus";
+            this.prbStatus.Size = new System.Drawing.Size(243, 5);
+            this.prbStatus.Step = 1;
+            this.prbStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.prbStatus.TabIndex = 10;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Depth = 0;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblStatus.Location = new System.Drawing.Point(0, 379);
+            this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(797, 29);
+            this.lblStatus.TabIndex = 9;
+            this.lblStatus.Text = "There are nothing to display";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtboxUrl
+            // 
+            this.txtboxUrl.Depth = 0;
+            this.txtboxUrl.Hint = "Enter YouTube playlist URL...";
+            this.txtboxUrl.Location = new System.Drawing.Point(13, 167);
+            this.txtboxUrl.MaxLength = 32767;
+            this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtboxUrl.Name = "txtboxUrl";
+            this.txtboxUrl.PasswordChar = '\0';
+            this.txtboxUrl.SelectedText = "";
+            this.txtboxUrl.SelectionLength = 0;
+            this.txtboxUrl.SelectionStart = 0;
+            this.txtboxUrl.Size = new System.Drawing.Size(652, 23);
+            this.txtboxUrl.TabIndex = 8;
+            this.txtboxUrl.TabStop = false;
+            this.txtboxUrl.UseSystemPasswordChar = false;
             // 
             // btnGet
             // 
             this.btnGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGet.Depth = 0;
-            this.btnGet.Location = new System.Drawing.Point(605, 11);
+            this.btnGet.Location = new System.Drawing.Point(671, 149);
             this.btnGet.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGet.Name = "btnGet";
             this.btnGet.Primary = true;
@@ -72,110 +96,105 @@
             this.btnGet.UseVisualStyleBackColor = true;
             this.btnGet.Click += new System.EventHandler(this.btnGet_Click);
             // 
-            // txtboxUrl
-            // 
-            this.txtboxUrl.Depth = 0;
-            this.txtboxUrl.Hint = "Enter YouTube playlist URL...";
-            this.txtboxUrl.Location = new System.Drawing.Point(15, 29);
-            this.txtboxUrl.MaxLength = 32767;
-            this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtboxUrl.Name = "txtboxUrl";
-            this.txtboxUrl.PasswordChar = '\0';
-            this.txtboxUrl.SelectedText = "";
-            this.txtboxUrl.SelectionLength = 0;
-            this.txtboxUrl.SelectionStart = 0;
-            this.txtboxUrl.Size = new System.Drawing.Size(584, 23);
-            this.txtboxUrl.TabIndex = 8;
-            this.txtboxUrl.TabStop = false;
-            this.txtboxUrl.UseSystemPasswordChar = false;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Depth = 0;
-            this.lblStatus.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblStatus.Location = new System.Drawing.Point(11, 309);
-            this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(708, 29);
-            this.lblStatus.TabIndex = 9;
-            this.lblStatus.Text = "There are nothing to display";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // prbStatus
-            // 
-            this.prbStatus.Depth = 0;
-            this.prbStatus.Location = new System.Drawing.Point(228, 341);
-            this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.prbStatus.Name = "prbStatus";
-            this.prbStatus.Size = new System.Drawing.Size(271, 5);
-            this.prbStatus.Step = 1;
-            this.prbStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.prbStatus.TabIndex = 10;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.Depth = 0;
-            this.btnBack.Location = new System.Drawing.Point(605, 591);
-            this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Primary = true;
-            this.btnBack.Size = new System.Drawing.Size(114, 41);
-            this.btnBack.TabIndex = 11;
-            this.btnBack.Text = "Go Home";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // frmPlaylistBindingSource
-            // 
-            this.frmPlaylistBindingSource.DataSource = typeof(YoutubeApisDemo.frmPlaylist);
-            // 
             // listVideo
             // 
+            this.listVideo.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listVideo.AutoArrange = false;
             this.listVideo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listVideo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.listVideo.Depth = 0;
-            this.listVideo.Font = new System.Drawing.Font("Roboto", 24F);
+            this.listVideo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listVideo.Font = new System.Drawing.Font("Roboto", 11F);
             this.listVideo.FullRowSelect = true;
             this.listVideo.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listVideo.Location = new System.Drawing.Point(15, 58);
+            this.listVideo.HoverSelection = true;
+            this.listVideo.Location = new System.Drawing.Point(0, 196);
             this.listVideo.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listVideo.MouseState = MaterialSkin.MouseState.OUT;
             this.listVideo.Name = "listVideo";
             this.listVideo.OwnerDraw = true;
-            this.listVideo.Size = new System.Drawing.Size(704, 527);
+            this.listVideo.ShowGroups = false;
+            this.listVideo.Size = new System.Drawing.Size(797, 449);
+            this.listVideo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listVideo.TabIndex = 12;
             this.listVideo.TileSize = new System.Drawing.Size(64, 64);
             this.listVideo.UseCompatibleStateImageBehavior = false;
             this.listVideo.View = System.Windows.Forms.View.Details;
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBack.Depth = 0;
+            this.btnBack.Location = new System.Drawing.Point(13, 70);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Primary = false;
+            this.btnBack.Size = new System.Drawing.Size(73, 36);
+            this.btnBack.TabIndex = 13;
+            this.btnBack.Text = "Go Home";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            this.columnHeader1.Width = 256;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Duration";
+            this.columnHeader2.Width = 92;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Published date";
+            this.columnHeader3.Width = 142;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "URL";
+            this.columnHeader4.Width = 335;
             // 
             // frmPlaylist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(732, 645);
-            this.Controls.Add(this.pnlMain);
+            this.ClientSize = new System.Drawing.Size(797, 645);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.prbStatus);
+            this.Controls.Add(this.btnGet);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.txtboxUrl);
+            this.Controls.Add(this.listVideo);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmPlaylist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "YouTube Playlist Information";
-            this.pnlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.frmPlaylistBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.BindingSource frmPlaylistBindingSource;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxUrl;
         private MaterialSkin.Controls.MaterialRaisedButton btnGet;
-        private MaterialSkin.Controls.MaterialRaisedButton btnBack;
         private MaterialSkin.Controls.MaterialProgressBar prbStatus;
         private MaterialSkin.Controls.MaterialLabel lblStatus;
         private MaterialSkin.Controls.MaterialListView listVideo;
+        private MaterialSkin.Controls.MaterialFlatButton btnBack;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

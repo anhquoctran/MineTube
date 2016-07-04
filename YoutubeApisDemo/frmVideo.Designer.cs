@@ -51,16 +51,15 @@
             this.lblVideoTitle = new System.Windows.Forms.Label();
             this.picVideoThumb = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlFrm = new System.Windows.Forms.Panel();
             this.txtboxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnPaste = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).BeginInit();
-            this.pnlFrm.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVideoInfo
@@ -87,22 +86,21 @@
             this.pnlVideoInfo.Controls.Add(this.lblVideoTitle);
             this.pnlVideoInfo.Controls.Add(this.picVideoThumb);
             this.pnlVideoInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.pnlVideoInfo.Location = new System.Drawing.Point(13, 54);
+            this.pnlVideoInfo.Location = new System.Drawing.Point(12, 115);
             this.pnlVideoInfo.Name = "pnlVideoInfo";
-            this.pnlVideoInfo.Size = new System.Drawing.Size(699, 559);
+            this.pnlVideoInfo.Size = new System.Drawing.Size(677, 576);
             this.pnlVideoInfo.TabIndex = 4;
-            this.pnlVideoInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlVideoInfo_MouseDown);
             // 
             // lblLoadStatus
             // 
             this.lblLoadStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLoadStatus.AutoSize = true;
             this.lblLoadStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblLoadStatus.Location = new System.Drawing.Point(589, 193);
+            this.lblLoadStatus.Location = new System.Drawing.Point(551, 193);
             this.lblLoadStatus.Name = "lblLoadStatus";
-            this.lblLoadStatus.Size = new System.Drawing.Size(60, 15);
+            this.lblLoadStatus.Size = new System.Drawing.Size(88, 15);
             this.lblLoadStatus.TabIndex = 17;
-            this.lblLoadStatus.Text = "Đang tải...";
+            this.lblLoadStatus.Text = "Working on it...";
             // 
             // lblCategory
             // 
@@ -110,9 +108,9 @@
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblCategory.Location = new System.Drawing.Point(226, 127);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(57, 17);
+            this.lblCategory.Size = new System.Drawing.Size(64, 17);
             this.lblCategory.TabIndex = 16;
-            this.lblCategory.Text = "Thể loại:";
+            this.lblCategory.Text = "Category:";
             // 
             // btnReset
             // 
@@ -124,7 +122,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
-            this.btnReset.Location = new System.Drawing.Point(667, 183);
+            this.btnReset.Location = new System.Drawing.Point(645, 183);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(32, 32);
             this.btnReset.TabIndex = 15;
@@ -163,23 +161,24 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 460);
+            this.groupBox2.Location = new System.Drawing.Point(0, 477);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(699, 99);
+            this.groupBox2.Size = new System.Drawing.Size(677, 99);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tags";
             // 
             // rchtxtTags
             // 
+            this.rchtxtTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rchtxtTags.BackColor = System.Drawing.Color.White;
             this.rchtxtTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rchtxtTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rchtxtTags.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rchtxtTags.Location = new System.Drawing.Point(3, 21);
             this.rchtxtTags.Name = "rchtxtTags";
             this.rchtxtTags.ReadOnly = true;
-            this.rchtxtTags.Size = new System.Drawing.Size(693, 75);
+            this.rchtxtTags.Size = new System.Drawing.Size(671, 75);
             this.rchtxtTags.TabIndex = 0;
             this.rchtxtTags.Text = "";
             // 
@@ -188,12 +187,12 @@
             this.lblPub.AutoSize = true;
             this.lblPub.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblPub.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblPub.Location = new System.Drawing.Point(307, 36);
+            this.lblPub.Location = new System.Drawing.Point(290, 37);
             this.lblPub.Name = "lblPub";
-            this.lblPub.Size = new System.Drawing.Size(62, 17);
+            this.lblPub.Size = new System.Drawing.Size(97, 17);
             this.lblPub.TabIndex = 11;
             this.lblPub.TabStop = true;
-            this.lblPub.Text = "publisher";
+            this.lblPub.Text = "publisherName";
             this.lblPub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPub_LinkClicked);
             // 
             // label1
@@ -205,9 +204,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.Location = new System.Drawing.Point(-3, 198);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 17);
+            this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mô tả:";
+            this.label1.Text = "Description:";
             // 
             // lblDuration
             // 
@@ -232,7 +231,7 @@
             this.pnlDescription.Controls.Add(this.lblDescription);
             this.pnlDescription.Location = new System.Drawing.Point(0, 218);
             this.pnlDescription.Name = "pnlDescription";
-            this.pnlDescription.Size = new System.Drawing.Size(700, 225);
+            this.pnlDescription.Size = new System.Drawing.Size(678, 242);
             this.pnlDescription.TabIndex = 8;
             // 
             // lblDescription
@@ -245,10 +244,10 @@
             this.lblDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblDescription.ForeColor = System.Drawing.Color.Black;
-            this.lblDescription.Location = new System.Drawing.Point(-2, 3);
+            this.lblDescription.Location = new System.Drawing.Point(0, 3);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.ReadOnly = true;
-            this.lblDescription.Size = new System.Drawing.Size(699, 233);
+            this.lblDescription.Size = new System.Drawing.Size(675, 250);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.TabStop = false;
             this.lblDescription.Text = "";
@@ -259,9 +258,9 @@
             this.lblPublisher.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblPublisher.Location = new System.Drawing.Point(226, 37);
             this.lblPublisher.Name = "lblPublisher";
-            this.lblPublisher.Size = new System.Drawing.Size(82, 17);
+            this.lblPublisher.Size = new System.Drawing.Size(64, 17);
             this.lblPublisher.TabIndex = 7;
-            this.lblPublisher.Text = "Người đăng:";
+            this.lblPublisher.Text = "Publisher:";
             // 
             // lblComment
             // 
@@ -311,7 +310,7 @@
             this.lblVideoTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVideoTitle.Location = new System.Drawing.Point(225, 16);
             this.lblVideoTitle.Name = "lblVideoTitle";
-            this.lblVideoTitle.Size = new System.Drawing.Size(472, 21);
+            this.lblVideoTitle.Size = new System.Drawing.Size(450, 21);
             this.lblVideoTitle.TabIndex = 1;
             this.lblVideoTitle.Text = "Title";
             // 
@@ -324,26 +323,13 @@
             this.picVideoThumb.TabIndex = 0;
             this.picVideoThumb.TabStop = false;
             // 
-            // pnlFrm
-            // 
-            this.pnlFrm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFrm.Controls.Add(this.btnBack);
-            this.pnlFrm.Controls.Add(this.txtboxSearch);
-            this.pnlFrm.Controls.Add(this.btnPaste);
-            this.pnlFrm.Controls.Add(this.btnSearch);
-            this.pnlFrm.Controls.Add(this.pnlVideoInfo);
-            this.pnlFrm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFrm.Location = new System.Drawing.Point(0, 0);
-            this.pnlFrm.Name = "pnlFrm";
-            this.pnlFrm.Size = new System.Drawing.Size(728, 673);
-            this.pnlFrm.TabIndex = 8;
-            this.pnlFrm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlFrm_MouseDown);
-            // 
             // txtboxSearch
             // 
+            this.txtboxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtboxSearch.Depth = 0;
             this.txtboxSearch.Hint = "Enter or paste YouTube video URL...";
-            this.txtboxSearch.Location = new System.Drawing.Point(13, 25);
+            this.txtboxSearch.Location = new System.Drawing.Point(15, 86);
             this.txtboxSearch.MaxLength = 32767;
             this.txtboxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxSearch.Name = "txtboxSearch";
@@ -351,7 +337,7 @@
             this.txtboxSearch.SelectedText = "";
             this.txtboxSearch.SelectionLength = 0;
             this.txtboxSearch.SelectionStart = 0;
-            this.txtboxSearch.Size = new System.Drawing.Size(549, 23);
+            this.txtboxSearch.Size = new System.Drawing.Size(519, 23);
             this.txtboxSearch.TabIndex = 19;
             this.txtboxSearch.TabStop = false;
             this.txtboxSearch.UseSystemPasswordChar = false;
@@ -360,12 +346,13 @@
             // 
             // btnPaste
             // 
+            this.btnPaste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPaste.Depth = 0;
-            this.btnPaste.Location = new System.Drawing.Point(568, 11);
+            this.btnPaste.Location = new System.Drawing.Point(540, 72);
             this.btnPaste.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.Primary = true;
-            this.btnPaste.Size = new System.Drawing.Size(63, 37);
+            this.btnPaste.Size = new System.Drawing.Size(66, 37);
             this.btnPaste.TabIndex = 18;
             this.btnPaste.Text = "Paste";
             this.btnPaste.UseVisualStyleBackColor = true;
@@ -373,21 +360,24 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Depth = 0;
-            this.btnSearch.Location = new System.Drawing.Point(637, 11);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSearch.Location = new System.Drawing.Point(612, 72);
             this.btnSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Primary = true;
-            this.btnSearch.Size = new System.Drawing.Size(75, 37);
+            this.btnSearch.Size = new System.Drawing.Size(78, 37);
             this.btnSearch.TabIndex = 19;
-            this.btnSearch.Text = "Go";
+            this.btnSearch.Text = "Go »";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Depth = 0;
-            this.btnBack.Location = new System.Drawing.Point(618, 619);
+            this.btnBack.Location = new System.Drawing.Point(593, 697);
             this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBack.Name = "btnBack";
             this.btnBack.Primary = true;
@@ -397,25 +387,45 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblVersion.ForeColor = System.Drawing.Color.Gray;
+            this.lblVersion.Location = new System.Drawing.Point(9, 725);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(38, 13);
+            this.lblVersion.TabIndex = 21;
+            this.lblVersion.Text = "label2";
+            // 
             // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(728, 673);
-            this.Controls.Add(this.pnlFrm);
+            this.ClientSize = new System.Drawing.Size(701, 747);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.lblVersion);
+            this.Controls.Add(this.pnlVideoInfo);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.txtboxSearch);
+            this.Controls.Add(this.btnPaste);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(687, 620);
             this.Name = "frmVideo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Youtube API v3 Demo";
+            this.Text = "YouTube Video Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVideo_FormClosing);
             this.pnlVideoInfo.ResumeLayout(false);
             this.pnlVideoInfo.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.pnlDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).EndInit();
-            this.pnlFrm.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -440,12 +450,12 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.Panel pnlFrm;
         private System.Windows.Forms.Label lblLoadStatus;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxSearch;
         private MaterialSkin.Controls.MaterialRaisedButton btnPaste;
         private MaterialSkin.Controls.MaterialRaisedButton btnSearch;
         private MaterialSkin.Controls.MaterialRaisedButton btnBack;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 

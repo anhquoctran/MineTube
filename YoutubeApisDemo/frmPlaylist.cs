@@ -9,38 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
 using System.Runtime.InteropServices;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace YoutubeApisDemo
 {
-    public partial class frmPlaylist : Form
+    public partial class frmPlaylist : MaterialForm
     {
         public frmPlaylist()
         {
             InitializeComponent();
-            //TitleCol = new ColumnHeader();
-            //UrlCol = new ColumnHeader();
-            //DurationCol = new ColumnHeader();
-            //PublishedDateCol = new ColumnHeader();
-            //lstVideos.Columns.AddRange(new ColumnHeader[] { TitleCol, DurationCol, PublishedDateCol, UrlCol});
-            //TitleCol.Text = "Title";
-            //UrlCol.Text = "URL";
-            //DurationCol.Text = "Duration";
-            //PublishedDateCol.Text = "Date Published";
-            //piIcon.Image = Icon.ToBitmap();
-            //lblTitle.Text = Text;
+            
             prbStatus.Visible = false;
         }
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        //ColumnHeader TitleCol;
-        //ColumnHeader UrlCol;
-        //ColumnHeader DurationCol;
-        //ColumnHeader PublishedDateCol;
+        
 
         private void btnGet_Click(object sender, EventArgs e)
         {
@@ -76,15 +58,12 @@ namespace YoutubeApisDemo
             Close();
         }
 
-        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            this.Hide();
+            frmHome home = new frmHome();
+            home.ShowDialog();
+            this.Close();
         }
-
-        
     }
 }

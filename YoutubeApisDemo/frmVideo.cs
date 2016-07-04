@@ -24,19 +24,19 @@ namespace YoutubeApisDemo
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red100, TextShade.WHITE);
+            lblVersion.Text = "Current version: " + Application.ProductVersion + " - Copyright © 2016 Anh Quoc Tran";
 
-            
             if (IsInternetAvailable())
                 btnSearch.Enabled = true;
             else btnSearch.Enabled = false;
-            lblVideoTitle.Text = "Chưa nhận được thông tin";
-            lblDate.Text = "Ngày xuất bản: ";
+            lblVideoTitle.Text = "We haven't received data...";
+            lblDate.Text = "Published date: ";
             lblDescription.Text = "";
-            lblLikeDislike.Text = "0 like - 0 dislike";
-            lblPublisher.Text = "Người đăng: ";
+            lblLikeDislike.Text = "0 likes - 0 dislikes";
+            lblPublisher.Text = "Publisher: ";
             lblVideoTitle.Text = "";
-            lblView.Text = "0 lượt xem";
-            lblComment.Text = "0 bình luận";
+            lblView.Text = "0 views";
+            lblComment.Text = "0 comments";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
             //btnPlay.Visible = false;
             lblPub.Text = "";
@@ -44,17 +44,17 @@ namespace YoutubeApisDemo
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             btnReset.Enabled = false;
-            lblCategory.Text = "Thể loại: ";
+            lblCategory.Text = "Category: ";
             lblLoadStatus.Visible = false;
         }
 
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+        //public const int WM_NCLBUTTONDOWN = 0xA1;
+        //public const int HT_CAPTION = 0x2;
 
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
+        //[DllImportAttribute("user32.dll")]
+        //public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        //[DllImportAttribute("user32.dll")]
+        //public static extern bool ReleaseCapture();
 
 
         protected string VideoUrl = "";
@@ -64,7 +64,7 @@ namespace YoutubeApisDemo
             string input = txtboxSearch.Text;
             lblLoadStatus.Visible = true;
             if (input == "")
-                MessageBox.Show("Không được bỏ trống ô tìm kiểm!");
+                MessageBox.Show("Do not empty textbox URL!");
             else if (input.Contains("https://www.youtube.com/watch?v="))
             {
                 
@@ -81,7 +81,7 @@ namespace YoutubeApisDemo
             }
             else
             {
-                MessageBox.Show("YouTube URL is not correct!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("YouTube URL or video ID is not correct!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             lblLoadStatus.Visible = false;
@@ -94,7 +94,7 @@ namespace YoutubeApisDemo
             YoutubeVideo Video = new YoutubeVideo(Id);
             lblVideoTitle.Text = Video.Title;
             lblPub.Text = Video.ChannelTitle;
-            lblDate.Text = "Thời gian đăng: " + Video.DatePublished.Hour.ToString() + " giờ " + Video.DatePublished.Month + " phút " + Video.DatePublished.Second.ToString() + " giây / ngày " + Video.DatePublished.Day.ToString() + " tháng " + Video.DatePublished.Month.ToString() + " năm " + Video.DatePublished.Year.ToString();
+            lblDate.Text = "Published date: " + Video.DatePublished.Hour.ToString() + " hours " + Video.DatePublished.Month + " min " + Video.DatePublished.Second.ToString() + " sec - " + Video.DatePublished.Day.ToString() + "/" + Video.DatePublished.Month.ToString() + "/" + Video.DatePublished.Year.ToString();
             lblDescription.Text = Video.Description;
             lblDuration.Visible = true;
             if (Video.ThumbUrl == null)
@@ -121,59 +121,59 @@ namespace YoutubeApisDemo
             switch (id)
             {
                 case "1":
-                    lblCategory.Text = "Thể loại: Phim && Hoạt họa";
+                    lblCategory.Text = "Category: Film && Animation";
                     break;
                 case "2":
-                    lblCategory.Text = "Thể loại: Xe && Phương tiện";
+                    lblCategory.Text = "Category: Xe && Phương tiện";
                     break;
                 case "10":
-                    lblCategory.Text = "Thể loại : Âm nhạc";
+                    lblCategory.Text = "Category: Music";
                     break;
                 case "15":
-                    lblCategory.Text = "Thể loại: Thú cưng && Động vật";
+                    lblCategory.Text = "Category: Pets && Animals";
                     break;
                 case "17":
-                    lblCategory.Text = "Thể loại: Thể thao";
+                    lblCategory.Text = "Category: Sports";
                     break;
                 case "19":
-                    lblCategory.Text = "Thể loại: Du lịch && sự kiện";
+                    lblCategory.Text = "Category: Travels && events";
                     break;
                 case "20":
-                    lblCategory.Text = "Thể loại: Trò chơi";
+                    lblCategory.Text = "Category: Game";
                     break;
                 case "22":
-                    lblCategory.Text = "Thể loại: Mọi người && Nhật ký";
+                    lblCategory.Text = "Category: People && Blogs";
                     break;
                 case "23":
-                    lblCategory.Text = "Thể loại: Hài kịch";
+                    lblCategory.Text = "Category: Comedy";
                     break;
                 case "24":
-                    lblCategory.Text = "Thể loại: Giải trí";
+                    lblCategory.Text = "Category: Entertaintment";
                     break;
                 case "25":
-                    lblCategory.Text = "Thể loại: Tin tức và chính trị";
+                    lblCategory.Text = "Category: News && Politics";
                     break;
                 case "26":
-                    lblCategory.Text = "Thể loại: Phong cách && Lối sống";
+                    lblCategory.Text = "Category: Style && Life";
                     break;
                 case "27":
-                    lblCategory.Text = "Thể loại: Giáo dục";
+                    lblCategory.Text = "Category: Education";
                     break;
                 case "28":
-                    lblCategory.Text = "Thể loại: Khoa học && Công nghệ";
+                    lblCategory.Text = "Category: Science && Technology";
                     break;
                 case "29":
-                    lblCategory.Text = "Thể loại: Hoạt động && Phi lợi nhuận";
+                    lblCategory.Text = "Category: Activties && Non-profits";
                     break;
                 
-                default: lblCategory.Text = "Thể loại: Không thể xác định";
+                default: lblCategory.Text = "Category: Unknown";
                     break;
             }
 
 
-            lblComment.Text = Video.CommentCount.Value.ToString("N0") + " bình luận";
-            lblView.Text = Video.View.Value.ToString("N0") + " lượt xem";
-            lblLikeDislike.Text = Video.Like.Value.ToString("N0") + " lượt thích - " + Video.Dislike.Value.ToString("N0") + " lượt không thích";
+            lblComment.Text = Video.CommentCount.Value.ToString("N0") + " comments";
+            lblView.Text = Video.View.Value.ToString("N0") + " views";
+            lblLikeDislike.Text = Video.Like.Value.ToString("N0") + " likes - " + Video.Dislike.Value.ToString("N0") + " dislikes";
             //btnPlay.Visible = true;
             ChannelId = Video.ChannelId;
             lblDuration.Text = Video.Duration;
@@ -277,13 +277,13 @@ namespace YoutubeApisDemo
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            lblDate.Text = "Ngày xuất bản: ";
+            lblDate.Text = "Published date: ";
             lblDescription.Text = "";
-            lblLikeDislike.Text = "0 like - 0 dislike";
-            lblPublisher.Text = "Người đăng: ";
+            lblLikeDislike.Text = "0 likes - 0 dislikes";
+            lblPublisher.Text = "Publisher: ";
             lblVideoTitle.Text = "";
-            lblView.Text = "0 lượt xem";
-            lblComment.Text = "0 bình luận";
+            lblView.Text = "0 views";
+            lblComment.Text = "0 comments";
             picVideoThumb.Image = Properties.Resources.thumbnail_video;
             //btnPlay.Visible = false;
             lblPub.Text = "";
@@ -291,8 +291,8 @@ namespace YoutubeApisDemo
             lblDefinition.Visible = false;
             lblDuration.Visible = false;
             txtboxSearch.Clear();
-            lblCategory.Text = "Thể loại: ";
-            lblVideoTitle.Text = "Chưa nhận được thông tin";
+            lblCategory.Text = "Category: ";
+            lblVideoTitle.Text = "We haven't received data...";
             rchtxtTags.Clear();
         }
 
@@ -306,34 +306,22 @@ namespace YoutubeApisDemo
 
         private void btnMin_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            
         }
 
         private void pnlFrm_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+           
         }
 
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            
         }
 
         private void pnlVideoInfo_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -371,6 +359,16 @@ namespace YoutubeApisDemo
             {
                 btnSearch_Click(sender, e);
             }
+        }
+
+        private void frmVideo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            this.Hide();
+            frmHome home = new frmHome();
+            home.ShowDialog();
+            this.Close();
+            
         }
     }
 }
