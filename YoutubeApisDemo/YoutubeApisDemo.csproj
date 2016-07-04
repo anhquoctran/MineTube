@@ -237,7 +237,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoundButton.cs">
+    <Compile Include="CustomControls\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="YoutubeApis.cs" />
@@ -266,7 +266,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RoundButton.resx">
+    <EmbeddedResource Include="CustomControls\RoundButton.resx">
       <DependentUpon>RoundButton.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="client_secret.json">
