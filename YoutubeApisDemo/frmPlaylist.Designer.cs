@@ -29,42 +29,60 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.olvPlaylist = new BrightIdeasSoftware.ObjectListView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.txtboxUrl = new System.Windows.Forms.TextBox();
-            this.btnGet = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnGrab = new System.Windows.Forms.Button();
+            this.txtboxUrl = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lstVideo = new System.Windows.Forms.ListBox();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.olvPlaylist)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.lstVideo);
             this.pnlMain.Controls.Add(this.lblTitle);
-            this.pnlMain.Controls.Add(this.btnGet);
+            this.pnlMain.Controls.Add(this.btnGrab);
             this.pnlMain.Controls.Add(this.txtboxUrl);
             this.pnlMain.Controls.Add(this.btnClose);
-            this.pnlMain.Controls.Add(this.olvPlaylist);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(711, 581);
             this.pnlMain.TabIndex = 0;
             // 
-            // olvPlaylist
+            // lblTitle
             // 
-            this.olvPlaylist.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
-            this.olvPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.olvPlaylist.CellEditUseWholeCell = false;
-            this.olvPlaylist.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.olvPlaylist.HighlightForegroundColor = System.Drawing.Color.Empty;
-            this.olvPlaylist.Location = new System.Drawing.Point(11, 84);
-            this.olvPlaylist.Name = "olvPlaylist";
-            this.olvPlaylist.Size = new System.Drawing.Size(687, 484);
-            this.olvPlaylist.TabIndex = 0;
-            this.olvPlaylist.UseCompatibleStateImageBehavior = false;
-            this.olvPlaylist.View = System.Windows.Forms.View.Details;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(11, 7);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(38, 15);
+            this.lblTitle.TabIndex = 4;
+            this.lblTitle.Text = "label1";
+            // 
+            // btnGrab
+            // 
+            this.btnGrab.BackColor = System.Drawing.Color.Green;
+            this.btnGrab.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnGrab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrab.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGrab.ForeColor = System.Drawing.Color.White;
+            this.btnGrab.Location = new System.Drawing.Point(605, 53);
+            this.btnGrab.Name = "btnGrab";
+            this.btnGrab.Size = new System.Drawing.Size(93, 33);
+            this.btnGrab.TabIndex = 3;
+            this.btnGrab.Text = "Grab now!";
+            this.btnGrab.UseVisualStyleBackColor = false;
+            this.btnGrab.Click += new System.EventHandler(this.btnGet_Click);
+            // 
+            // txtboxUrl
+            // 
+            this.txtboxUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtboxUrl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtboxUrl.Location = new System.Drawing.Point(11, 53);
+            this.txtboxUrl.Name = "txtboxUrl";
+            this.txtboxUrl.Size = new System.Drawing.Size(597, 33);
+            this.txtboxUrl.TabIndex = 2;
             // 
             // btnClose
             // 
@@ -80,42 +98,20 @@
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // txtboxUrl
+            // lstVideo
             // 
-            this.txtboxUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtboxUrl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtboxUrl.Location = new System.Drawing.Point(11, 53);
-            this.txtboxUrl.Name = "txtboxUrl";
-            this.txtboxUrl.Size = new System.Drawing.Size(614, 25);
-            this.txtboxUrl.TabIndex = 2;
-            // 
-            // btnGet
-            // 
-            this.btnGet.BackColor = System.Drawing.Color.Green;
-            this.btnGet.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnGet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnGet.ForeColor = System.Drawing.Color.White;
-            this.btnGet.Location = new System.Drawing.Point(623, 53);
-            this.btnGet.Name = "btnGet";
-            this.btnGet.Size = new System.Drawing.Size(75, 25);
-            this.btnGet.TabIndex = 3;
-            this.btnGet.Text = "Get";
-            this.btnGet.UseVisualStyleBackColor = false;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(11, 7);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(38, 15);
-            this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "label1";
+            this.lstVideo.FormattingEnabled = true;
+            this.lstVideo.ItemHeight = 15;
+            this.lstVideo.Location = new System.Drawing.Point(11, 99);
+            this.lstVideo.Name = "lstVideo";
+            this.lstVideo.Size = new System.Drawing.Size(687, 469);
+            this.lstVideo.TabIndex = 5;
             // 
             // frmPlaylist
             // 
-            this.AcceptButton = this.btnGet;
+            this.AcceptButton = this.btnGrab;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -129,7 +125,6 @@
             this.Text = "YouTube Playlist Information";
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.olvPlaylist)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,10 +132,10 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMain;
-        private BrightIdeasSoftware.ObjectListView olvPlaylist;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnGet;
+        private System.Windows.Forms.Button btnGrab;
         private System.Windows.Forms.TextBox txtboxUrl;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ListBox lstVideo;
     }
 }

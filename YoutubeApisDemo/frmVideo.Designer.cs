@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVideo));
             this.pnlVideoInfo = new System.Windows.Forms.Panel();
+            this.lblLoadStatus = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblDefinition = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.chkMax = new System.Windows.Forms.CheckBox();
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.txtboxSearch = new YoutubeApisDemo.PlaceholderTextBox();
-            this.lblLoadStatus = new System.Windows.Forms.Label();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
@@ -97,6 +97,16 @@
             this.pnlVideoInfo.Size = new System.Drawing.Size(677, 571);
             this.pnlVideoInfo.TabIndex = 4;
             this.pnlVideoInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlVideoInfo_MouseDown);
+            // 
+            // lblLoadStatus
+            // 
+            this.lblLoadStatus.AutoSize = true;
+            this.lblLoadStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblLoadStatus.Location = new System.Drawing.Point(567, 193);
+            this.lblLoadStatus.Name = "lblLoadStatus";
+            this.lblLoadStatus.Size = new System.Drawing.Size(60, 15);
+            this.lblLoadStatus.TabIndex = 17;
+            this.lblLoadStatus.Text = "Đang tải...";
             // 
             // lblCategory
             // 
@@ -458,17 +468,7 @@
             this.txtboxSearch.Click += new System.EventHandler(this.txtboxSearch_Click);
             this.txtboxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtboxSearch_KeyDown);
             // 
-            // lblLoadStatus
-            // 
-            this.lblLoadStatus.AutoSize = true;
-            this.lblLoadStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblLoadStatus.Location = new System.Drawing.Point(567, 193);
-            this.lblLoadStatus.Name = "lblLoadStatus";
-            this.lblLoadStatus.Size = new System.Drawing.Size(60, 15);
-            this.lblLoadStatus.TabIndex = 17;
-            this.lblLoadStatus.Text = "Đang tải...";
-            // 
-            // MainFrm
+            // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -478,7 +478,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(687, 620);
-            this.Name = "MainFrm";
+            this.Name = "frmVideo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Youtube API v3 Demo";
             this.pnlVideoInfo.ResumeLayout(false);

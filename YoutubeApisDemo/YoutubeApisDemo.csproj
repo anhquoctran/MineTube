@@ -242,7 +242,6 @@
     </Compile>
     <Compile Include="YoutubeApis.cs" />
     <Compile Include="YouTubeChannel.cs" />
-    <Compile Include="YoutubePlaylist.cs" />
     <Compile Include="YoutubeVideo.cs" />
     <EmbeddedResource Include="frmChannelInfo.resx">
       <DependentUpon>frmChannelInfo.cs</DependentUpon>

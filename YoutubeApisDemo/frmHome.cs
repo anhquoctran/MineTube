@@ -73,7 +73,10 @@ namespace YoutubeApisDemo
 
         private void btnChannel_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmPlaylist playlist = new frmPlaylist();
+            playlist.ShowDialog();
+            
         }
     }
 }

@@ -35,11 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblSoftversion = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblSoftversion = new System.Windows.Forms.Label();
             this.btnVideoInfo = new System.Windows.Forms.Button();
-            this.btnChannel = new System.Windows.Forms.Button();
+            this.btnPlaylist = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,24 +103,13 @@
             this.pnlMain.Controls.Add(this.label3);
             this.pnlMain.Controls.Add(this.btnVideoInfo);
             this.pnlMain.Controls.Add(this.label2);
-            this.pnlMain.Controls.Add(this.btnChannel);
+            this.pnlMain.Controls.Add(this.btnPlaylist);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(759, 462);
             this.pnlMain.TabIndex = 6;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
-            // 
-            // lblSoftversion
-            // 
-            this.lblSoftversion.AutoSize = true;
-            this.lblSoftversion.BackColor = System.Drawing.Color.Transparent;
-            this.lblSoftversion.ForeColor = System.Drawing.Color.Gray;
-            this.lblSoftversion.Location = new System.Drawing.Point(11, 437);
-            this.lblSoftversion.Name = "lblSoftversion";
-            this.lblSoftversion.Size = new System.Drawing.Size(65, 15);
-            this.lblSoftversion.TabIndex = 6;
-            this.lblSoftversion.Text = "softversion";
             // 
             // label4
             // 
@@ -132,6 +121,17 @@
             this.label4.Size = new System.Drawing.Size(58, 40);
             this.label4.TabIndex = 7;
             this.label4.Text = "OR";
+            // 
+            // lblSoftversion
+            // 
+            this.lblSoftversion.AutoSize = true;
+            this.lblSoftversion.BackColor = System.Drawing.Color.Transparent;
+            this.lblSoftversion.ForeColor = System.Drawing.Color.Gray;
+            this.lblSoftversion.Location = new System.Drawing.Point(11, 437);
+            this.lblSoftversion.Name = "lblSoftversion";
+            this.lblSoftversion.Size = new System.Drawing.Size(65, 15);
+            this.lblSoftversion.TabIndex = 6;
+            this.lblSoftversion.Text = "softversion";
             // 
             // btnVideoInfo
             // 
@@ -147,19 +147,19 @@
             this.btnVideoInfo.UseVisualStyleBackColor = true;
             this.btnVideoInfo.Click += new System.EventHandler(this.btnVideoInfo_Click);
             // 
-            // btnChannel
+            // btnPlaylist
             // 
-            this.btnChannel.FlatAppearance.BorderSize = 0;
-            this.btnChannel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChannel.Image = ((System.Drawing.Image)(resources.GetObject("btnChannel.Image")));
-            this.btnChannel.Location = new System.Drawing.Point(145, 186);
-            this.btnChannel.Name = "btnChannel";
-            this.btnChannel.Size = new System.Drawing.Size(150, 152);
-            this.btnChannel.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.btnChannel, "Get Playlist Information");
-            this.btnChannel.UseVisualStyleBackColor = true;
-            this.btnChannel.Click += new System.EventHandler(this.btnChannel_Click);
+            this.btnPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnPlaylist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlaylist.Image = ((System.Drawing.Image)(resources.GetObject("btnPlaylist.Image")));
+            this.btnPlaylist.Location = new System.Drawing.Point(145, 186);
+            this.btnPlaylist.Name = "btnPlaylist";
+            this.btnPlaylist.Size = new System.Drawing.Size(150, 152);
+            this.btnPlaylist.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnPlaylist, "Get Playlist Information");
+            this.btnPlaylist.UseVisualStyleBackColor = true;
+            this.btnPlaylist.Click += new System.EventHandler(this.btnChannel_Click);
             // 
             // frmHome
             // 
@@ -185,7 +185,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnChannel;
+        private System.Windows.Forms.Button btnPlaylist;
         private System.Windows.Forms.Button btnVideoInfo;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label2;

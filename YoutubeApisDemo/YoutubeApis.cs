@@ -47,6 +47,23 @@ namespace YoutubeApisDemo
         
         }
 
+        internal static YoutubeVideo[] GetPlaylistInfo(string IdPlaylist)
+        {         
+            var playlistRequest = ytService.PlaylistItems.List("contentDetails");
+            playlistRequest.Id = IdPlaylist;
+            var playlistResponse = playlistRequest.Execute();
+
+            YoutubeVideo[] videosResults = new YoutubeVideo[playlistResponse.Items.Count];
+            int i = 0;
+            foreach (var item in playlistResponse.Items)
+            {
+                videosResults[i++] = new YoutubeVideo(item.ContentDetails.VideoId);
+            }
+
+            return videosResults;
+
+        }
+
         public static void GetChannelInfo(YouTubeChannel channel)
         {
             try
@@ -99,26 +116,7 @@ namespace YoutubeApisDemo
             }
         }
 
-        public static Dictionary<int, string> GetPlaylistInfo(YoutubePlaylist playlist)
-        {
-            try
-            {
-                var playlistRequest = ytService.PlaylistItems.List("snippet");
-                playlistRequest.Id = playlist.Id;
-                var response1 = playlistRequest.Execute();
-
-                if (response1.Items.Count > 0)
-                {
-                    
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            return null;
-        }
+        
 
         public static void GetVideoInfo(YoutubeVideo video)
         {
