@@ -33,14 +33,14 @@
             this.btnGrab = new System.Windows.Forms.Button();
             this.txtboxUrl = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.lstVideo = new System.Windows.Forms.ListBox();
+            this.lstVideos = new System.Windows.Forms.ListView();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.lstVideo);
+            this.pnlMain.Controls.Add(this.lstVideos);
             this.pnlMain.Controls.Add(this.lblTitle);
             this.pnlMain.Controls.Add(this.btnGrab);
             this.pnlMain.Controls.Add(this.txtboxUrl);
@@ -100,14 +100,18 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // lstVideo
+            // lstVideos
             // 
-            this.lstVideo.FormattingEnabled = true;
-            this.lstVideo.ItemHeight = 15;
-            this.lstVideo.Location = new System.Drawing.Point(11, 99);
-            this.lstVideo.Name = "lstVideo";
-            this.lstVideo.Size = new System.Drawing.Size(687, 469);
-            this.lstVideo.TabIndex = 5;
+            this.lstVideos.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lstVideos.HotTracking = true;
+            this.lstVideos.HoverSelection = true;
+            this.lstVideos.Location = new System.Drawing.Point(7, 92);
+            this.lstVideos.MultiSelect = false;
+            this.lstVideos.Name = "lstVideos";
+            this.lstVideos.ShowGroups = false;
+            this.lstVideos.Size = new System.Drawing.Size(687, 476);
+            this.lstVideos.TabIndex = 5;
+            this.lstVideos.UseCompatibleStateImageBehavior = false;
             // 
             // frmPlaylist
             // 
@@ -136,6 +140,6 @@
         private System.Windows.Forms.Button btnGrab;
         private System.Windows.Forms.TextBox txtboxUrl;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ListBox lstVideo;
+        private System.Windows.Forms.ListView lstVideos;
     }
 }

@@ -16,8 +16,22 @@ namespace YoutubeApisDemo
         public frmPlaylist()
         {
             InitializeComponent();
+            TitleCol = new ColumnHeader();
+            UrlCol = new ColumnHeader();
+            DurationCol = new ColumnHeader();
+            PublishedDateCol = new ColumnHeader();
+            lstVideos.Columns.AddRange(new ColumnHeader[] { TitleCol, DurationCol, PublishedDateCol, UrlCol});
+            TitleCol.Text = "Title";
+            UrlCol.Text = "URL";
+            DurationCol.Text = "Duration";
+            PublishedDateCol.Text = "Date Published";
             lblTitle.Text = Text;
         }
+
+        ColumnHeader TitleCol;
+        ColumnHeader UrlCol;
+        ColumnHeader DurationCol;
+        ColumnHeader PublishedDateCol;
 
         private void btnGet_Click(object sender, EventArgs e)
         {
@@ -26,7 +40,7 @@ namespace YoutubeApisDemo
 
         private void GetPlaylistInfo(string inputId)
         {
-            lstVideo.Items.Clear();
+            lstVideos.Items.Clear();
 
             if (inputId == "")
             {
@@ -34,18 +48,18 @@ namespace YoutubeApisDemo
             }
             else
             {
-                YoutubeVideo[] videos = YoutubeApis.GetPlaylistInfo("");
+                YoutubeVideo[] videos = YoutubeApis.GetPlaylistInfo(inputId);
                 foreach (var video in videos)
                 {
-                    lstVideo.Items.Add(video.Duration + " - " + video.Title);
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(video.Title);
+                    item.SubItems.Add(video.Duration);
+                    item.SubItems.Add(video.DatePublished.ToString());
+                    item.SubItems.Add(video.Url);
+
+                    lstVideos.Items.AddRange(new ListViewItem[] { item });
                 }
-            }
-            //}
-
-            //if (inputId.Contains("https://youtu.be/"))
-            //{
-
-            //}
+            }          
         }
 
         private void btnClose_Click(object sender, EventArgs e)

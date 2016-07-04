@@ -47,10 +47,10 @@ namespace YoutubeApisDemo
         
         }
 
-        internal static YoutubeVideo[] GetPlaylistInfo(string IdPlaylist)
+        public static YoutubeVideo[] GetPlaylistInfo(string IdPlaylist)
         {         
             var playlistRequest = ytService.PlaylistItems.List("contentDetails");
-            playlistRequest.Id = IdPlaylist;
+            playlistRequest.PlaylistId = IdPlaylist;
             var playlistResponse = playlistRequest.Execute();
 
             YoutubeVideo[] videosResults = new YoutubeVideo[playlistResponse.Items.Count];

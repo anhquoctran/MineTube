@@ -16,15 +16,15 @@ namespace YoutubeApisDemo
         public frmHome()
         {
             InitializeComponent();
-            lblSoftversion.Text = "Current version: " + Application.ProductVersion;
+            lblSoftversion.Text = "Current version: " + Application.ProductVersion + " - Copyright © 2016 Anh Quoc Tran";
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
-        [DllImportAttribute("user32.dll")]
+        [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
+        [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
         private void btnClose_Click(object sender, EventArgs e)
