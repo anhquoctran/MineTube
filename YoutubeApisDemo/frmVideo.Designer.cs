@@ -51,20 +51,16 @@
             this.lblVideoTitle = new System.Windows.Forms.Label();
             this.picVideoThumb = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlFrm = new System.Windows.Forms.Panel();
             this.txtboxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnPaste = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.chkMin = new System.Windows.Forms.CheckBox();
-            this.picIcon = new System.Windows.Forms.PictureBox();
+            this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).BeginInit();
             this.pnlFrm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVideoInfo
@@ -91,9 +87,9 @@
             this.pnlVideoInfo.Controls.Add(this.lblVideoTitle);
             this.pnlVideoInfo.Controls.Add(this.picVideoThumb);
             this.pnlVideoInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.pnlVideoInfo.Location = new System.Drawing.Point(13, 86);
+            this.pnlVideoInfo.Location = new System.Drawing.Point(13, 54);
             this.pnlVideoInfo.Name = "pnlVideoInfo";
-            this.pnlVideoInfo.Size = new System.Drawing.Size(677, 571);
+            this.pnlVideoInfo.Size = new System.Drawing.Size(699, 559);
             this.pnlVideoInfo.TabIndex = 4;
             this.pnlVideoInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlVideoInfo_MouseDown);
             // 
@@ -102,7 +98,7 @@
             this.lblLoadStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLoadStatus.AutoSize = true;
             this.lblLoadStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblLoadStatus.Location = new System.Drawing.Point(567, 193);
+            this.lblLoadStatus.Location = new System.Drawing.Point(589, 193);
             this.lblLoadStatus.Name = "lblLoadStatus";
             this.lblLoadStatus.Size = new System.Drawing.Size(60, 15);
             this.lblLoadStatus.TabIndex = 17;
@@ -128,7 +124,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
-            this.btnReset.Location = new System.Drawing.Point(645, 183);
+            this.btnReset.Location = new System.Drawing.Point(667, 183);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(32, 32);
             this.btnReset.TabIndex = 15;
@@ -167,9 +163,9 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 472);
+            this.groupBox2.Location = new System.Drawing.Point(0, 460);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(677, 99);
+            this.groupBox2.Size = new System.Drawing.Size(699, 99);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tags";
@@ -183,7 +179,7 @@
             this.rchtxtTags.Location = new System.Drawing.Point(3, 21);
             this.rchtxtTags.Name = "rchtxtTags";
             this.rchtxtTags.ReadOnly = true;
-            this.rchtxtTags.Size = new System.Drawing.Size(671, 75);
+            this.rchtxtTags.Size = new System.Drawing.Size(693, 75);
             this.rchtxtTags.TabIndex = 0;
             this.rchtxtTags.Text = "";
             // 
@@ -236,7 +232,7 @@
             this.pnlDescription.Controls.Add(this.lblDescription);
             this.pnlDescription.Location = new System.Drawing.Point(0, 218);
             this.pnlDescription.Name = "pnlDescription";
-            this.pnlDescription.Size = new System.Drawing.Size(678, 237);
+            this.pnlDescription.Size = new System.Drawing.Size(700, 225);
             this.pnlDescription.TabIndex = 8;
             // 
             // lblDescription
@@ -252,7 +248,7 @@
             this.lblDescription.Location = new System.Drawing.Point(-2, 3);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.ReadOnly = true;
-            this.lblDescription.Size = new System.Drawing.Size(677, 245);
+            this.lblDescription.Size = new System.Drawing.Size(699, 233);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.TabStop = false;
             this.lblDescription.Text = "";
@@ -315,7 +311,7 @@
             this.lblVideoTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVideoTitle.Location = new System.Drawing.Point(225, 16);
             this.lblVideoTitle.Name = "lblVideoTitle";
-            this.lblVideoTitle.Size = new System.Drawing.Size(450, 21);
+            this.lblVideoTitle.Size = new System.Drawing.Size(472, 21);
             this.lblVideoTitle.TabIndex = 1;
             this.lblVideoTitle.Text = "Title";
             // 
@@ -328,42 +324,26 @@
             this.picVideoThumb.TabIndex = 0;
             this.picVideoThumb.TabStop = false;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoEllipsis = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(33, 8);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(517, 19);
-            this.lblTitle.TabIndex = 6;
-            this.lblTitle.Text = "title";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
-            // 
             // pnlFrm
             // 
             this.pnlFrm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFrm.Controls.Add(this.btnBack);
             this.pnlFrm.Controls.Add(this.txtboxSearch);
             this.pnlFrm.Controls.Add(this.btnPaste);
             this.pnlFrm.Controls.Add(this.btnSearch);
-            this.pnlFrm.Controls.Add(this.btnClose);
-            this.pnlFrm.Controls.Add(this.chkMin);
-            this.pnlFrm.Controls.Add(this.picIcon);
-            this.pnlFrm.Controls.Add(this.lblTitle);
             this.pnlFrm.Controls.Add(this.pnlVideoInfo);
             this.pnlFrm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFrm.Location = new System.Drawing.Point(0, 0);
             this.pnlFrm.Name = "pnlFrm";
-            this.pnlFrm.Size = new System.Drawing.Size(706, 673);
+            this.pnlFrm.Size = new System.Drawing.Size(728, 673);
             this.pnlFrm.TabIndex = 8;
             this.pnlFrm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlFrm_MouseDown);
             // 
             // txtboxSearch
             // 
             this.txtboxSearch.Depth = 0;
-            this.txtboxSearch.Hint = "";
-            this.txtboxSearch.Location = new System.Drawing.Point(11, 57);
+            this.txtboxSearch.Hint = "Enter or paste YouTube video URL...";
+            this.txtboxSearch.Location = new System.Drawing.Point(13, 25);
             this.txtboxSearch.MaxLength = 32767;
             this.txtboxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxSearch.Name = "txtboxSearch";
@@ -371,7 +351,7 @@
             this.txtboxSearch.SelectedText = "";
             this.txtboxSearch.SelectionLength = 0;
             this.txtboxSearch.SelectionStart = 0;
-            this.txtboxSearch.Size = new System.Drawing.Size(551, 23);
+            this.txtboxSearch.Size = new System.Drawing.Size(549, 23);
             this.txtboxSearch.TabIndex = 19;
             this.txtboxSearch.TabStop = false;
             this.txtboxSearch.UseSystemPasswordChar = false;
@@ -381,11 +361,11 @@
             // btnPaste
             // 
             this.btnPaste.Depth = 0;
-            this.btnPaste.Location = new System.Drawing.Point(568, 53);
+            this.btnPaste.Location = new System.Drawing.Point(568, 11);
             this.btnPaste.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.Primary = true;
-            this.btnPaste.Size = new System.Drawing.Size(63, 27);
+            this.btnPaste.Size = new System.Drawing.Size(63, 37);
             this.btnPaste.TabIndex = 18;
             this.btnPaste.Text = "Paste";
             this.btnPaste.UseVisualStyleBackColor = true;
@@ -394,65 +374,36 @@
             // btnSearch
             // 
             this.btnSearch.Depth = 0;
-            this.btnSearch.Location = new System.Drawing.Point(637, 53);
+            this.btnSearch.Location = new System.Drawing.Point(637, 11);
             this.btnSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Primary = true;
-            this.btnSearch.Size = new System.Drawing.Size(54, 27);
+            this.btnSearch.Size = new System.Drawing.Size(75, 37);
             this.btnSearch.TabIndex = 19;
             this.btnSearch.Text = "Go";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnClose
+            // btnBack
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(657, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(47, 27);
-            this.btnClose.TabIndex = 8;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // chkMin
-            // 
-            this.chkMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkMin.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkMin.BackColor = System.Drawing.Color.Transparent;
-            this.chkMin.FlatAppearance.BorderSize = 0;
-            this.chkMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkMin.Image = ((System.Drawing.Image)(resources.GetObject("chkMin.Image")));
-            this.chkMin.Location = new System.Drawing.Point(608, 1);
-            this.chkMin.Name = "chkMin";
-            this.chkMin.Size = new System.Drawing.Size(47, 27);
-            this.chkMin.TabIndex = 10;
-            this.chkMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkMin.UseVisualStyleBackColor = false;
-            this.chkMin.CheckedChanged += new System.EventHandler(this.chkMin_CheckedChanged);
-            // 
-            // picIcon
-            // 
-            this.picIcon.Location = new System.Drawing.Point(11, 11);
-            this.picIcon.Name = "picIcon";
-            this.picIcon.Size = new System.Drawing.Size(16, 16);
-            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIcon.TabIndex = 7;
-            this.picIcon.TabStop = false;
+            this.btnBack.Depth = 0;
+            this.btnBack.Location = new System.Drawing.Point(618, 619);
+            this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Primary = true;
+            this.btnBack.Size = new System.Drawing.Size(97, 41);
+            this.btnBack.TabIndex = 20;
+            this.btnBack.Text = "Go Home";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(706, 673);
+            this.ClientSize = new System.Drawing.Size(728, 673);
             this.Controls.Add(this.pnlFrm);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(687, 620);
             this.Name = "frmVideo";
@@ -464,7 +415,6 @@
             this.pnlDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).EndInit();
             this.pnlFrm.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,15 +440,12 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.PictureBox picIcon;
         private System.Windows.Forms.Panel pnlFrm;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.CheckBox chkMin;
         private System.Windows.Forms.Label lblLoadStatus;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxSearch;
         private MaterialSkin.Controls.MaterialRaisedButton btnPaste;
         private MaterialSkin.Controls.MaterialRaisedButton btnSearch;
+        private MaterialSkin.Controls.MaterialRaisedButton btnBack;
     }
 }
 

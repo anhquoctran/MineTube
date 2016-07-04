@@ -26,8 +26,9 @@ namespace YoutubeApisDemo
             //UrlCol.Text = "URL";
             //DurationCol.Text = "Duration";
             //PublishedDateCol.Text = "Date Published";
-            piIcon.Image = Icon.ToBitmap();
-            lblTitle.Text = Text;
+            //piIcon.Image = Icon.ToBitmap();
+            //lblTitle.Text = Text;
+            prbStatus.Visible = false;
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -48,7 +49,7 @@ namespace YoutubeApisDemo
 
         private void GetPlaylistInfo(string inputId)
         {
-            lstVideos.Items.Clear();
+            
 
             if (inputId == "")
             {
@@ -61,7 +62,7 @@ namespace YoutubeApisDemo
                 
                 foreach (var video in videos)
                 {
-                    lstVideos.Items.Add(video.Title) ;
+                    
                     
                 }
             }          

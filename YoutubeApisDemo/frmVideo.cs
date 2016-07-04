@@ -10,16 +10,22 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace YoutubeApisDemo
 {
-    public partial class frmVideo : Form
+    public partial class frmVideo : MaterialForm
     {
         public frmVideo()
         {
             InitializeComponent();
-            picIcon.Image = Icon.ToBitmap();
-            lblTitle.Text = Text;
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red100, TextShade.WHITE);
+
+            
             if (IsInternetAvailable())
                 btnSearch.Enabled = true;
             else btnSearch.Enabled = false;

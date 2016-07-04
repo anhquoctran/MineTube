@@ -31,27 +31,26 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlaylist));
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.piIcon = new System.Windows.Forms.PictureBox();
-            this.lstVideos = new System.Windows.Forms.ListView();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnGet = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
+            this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.frmPlaylistBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listVideo = new MaterialSkin.Controls.MaterialListView();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.piIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frmPlaylistBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.btnBack);
+            this.pnlMain.Controls.Add(this.prbStatus);
+            this.pnlMain.Controls.Add(this.lblStatus);
             this.pnlMain.Controls.Add(this.txtboxUrl);
             this.pnlMain.Controls.Add(this.btnGet);
-            this.pnlMain.Controls.Add(this.piIcon);
-            this.pnlMain.Controls.Add(this.lstVideos);
-            this.pnlMain.Controls.Add(this.lblTitle);
-            this.pnlMain.Controls.Add(this.btnClose);
+            this.pnlMain.Controls.Add(this.listVideo);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
@@ -59,65 +58,11 @@
             this.pnlMain.TabIndex = 0;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
             // 
-            // piIcon
-            // 
-            this.piIcon.Location = new System.Drawing.Point(7, 4);
-            this.piIcon.Name = "piIcon";
-            this.piIcon.Size = new System.Drawing.Size(24, 24);
-            this.piIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.piIcon.TabIndex = 6;
-            this.piIcon.TabStop = false;
-            // 
-            // lstVideos
-            // 
-            this.lstVideos.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lstVideos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstVideos.HotTracking = true;
-            this.lstVideos.HoverSelection = true;
-            this.lstVideos.Location = new System.Drawing.Point(11, 112);
-            this.lstVideos.MultiSelect = false;
-            this.lstVideos.Name = "lstVideos";
-            this.lstVideos.ShowGroups = false;
-            this.lstVideos.Size = new System.Drawing.Size(708, 520);
-            this.lstVideos.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lstVideos.TabIndex = 5;
-            this.lstVideos.UseCompatibleStateImageBehavior = false;
-            this.lstVideos.View = System.Windows.Forms.View.Details;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(33, 8);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(38, 15);
-            this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "label1";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(679, -1);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 29);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "x";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // btnGet
             // 
             this.btnGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGet.Depth = 0;
-            this.btnGet.Location = new System.Drawing.Point(605, 65);
+            this.btnGet.Location = new System.Drawing.Point(605, 11);
             this.btnGet.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGet.Name = "btnGet";
             this.btnGet.Primary = true;
@@ -130,8 +75,8 @@
             // txtboxUrl
             // 
             this.txtboxUrl.Depth = 0;
-            this.txtboxUrl.Hint = "";
-            this.txtboxUrl.Location = new System.Drawing.Point(11, 83);
+            this.txtboxUrl.Hint = "Enter YouTube playlist URL...";
+            this.txtboxUrl.Location = new System.Drawing.Point(15, 29);
             this.txtboxUrl.MaxLength = 32767;
             this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxUrl.Name = "txtboxUrl";
@@ -139,21 +84,75 @@
             this.txtboxUrl.SelectedText = "";
             this.txtboxUrl.SelectionLength = 0;
             this.txtboxUrl.SelectionStart = 0;
-            this.txtboxUrl.Size = new System.Drawing.Size(588, 23);
+            this.txtboxUrl.Size = new System.Drawing.Size(584, 23);
             this.txtboxUrl.TabIndex = 8;
             this.txtboxUrl.TabStop = false;
             this.txtboxUrl.UseSystemPasswordChar = false;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Depth = 0;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblStatus.Location = new System.Drawing.Point(11, 309);
+            this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(708, 29);
+            this.lblStatus.TabIndex = 9;
+            this.lblStatus.Text = "There are nothing to display";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // prbStatus
+            // 
+            this.prbStatus.Depth = 0;
+            this.prbStatus.Location = new System.Drawing.Point(228, 341);
+            this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.prbStatus.Name = "prbStatus";
+            this.prbStatus.Size = new System.Drawing.Size(271, 5);
+            this.prbStatus.Step = 1;
+            this.prbStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.prbStatus.TabIndex = 10;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.Depth = 0;
+            this.btnBack.Location = new System.Drawing.Point(605, 591);
+            this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Primary = true;
+            this.btnBack.Size = new System.Drawing.Size(114, 41);
+            this.btnBack.TabIndex = 11;
+            this.btnBack.Text = "Go Home";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
             // frmPlaylistBindingSource
             // 
             this.frmPlaylistBindingSource.DataSource = typeof(YoutubeApisDemo.frmPlaylist);
+            // 
+            // listVideo
+            // 
+            this.listVideo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listVideo.Depth = 0;
+            this.listVideo.Font = new System.Drawing.Font("Roboto", 24F);
+            this.listVideo.FullRowSelect = true;
+            this.listVideo.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listVideo.Location = new System.Drawing.Point(15, 58);
+            this.listVideo.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listVideo.MouseState = MaterialSkin.MouseState.OUT;
+            this.listVideo.Name = "listVideo";
+            this.listVideo.OwnerDraw = true;
+            this.listVideo.Size = new System.Drawing.Size(704, 527);
+            this.listVideo.TabIndex = 12;
+            this.listVideo.TileSize = new System.Drawing.Size(64, 64);
+            this.listVideo.UseCompatibleStateImageBehavior = false;
+            this.listVideo.View = System.Windows.Forms.View.Details;
             // 
             // frmPlaylist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(732, 645);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -163,8 +162,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "YouTube Playlist Information";
             this.pnlMain.ResumeLayout(false);
-            this.pnlMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.piIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frmPlaylistBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -173,12 +170,12 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ListView lstVideos;
-        private System.Windows.Forms.PictureBox piIcon;
         private System.Windows.Forms.BindingSource frmPlaylistBindingSource;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxUrl;
         private MaterialSkin.Controls.MaterialRaisedButton btnGet;
+        private MaterialSkin.Controls.MaterialRaisedButton btnBack;
+        private MaterialSkin.Controls.MaterialProgressBar prbStatus;
+        private MaterialSkin.Controls.MaterialLabel lblStatus;
+        private MaterialSkin.Controls.MaterialListView listVideo;
     }
 }
