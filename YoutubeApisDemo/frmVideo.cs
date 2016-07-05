@@ -47,6 +47,32 @@ namespace YoutubeApisDemo
             lblCategory.Text = "Category: ";
             lblLoadStatus.Visible = false;
         }
+        
+        public frmVideo(string videoId)
+        {
+            InitializeComponent();
+            if (IsInternetAvailable())
+            {
+                lblLoadStatus.Visible = true;
+
+                txtboxSearch.Text = "https://wwww,youtube.com/watch?v=" + videoId;
+                GetInfo(videoId);
+                var materialSkinManager = MaterialSkinManager.Instance;
+                materialSkinManager.AddFormToManage(this);
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red100, TextShade.WHITE);
+                lblVersion.Text = "Current version: " + Application.ProductVersion + " - Copyright © 2016 Anh Quoc Tran";
+
+                lblLoadStatus.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Can't connect to the Internet! Please try again!");
+                this.Close();
+            }
+            
+                      
+        }
 
         protected string VideoUrl = "";
 
@@ -189,6 +215,7 @@ namespace YoutubeApisDemo
                     rchtxtTags.Text += string.Join(", ", Video.VideoTags);
                 }
             }
+            txtboxSearch.SelectAll();
             btnReset.Enabled = true;
         }
 
@@ -295,26 +322,6 @@ namespace YoutubeApisDemo
             this.Close();
         }
 
-        private void btnMin_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pnlFrm_MouseDown(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void lblTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void pnlVideoInfo_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
-
         [StructLayout(LayoutKind.Sequential)]
         public struct POINT
         {
@@ -327,21 +334,9 @@ namespace YoutubeApisDemo
             }
         }
 
-        /// <summary>
-        /// Retrieves the cursor's position, in screen coordinates.
-        /// </summary>
-        /// <see>See MSDN documentation for further information.</see>
-        [DllImport("user32.dll")]
-        public static extern bool GetCursorPos(out POINT lpPoint);
-
         private void chkMin_CheckedChanged(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        }
-
-        private void pnlRightSide_MouseMove(object sender, MouseEventArgs e)
-        {
-            
         }
 
         private void txtboxSearch_KeyDown(object sender, KeyEventArgs e)

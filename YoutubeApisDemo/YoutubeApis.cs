@@ -48,18 +48,25 @@ namespace YoutubeApisDemo
         }
 
         public static YoutubeVideo[] GetPlaylistInfo(string IdPlaylist)
-        {         
-            var playlistRequest = ytService.PlaylistItems.List("contentDetails");
-            playlistRequest.PlaylistId = IdPlaylist;
-            var playlistResponse = playlistRequest.Execute();
-
-            YoutubeVideo[] videosResults = new YoutubeVideo[playlistResponse.Items.Count];
-            int i = 0;
-            foreach (var item in playlistResponse.Items)
+        {
+            YoutubeVideo[] videosResults = null;
+            try
             {
-                videosResults[i++] = new YoutubeVideo(item.ContentDetails.VideoId);
-            }
+                 var playlistRequest = ytService.PlaylistItems.List("contentDetails");
+                playlistRequest.PlaylistId = IdPlaylist;
+                var playlistResponse = playlistRequest.Execute();
 
+                videosResults = new YoutubeVideo[playlistResponse.Items.Count];
+                int i = 0;
+                foreach (var item in playlistResponse.Items)
+                {
+                    videosResults[i++] = new YoutubeVideo(item.ContentDetails.VideoId);
+                }
+            }
+            catch(Exception)
+            {
+                return null;
+            }
             return videosResults;
 
         }
@@ -116,7 +123,29 @@ namespace YoutubeApisDemo
             }
         }
 
-        
+        public async Task SearchEngine(string Query, long? MaxResult, string typeSearch = "youtube#video")
+        {
+            try
+            {
+                var searchRequest = ytService.Search.List("snippet");
+                searchRequest.Q = Query;
+                searchRequest.MaxResults = MaxResult;
+                var searchListResponse = await searchRequest.ExecuteAsync();
+                List<string> videos = new List<string>();
+                List<string> channels = new List<string>();
+                List<string> playlists = new List<string>();
+
+                //foreach (var searchResult in searchListResponse.Items)
+                //{
+                    
+                //}
+            }
+            catch (AggregateException )
+            {
+
+                throw;
+            }
+        }
 
         public static void GetVideoInfo(YoutubeVideo video)
         {
@@ -169,8 +198,8 @@ namespace YoutubeApisDemo
                     video.Quality = response2.Items[0].ContentDetails.Definition.ToUpper();
                     string s = response2.Items[0].ContentDetails.Duration;
                     TimeSpan ts = XmlConvert.ToTimeSpan(s);
-                    
-                    video.Duration = ts.Hours.ToString() + ":" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+
+                    video.Duration = FormatTime(ts);
                 }
                 else
                 {
@@ -181,6 +210,11 @@ namespace YoutubeApisDemo
             {
                 MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private static string FormatTime(TimeSpan inputTime)
+        {
+            return inputTime.ToString();
         }
     }
 }

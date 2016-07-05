@@ -460,8 +460,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxSearch;
         private MaterialSkin.Controls.MaterialRaisedButton btnPaste;
         private MaterialSkin.Controls.MaterialRaisedButton btnSearch;
-        private MaterialSkin.Controls.MaterialRaisedButton btnBack;
         private System.Windows.Forms.Label lblVersion;
+        public MaterialSkin.Controls.MaterialRaisedButton btnBack;
     }
 }
 

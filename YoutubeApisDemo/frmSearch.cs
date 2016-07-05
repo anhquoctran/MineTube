@@ -38,16 +38,7 @@ namespace YoutubeApisDemo
 
         private void radioBtnVideo_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioBtnVideo.Checked == true)
-            {
-                radioBtnShort.Enabled = true;
-                radioBtnLong.Enabled = true;
-            }
-            else
-            {
-                radioBtnShort.Enabled = false;
-                radioBtnLong.Enabled = false;
-            }
+            
         }
 
         private void prbStatus_Click(object sender, EventArgs e)

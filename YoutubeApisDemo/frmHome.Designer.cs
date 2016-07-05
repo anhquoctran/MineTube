@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAbout = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblMess = new System.Windows.Forms.Label();
+            this.MenuConnect = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.refreshConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblSoftversion = new System.Windows.Forms.Label();
@@ -43,8 +45,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.lblNetworkStatus = new System.Windows.Forms.Label();
-            this.MenuConnect = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.refreshConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +117,25 @@
             this.lblMess.Text = "Choose features which you want to use\r\n";
             this.lblMess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // MenuConnect
+            // 
+            this.MenuConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.MenuConnect.Depth = 0;
+            this.MenuConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshConnectionToolStripMenuItem});
+            this.MenuConnect.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MenuConnect.Name = "MenuConnect";
+            this.MenuConnect.Size = new System.Drawing.Size(172, 26);
+            // 
+            // refreshConnectionToolStripMenuItem
+            // 
+            this.refreshConnectionToolStripMenuItem.Name = "refreshConnectionToolStripMenuItem";
+            this.refreshConnectionToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.refreshConnectionToolStripMenuItem.ShowShortcutKeys = false;
+            this.refreshConnectionToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.refreshConnectionToolStripMenuItem.Text = "Refresh Connection";
+            this.refreshConnectionToolStripMenuItem.Click += new System.EventHandler(this.refreshConnectionToolStripMenuItem_Click);
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -135,7 +155,7 @@
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.Location = new System.Drawing.Point(81, 293);
@@ -164,7 +184,7 @@
             this.btnVideoInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVideoInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVideoInfo.FlatAppearance.BorderSize = 0;
-            this.btnVideoInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.btnVideoInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
             this.btnVideoInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVideoInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnVideoInfo.Image")));
             this.btnVideoInfo.Location = new System.Drawing.Point(609, 293);
@@ -180,7 +200,7 @@
             this.btnPlaylist.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPlaylist.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPlaylist.FlatAppearance.BorderSize = 0;
-            this.btnPlaylist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.btnPlaylist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
             this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaylist.Image = ((System.Drawing.Image)(resources.GetObject("btnPlaylist.Image")));
             this.btnPlaylist.Location = new System.Drawing.Point(337, 293);
@@ -218,24 +238,15 @@
             this.lblNetworkStatus.TabIndex = 13;
             this.lblNetworkStatus.Text = "netstatus";
             // 
-            // MenuConnect
+            // button1
             // 
-            this.MenuConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.MenuConnect.Depth = 0;
-            this.MenuConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshConnectionToolStripMenuItem});
-            this.MenuConnect.MouseState = MaterialSkin.MouseState.HOVER;
-            this.MenuConnect.Name = "MenuConnect";
-            this.MenuConnect.Size = new System.Drawing.Size(172, 26);
-            // 
-            // refreshConnectionToolStripMenuItem
-            // 
-            this.refreshConnectionToolStripMenuItem.Name = "refreshConnectionToolStripMenuItem";
-            this.refreshConnectionToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.refreshConnectionToolStripMenuItem.ShowShortcutKeys = false;
-            this.refreshConnectionToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.refreshConnectionToolStripMenuItem.Text = "Refresh Connection";
-            this.refreshConnectionToolStripMenuItem.Click += new System.EventHandler(this.refreshConnectionToolStripMenuItem_Click);
+            this.button1.Location = new System.Drawing.Point(157, 530);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            
             // 
             // frmHome
             // 
@@ -244,6 +255,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(869, 579);
             this.ContextMenuStrip = this.MenuConnect;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblNetworkStatus);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -287,5 +299,6 @@
         private System.Windows.Forms.Label lblNetworkStatus;
         private MaterialSkin.Controls.MaterialContextMenuStrip MenuConnect;
         private System.Windows.Forms.ToolStripMenuItem refreshConnectionToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
