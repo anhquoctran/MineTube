@@ -259,6 +259,7 @@
     </Compile>
     <Compile Include="YouTubeApis.cs" />
     <Compile Include="YouTubeChannel.cs" />
+    <Compile Include="YouTubePlaylists.cs" />
     <Compile Include="YoutubeVideo.cs" />
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>

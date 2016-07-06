@@ -50,8 +50,8 @@ namespace YoutubeApisDemo
 				_placeholderText = value;
 
 				// Only use the new value if the placeholder is active.
-				if (this.IsPlaceholderActive)
-					this.Text = value;
+				if (IsPlaceholderActive)
+                    Text = value;
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace YoutubeApisDemo
 				// Check 'IsPlaceholderActive' to avoid this if-clause when the text is the same as the placeholder but actually it's not the placeholder.
 				// Check 'base.Text == this.Placeholder' because in some cases IsPlaceholderActive changes too late although it isn't the placeholder anymore.
 				// If you want to get the Text Property and it still contains the placeholder, an empty string will return.
-				if (this.IsPlaceholderActive && base.Text == this.PlaceholderText)
+				if (IsPlaceholderActive && base.Text == PlaceholderText)
 					return String.Empty;
 
 				return base.Text;
@@ -84,7 +84,7 @@ namespace YoutubeApisDemo
 			{
 				// We have to differentiate whether the system is asking for the ForeColor to draw it
 				// or the developer is asking for the color.
-				if (this.IsPlaceholderActive && Environment.StackTrace.Contains("System.Windows.Forms.Control.InitializeDCForWmCtlColor(IntPtr dc, Int32 msg)"))
+				if (IsPlaceholderActive && Environment.StackTrace.Contains("System.Windows.Forms.Control.InitializeDCForWmCtlColor(IntPtr dc, Int32 msg)"))
 					return Color.LightGray;
 
 				return base.ForeColor;
@@ -128,7 +128,7 @@ namespace YoutubeApisDemo
 		public PlaceholderTextBox()
 		{
 			// Through this line the default placeholder gets displayed in designer
-			base.Text = this.PlaceholderText;
+			base.Text = PlaceholderText;
 
 			SubscribeEvents();
 
@@ -146,10 +146,10 @@ namespace YoutubeApisDemo
 		/// </summary>
 		public void Reset()
 		{
-			this.IsPlaceholderActive = true;
+            IsPlaceholderActive = true;
 
-			ActionWithoutTextChanged(() => this.Text = this.PlaceholderText);
-			this.Select(0, 0);
+			ActionWithoutTextChanged(() => Text = PlaceholderText);
+            Select(0, 0);
 		}
 
 		/// <summary>
@@ -170,7 +170,7 @@ namespace YoutubeApisDemo
 		/// </summary>
 		private void SubscribeEvents()
 		{
-			this.TextChanged += PlaceholderTextBox_TextChanged;
+            TextChanged += PlaceholderTextBox_TextChanged;
 		}
 
 		#endregion
@@ -186,36 +186,36 @@ namespace YoutubeApisDemo
 			// Run code with avoiding recursive call
 			ActionWithoutTextChanged(delegate {
             // If the Text is empty, insert placeholder and set cursor to to first position
-            if (string.IsNullOrEmpty(this.Text))
+            if (string.IsNullOrEmpty(Text))
 			{
 			    Reset();
 				return;
 			}
             // If the placeholder is active, revert state to a usual TextBox
-            if (this.IsPlaceholderActive)
+            if (IsPlaceholderActive)
 			{
-			    this.IsPlaceholderActive = false;
-                // Throw away the placeholder but leave the new typed char
-				this.Text = this.Text.Replace(this.PlaceholderText, String.Empty);
-                // Set Selection to last position
-				this.Select(this.TextLength, 0);
+                    IsPlaceholderActive = false;
+                    // Throw away the placeholder but leave the new typed char
+                    Text = Text.Replace(PlaceholderText, String.Empty);
+                    // Set Selection to last position
+                    Select(TextLength, 0);
 			}
 		});
 
-			this.Font = this.Font;
+            Font = Font;
 		}
 
 		protected override void OnGotFocus(EventArgs e)
 		{
-			// Without this line it would highlight the placeholder when getting focus
-			this.Select(0, 0);
+            // Without this line it would highlight the placeholder when getting focus
+            Select(0, 0);
 			base.OnGotFocus(e);
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
 			// When you click on the placerholderTextBox and the placerholder is active, jump to first position
-			if (this.IsPlaceholderActive)
+			if (IsPlaceholderActive)
 				Reset();
 
 			base.OnMouseDown(e);
@@ -250,7 +250,7 @@ namespace YoutubeApisDemo
 		/// <param name="newValue">The new value of the IsPlaceholderInside Property.</param>
 		public PlaceholderActiveChangedEventArgs(bool newValue)
 		{
-			this.NewValue = newValue;
+            NewValue = newValue;
 		}
 
 		/// <summary>

@@ -68,7 +68,7 @@ namespace YoutubeApisDemo
             else
             {
                 MessageBox.Show("Can't connect to the Internet! Please try again!");
-                this.Close();
+                Close();
             }
             
                       
@@ -316,10 +316,10 @@ namespace YoutubeApisDemo
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             frmHome home = new frmHome();
             home.ShowDialog();
-            this.Close();
+            Close();
         }
 
         [StructLayout(LayoutKind.Sequential)]

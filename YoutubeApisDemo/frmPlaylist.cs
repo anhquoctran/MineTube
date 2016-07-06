@@ -104,10 +104,10 @@ namespace YoutubeApisDemo
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             frmHome home = new frmHome();
             home.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void bwFetch_DoWork(object sender, DoWorkEventArgs e)

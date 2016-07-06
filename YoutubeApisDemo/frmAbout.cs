@@ -28,8 +28,8 @@ namespace YoutubeApisDemo
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
+
+            Close();
         }
 
         private void frmAbout_Click(object sender, EventArgs e)

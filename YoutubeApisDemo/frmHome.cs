@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -78,14 +71,14 @@ namespace YoutubeApisDemo
 
         private void btnVideoInfo_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             frmVideo Video = new frmVideo();
             Video.ShowDialog();
         }
        
         private void btnChannel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             frmPlaylist playlist = new frmPlaylist();
             playlist.ShowDialog();
             

@@ -152,15 +152,15 @@ namespace YoutubeApisDemo
 		/// </summary>
 		private void InitializeComponent()
 		{
-			// 
-			// RoundButton
-			// 
-			this.ForeColorChanged += new System.EventHandler(this.RoundButton_ForeColorChanged);
-			this.Enter += new System.EventHandler(this.RoundButton_Enter);
-			this.MouseEnter += new System.EventHandler(this.RoundButton_MouseEnter);
-			this.BackColorChanged += new System.EventHandler(this.RoundButton_BackColorChanged);
-			this.Leave += new System.EventHandler(this.RoundButton_Leave);
-			this.MouseLeave += new System.EventHandler(this.RoundButton_MouseLeave);
+            // 
+            // RoundButton
+            // 
+            ForeColorChanged += new System.EventHandler(RoundButton_ForeColorChanged);
+            Enter += new System.EventHandler(RoundButton_Enter);
+            MouseEnter += new System.EventHandler(RoundButton_MouseEnter);
+            BackColorChanged += new System.EventHandler(RoundButton_BackColorChanged);
+            Leave += new System.EventHandler(RoundButton_Leave);
+            MouseLeave += new System.EventHandler(RoundButton_MouseLeave);
 
 		}
 		#endregion
@@ -172,7 +172,7 @@ namespace YoutubeApisDemo
 
 			GraphicsPath path = new GraphicsPath();
 			path.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
-			this.Region = new Region(path);
+            Region = new Region(path);
 		}
 
 		void ColorButton(Graphics g)
@@ -375,7 +375,7 @@ namespace YoutubeApisDemo
 
 		private void DrawText(Graphics g)
 		{
-			g.DrawString(this.Text, this.Font, _brushText, new PointF(_textStartPoint.X, _textStartPoint.Y));
+			g.DrawString(Text, Font, _brushText, new PointF(_textStartPoint.X, _textStartPoint.Y));
 		}
 
 		private void DrawImage(Graphics g)
@@ -383,8 +383,8 @@ namespace YoutubeApisDemo
 			// depends on ImageAlign
 			if (Image != null)
 			{
-				Rectangle rc = new Rectangle(new Point((this.Width - Image.Width)/2, (this.Height - Image.Height)/2), new Size(Image.Width, Image.Height));
-				g.DrawImage(this.Image, rc);
+				Rectangle rc = new Rectangle(new Point((Width - Image.Width)/2, (Height - Image.Height)/2), new Size(Image.Width, Image.Height));
+				g.DrawImage(Image, rc);
 			}
 
 		}
@@ -393,14 +393,14 @@ namespace YoutubeApisDemo
 		{
 			_pen.Color = _hoverColor;
 			_brushInside.Color = _hoverColor;
-			this.Invalidate();
+            Invalidate();
 		}
 
 		private void RoundButton_MouseLeave(object sender, System.EventArgs e)
 		{
 			_pen.Color = BackColor;
 			_brushInside.Color = BackColor;
-			this.Invalidate();
+            Invalidate();
 		}
 
 		private void RoundButton_Enter(object sender, System.EventArgs e)
