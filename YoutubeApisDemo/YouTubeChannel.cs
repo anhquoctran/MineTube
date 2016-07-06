@@ -46,7 +46,7 @@ namespace YoutubeApisDemo
         public YouTubeChannel(string ID)
         {
             Id = ID;
-            YoutubeApis.GetChannelInfo(this);
+            YouTubeApis.GetChannelInfo(this);
         }
     }
 }

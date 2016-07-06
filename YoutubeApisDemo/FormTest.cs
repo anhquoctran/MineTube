@@ -30,7 +30,7 @@ namespace YoutubeApisDemo
             {
                  
 
-                YoutubeVideo[] videos = YoutubeApis.GetPlaylistInfo(inputId);
+                YoutubeVideo[] videos = YouTubeApis.GetPlaylistInfo(inputId);
 
                 foreach (var video in videos)
                 {

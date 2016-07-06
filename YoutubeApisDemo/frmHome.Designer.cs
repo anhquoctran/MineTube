@@ -45,7 +45,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.lblNetworkStatus = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.MenuConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,16 +237,6 @@
             this.lblNetworkStatus.TabIndex = 13;
             this.lblNetworkStatus.Text = "netstatus";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(157, 530);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -255,7 +244,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(869, 579);
             this.ContextMenuStrip = this.MenuConnect;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblNetworkStatus);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -299,6 +287,5 @@
         private System.Windows.Forms.Label lblNetworkStatus;
         private MaterialSkin.Controls.MaterialContextMenuStrip MenuConnect;
         private System.Windows.Forms.ToolStripMenuItem refreshConnectionToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
     }
 }

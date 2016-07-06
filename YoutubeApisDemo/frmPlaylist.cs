@@ -25,8 +25,10 @@ namespace YoutubeApisDemo
             prbStatus.Visible = false;
             listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             listVideos.Columns[9].Dispose();
+            btnNext.Visible = false;
+            btnPrev.Visible = false;
         }
-        string Id = "";
+        //string Id = "";
 
         private void btnGet_Click(object sender, EventArgs e)
         {
@@ -38,33 +40,57 @@ namespace YoutubeApisDemo
             listVideos.Items.Clear();
             if (inputId == "")
             {
-                MessageBox.Show("Required field is not null!", "Error");
+                MessageBox.Show("Required field is not null!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {
-                btnGet.Enabled = false;
-                
-                YoutubeVideo[] videos = YoutubeApis.GetPlaylistInfo(inputId);
-                
-                foreach (var video in videos)
+            {                          
+                YoutubeVideo[] videos = YouTubeApis.GetPlaylistInfo(inputId);
+                try
                 {
-                    var data = new[]
+                    btnGet.Enabled = false;
+                    foreach (var video in videos)
                     {
-                        new [] {video.Title, video.Duration, video.ChannelTitle, video.View.Value.ToString("N0"), video.CommentCount.Value.ToString("N0"), video.Quality, video.Like.Value.ToString("N0"), video.Dislike.Value.ToString("N0"), "https://www.youtube.com/watch?v=" + video.Id, video.ChannelId}
-                    };
-                    foreach (var content in data)
-                    {
-                        var item = new ListViewItem(content);
+                        var item = new ListViewItem();
+                        item.Text = video.Title;
+                        item.SubItems.Add(video.Duration);
+                        item.SubItems.Add(video.ChannelTitle);
+                        item.SubItems.Add(video.View.Value.ToString("N0"));
+                        item.SubItems.Add(video.CommentCount.Value.ToString("N0"));
+                        item.SubItems.Add(video.Quality);
+                        item.SubItems.Add(video.Like.Value.ToString("N0"));
+                        item.SubItems.Add(video.Dislike.Value.ToString("N0"));
+                        item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
+                        item.SubItems.Add(video.ChannelId);
+
                         listVideos.Items.Add(item);
+
+                        //var data = new[]
+                        //{
+                        //    new [] {video.Title, video.Duration, video.ChannelTitle, video.View.Value.ToString("N0"), video.CommentCount.Value.ToString("N0"), video.Quality, video.Like.Value.ToString("N0"), video.Dislike.Value.ToString("N0"), "https://www.youtube.com/watch?v=" + video.Id, video.ChannelId}
+                        //};
+                        //foreach (var content in data)
+                        //{
+                        //    var item = new ListViewItem(content);
+                        //    listVideos.Items.Add(item);
+                        //}
                     }
+                    listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+                    lblStatus.Visible = false;
+                    prbStatus.Visible = false;
+                    btnPrev.Visible = true;
+                    btnPrev.Enabled = false;
+                    btnNext.Visible = true;
+                    btnGet.Enabled = true;
 
                 }
-                listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                
-                lblStatus.Visible = false;
-                prbStatus.Visible = false;
-
-                btnGet.Enabled = true;
+                catch(AggregateException ex)
+                {
+                    foreach(var e in ex.InnerExceptions)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                }
             }          
         }
 
@@ -86,22 +112,7 @@ namespace YoutubeApisDemo
 
         private void bwFetch_DoWork(object sender, DoWorkEventArgs e)
         {
-            //prbStatus.Visible = true;
-            //YoutubeVideo[] videos = YoutubeApis.GetPlaylistInfo(Id);
-            //listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);     
-            //foreach (var video in videos)
-            //{
-            //    var data = new[]
-            //    {
-            //            new [] {video.Title, video.Duration, video.ChannelTitle, video.View.Value.ToString(), video.CommentCount.Value.ToString(), video.Quality, video.Like.Value.ToString(), video.Dislike.Value.ToString(), "https://www.youtube.com/watch?v=" + video.Id}
-            //    };
-            //    foreach (var content in data)
-            //    {
-            //        var item = new ListViewItem(content);
-            //        listVideos.Items.Add(item);
-            //    }
-
-            //}
+            
         }
 
         private void bwFetch_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -145,10 +156,7 @@ namespace YoutubeApisDemo
                 clearToolStripMenuItem.Enabled = true;
                 clearAllItemsToolStripMenuItem.Enabled = true;
             }
-            else
-            {
-
-            }
+            
         }
 
         private void getPublisherInformationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,14 +188,13 @@ namespace YoutubeApisDemo
             frmVideo video = new frmVideo(videoId);
             video.btnBack.Visible = false;
             video.ControlBox = true;
-            video.ShowDialog();
-            
+            video.ShowDialog();          
         }
 
         private void clearAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listVideos.Items.Clear();
             lblStatus.Visible = true;
-        }
+        }       
     }
 }

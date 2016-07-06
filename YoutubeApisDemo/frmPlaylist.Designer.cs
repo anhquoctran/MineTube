@@ -38,6 +38,11 @@
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DurationCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PublisherCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ViewCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CommentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.qualityCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LikeCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DislikeCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UrlCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.publisherIdCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listDataMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
@@ -45,15 +50,13 @@
             this.getVideoInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewVideocomingSoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyVideoURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bwFetch = new System.ComponentModel.BackgroundWorker();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.CommentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LikeCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DislikeCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.qualityCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ViewCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblResultCount = new MaterialSkin.Controls.MaterialLabel();
+            this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnPrev = new MaterialSkin.Controls.MaterialFlatButton();
             this.listDataMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             // 
             this.prbStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.prbStatus.Depth = 0;
-            this.prbStatus.Location = new System.Drawing.Point(286, 409);
+            this.prbStatus.Location = new System.Drawing.Point(327, 466);
             this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.prbStatus.Name = "prbStatus";
             this.prbStatus.Size = new System.Drawing.Size(240, 5);
@@ -70,12 +73,11 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblStatus.Depth = 0;
             this.lblStatus.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(12, 379);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblStatus.Location = new System.Drawing.Point(53, 436);
             this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(786, 29);
@@ -98,7 +100,7 @@
             this.txtboxUrl.SelectedText = "";
             this.txtboxUrl.SelectionLength = 0;
             this.txtboxUrl.SelectionStart = 0;
-            this.txtboxUrl.Size = new System.Drawing.Size(665, 23);
+            this.txtboxUrl.Size = new System.Drawing.Size(748, 23);
             this.txtboxUrl.TabIndex = 8;
             this.txtboxUrl.TabStop = false;
             this.txtboxUrl.UseSystemPasswordChar = false;
@@ -108,7 +110,7 @@
             this.btnGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGet.Depth = 0;
-            this.btnGet.Location = new System.Drawing.Point(683, 120);
+            this.btnGet.Location = new System.Drawing.Point(766, 120);
             this.btnGet.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGet.Name = "btnGet";
             this.btnGet.Primary = true;
@@ -161,7 +163,7 @@
             this.listVideos.Name = "listVideos";
             this.listVideos.ShowGroups = false;
             this.listVideos.ShowItemToolTips = true;
-            this.listVideos.Size = new System.Drawing.Size(785, 411);
+            this.listVideos.Size = new System.Drawing.Size(868, 477);
             this.listVideos.TabIndex = 14;
             this.listVideos.UseCompatibleStateImageBehavior = false;
             this.listVideos.View = System.Windows.Forms.View.Details;
@@ -180,6 +182,29 @@
             // 
             this.PublisherCol.Text = "Publisher";
             this.PublisherCol.Width = 182;
+            // 
+            // ViewCol
+            // 
+            this.ViewCol.Text = "View";
+            // 
+            // CommentCol
+            // 
+            this.CommentCol.Text = "Comments";
+            this.CommentCol.Width = 103;
+            // 
+            // qualityCol
+            // 
+            this.qualityCol.Text = "Quality";
+            this.qualityCol.Width = 101;
+            // 
+            // LikeCol
+            // 
+            this.LikeCol.Text = "Like";
+            this.LikeCol.Width = 77;
+            // 
+            // DislikeCol
+            // 
+            this.DislikeCol.Text = "Dislike";
             // 
             // UrlCol
             // 
@@ -240,6 +265,11 @@
             this.copyVideoURLToolStripMenuItem.Text = "Copy video URL";
             this.copyVideoURLToolStripMenuItem.Click += new System.EventHandler(this.copyVideoURLToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Enabled = false;
@@ -267,38 +297,63 @@
             this.bwFetch.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwFetch_ProgressChanged);
             this.bwFetch.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwFetch_RunWorkerCompleted);
             // 
-            // toolStripSeparator1
+            // lblResultCount
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            this.lblResultCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblResultCount.AutoSize = true;
+            this.lblResultCount.Depth = 0;
+            this.lblResultCount.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblResultCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblResultCount.Location = new System.Drawing.Point(12, 705);
+            this.lblResultCount.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblResultCount.Name = "lblResultCount";
+            this.lblResultCount.Size = new System.Drawing.Size(140, 19);
+            this.lblResultCount.TabIndex = 15;
+            this.lblResultCount.Text = "0 videos in 0 videos total";
+            this.lblResultCount.UseCompatibleTextRendering = true;
             // 
-            // CommentCol
+            // btnNext
             // 
-            this.CommentCol.Text = "Comments";
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.AutoSize = true;
+            this.btnNext.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnNext.Depth = 0;
+            this.btnNext.Location = new System.Drawing.Point(834, 682);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnNext.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Primary = false;
+            this.btnNext.Size = new System.Drawing.Size(46, 36);
+            this.btnNext.TabIndex = 16;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
             // 
-            // LikeCol
+            // btnPrev
             // 
-            this.LikeCol.Text = "Like";
-            // 
-            // DislikeCol
-            // 
-            this.DislikeCol.Text = "Dislike";
-            // 
-            // qualityCol
-            // 
-            this.qualityCol.Text = "Quality";
-            // 
-            // ViewCol
-            // 
-            this.ViewCol.Text = "View";
+            this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrev.AutoSize = true;
+            this.btnPrev.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPrev.Depth = 0;
+            this.btnPrev.Location = new System.Drawing.Point(766, 682);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnPrev.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Primary = false;
+            this.btnPrev.Size = new System.Drawing.Size(46, 36);
+            this.btnPrev.TabIndex = 17;
+            this.btnPrev.Text = "Prev";
+            this.btnPrev.UseVisualStyleBackColor = true;
             // 
             // frmPlaylist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(810, 619);
+            this.ClientSize = new System.Drawing.Size(893, 733);
             this.ControlBox = false;
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.lblResultCount);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.prbStatus);
             this.Controls.Add(this.btnGet);
@@ -344,5 +399,8 @@
         private System.Windows.Forms.ColumnHeader DislikeCol;
         private System.Windows.Forms.ColumnHeader qualityCol;
         private System.Windows.Forms.ColumnHeader ViewCol;
+        private MaterialSkin.Controls.MaterialLabel lblResultCount;
+        private MaterialSkin.Controls.MaterialFlatButton btnNext;
+        private MaterialSkin.Controls.MaterialFlatButton btnPrev;
     }
 }

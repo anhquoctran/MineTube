@@ -15,7 +15,7 @@ using System.Xml;
 
 namespace YoutubeApisDemo
 {
-    public class YoutubeApis
+    public class YouTubeApis
     {
         private static YouTubeService ytService = Auth();
         
@@ -52,10 +52,11 @@ namespace YoutubeApisDemo
             YoutubeVideo[] videosResults = null;
             try
             {
-                 var playlistRequest = ytService.PlaylistItems.List("contentDetails");
+                var playlistRequest = ytService.PlaylistItems.List("contentDetails");
                 playlistRequest.PlaylistId = IdPlaylist;
+                playlistRequest.MaxResults = 50;
                 var playlistResponse = playlistRequest.Execute();
-
+                
                 videosResults = new YoutubeVideo[playlistResponse.Items.Count];
                 int i = 0;
                 foreach (var item in playlistResponse.Items)
@@ -63,8 +64,12 @@ namespace YoutubeApisDemo
                     videosResults[i++] = new YoutubeVideo(item.ContentDetails.VideoId);
                 }
             }
-            catch(Exception)
+            catch(AggregateException ex)
             {
+                foreach (var e in ex.InnerExceptions)
+                {
+                    MessageBox.Show(e.Message, Application.ProductName);
+                }
                 return null;
             }
             return videosResults;
@@ -123,27 +128,27 @@ namespace YoutubeApisDemo
             }
         }
 
-        public async Task SearchEngine(string Query, long? MaxResult, string typeSearch = "youtube#video")
+        public async Task SearchEngine(string keyword, long? MaxResult, string typeSearch = "youtube#video")
         {
             try
             {
                 var searchRequest = ytService.Search.List("snippet");
-                searchRequest.Q = Query;
+                searchRequest.Q = keyword;
                 searchRequest.MaxResults = MaxResult;
                 var searchListResponse = await searchRequest.ExecuteAsync();
-                List<string> videos = new List<string>();
-                List<string> channels = new List<string>();
-                List<string> playlists = new List<string>();
+                Dictionary<int, string> SearchResults = new Dictionary<int, string>();
 
                 //foreach (var searchResult in searchListResponse.Items)
                 //{
                     
                 //}
             }
-            catch (AggregateException )
+            catch (AggregateException ex)
             {
-
-                throw;
+                foreach (var e in ex.InnerExceptions)
+                {
+                    MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

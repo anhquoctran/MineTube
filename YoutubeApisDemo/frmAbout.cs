@@ -19,6 +19,11 @@ namespace YoutubeApisDemo
             InitializeComponent();
             lblAuthor.Text = "Anh Quoc Tran";
             lblVersion.Text = Application.ProductVersion;
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue700, Primary.Blue900, Primary.Blue500, Accent.Blue200, TextShade.WHITE);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
