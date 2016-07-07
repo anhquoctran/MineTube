@@ -53,7 +53,6 @@ namespace YoutubeApisDemo
         private static bool IsConnected()
         {
             var res = false;
-
             try
             {
                 using(var client = new WebClient())
@@ -92,8 +91,6 @@ namespace YoutubeApisDemo
             Hide();
             frmInitializers Initial = new frmInitializers(new frmSearch(), "Opening Search Tool. Getting data...");
             Initial.ShowDialog();
-            
-
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -105,8 +102,8 @@ namespace YoutubeApisDemo
 
         private void refreshConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tmrDetectNetwork.Stop();
-            tmrDetectNetwork.Start();
+            //tmrDetectNetwork.Stop();
+            //tmrDetectNetwork.Start();
         }
 
         private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
@@ -125,32 +122,6 @@ namespace YoutubeApisDemo
                 e.Cancel = true;
             else
                 e.Cancel = false;
-        }
-
-        private void tmrDetectNetwork_Tick(object sender, EventArgs e)
-        {
-            //if (IsConnected() == true)
-            //{
-            //    lblNetworkStatus.Text = "Connected to YouTube Services";
-            //    lblMess.Text = "Choose features which you want to use";
-            //    lblMess.ForeColor = Color.DimGray;
-
-            //    lblNetworkStatus.ForeColor = Color.Green;
-            //    btnPlaylist.Enabled = true;
-            //    btnSearch.Enabled = true;
-            //    btnVideoInfo.Enabled = true;
-            //}
-            //else
-            //{
-            //    lblMess.ForeColor = Color.Red;
-            //    lblNetworkStatus.Text = "Connection is lost! Check connection and press F5 to reconnect";
-            //    lblMess.Text = "You're not connected. Please check your Internet connection";
-            //    lblNetworkStatus.ForeColor = Color.Red;
-
-            //    btnPlaylist.Enabled = false;
-            //    btnSearch.Enabled = false;
-            //    btnVideoInfo.Enabled = false;
-            //}
         }
     }
 }

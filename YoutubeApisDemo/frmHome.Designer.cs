@@ -45,7 +45,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.lblNetworkStatus = new System.Windows.Forms.Label();
-            this.tmrDetectNetwork = new System.Windows.Forms.Timer(this.components);
             this.MenuConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,11 +238,6 @@
             this.lblNetworkStatus.TabIndex = 13;
             this.lblNetworkStatus.Text = "netstatus";
             // 
-            // tmrDetectNetwork
-            // 
-            this.tmrDetectNetwork.Interval = 50;
-            this.tmrDetectNetwork.Tick += new System.EventHandler(this.tmrDetectNetwork_Tick);
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -294,6 +288,5 @@
         private System.Windows.Forms.Label lblNetworkStatus;
         private MaterialSkin.Controls.MaterialContextMenuStrip MenuConnect;
         private System.Windows.Forms.ToolStripMenuItem refreshConnectionToolStripMenuItem;
-        private System.Windows.Forms.Timer tmrDetectNetwork;
     }
 }

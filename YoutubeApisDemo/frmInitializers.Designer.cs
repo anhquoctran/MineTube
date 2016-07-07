@@ -39,10 +39,10 @@
             // lblInfo
             // 
             this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblInfo.Location = new System.Drawing.Point(74, 27);
+            this.lblInfo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblInfo.Location = new System.Drawing.Point(74, 24);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(246, 21);
+            this.lblInfo.Size = new System.Drawing.Size(286, 21);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "Initializing components...";
             // 
@@ -67,7 +67,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(332, 67);
+            this.ClientSize = new System.Drawing.Size(372, 67);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
