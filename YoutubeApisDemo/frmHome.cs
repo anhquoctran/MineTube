@@ -10,8 +10,7 @@ namespace YoutubeApisDemo
     public partial class frmHome : MaterialForm
     {
         public frmHome()
-        {
-            
+        {         
             //load.ShowDialog();
             InitializeComponent();
             
@@ -19,12 +18,13 @@ namespace YoutubeApisDemo
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green900, Primary.Green300, Accent.Green100, TextShade.WHITE);
-            
+
             if (IsConnected() == true)
             {
                 lblNetworkStatus.Text = "Connected to YouTube Services";
                 lblMess.Text = "Choose features which you want to use";
-                MenuConnect.Visible = false;
+                lblMess.ForeColor = Color.DimGray;
+
                 lblNetworkStatus.ForeColor = Color.Green;
                 btnPlaylist.Enabled = true;
                 btnSearch.Enabled = true;
@@ -32,10 +32,11 @@ namespace YoutubeApisDemo
             }
             else
             {
+                lblMess.ForeColor = Color.Red;
                 lblNetworkStatus.Text = "Connection is lost! Check connection and press F5 to reconnect";
                 lblMess.Text = "You're not connected. Please check your Internet connection";
                 lblNetworkStatus.ForeColor = Color.Red;
-                MenuConnect.Visible = true;
+
                 btnPlaylist.Enabled = false;
                 btnSearch.Enabled = false;
                 btnVideoInfo.Enabled = false;
@@ -74,7 +75,7 @@ namespace YoutubeApisDemo
         private void btnVideoInfo_Click(object sender, EventArgs e)
         {
             Hide();
-            frmInitializers Initial = new frmInitializers(new frmVideo());
+            frmInitializers Initial = new frmInitializers(new frmVideo(), "Opening Video Tool. Getting data...");
             Initial.ShowDialog();
             
         }
@@ -82,19 +83,16 @@ namespace YoutubeApisDemo
         private void btnChannel_Click(object sender, EventArgs e)
         {
             Hide();
-            frmInitializers Initial = new frmInitializers(new frmPlaylist());
-            Initial.ShowDialog();
-            this.Close();
-            
-            
+            frmInitializers Initial = new frmInitializers(new frmPlaylist(), "Opening Playlist Tool. Getting data...");
+            Initial.ShowDialog();      
         }
         
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Hide();
-            frmInitializers Initial = new frmInitializers(new frmSearch());
+            frmInitializers Initial = new frmInitializers(new frmSearch(), "Opening Search Tool. Getting data...");
             Initial.ShowDialog();
-            this.Close();
+            
 
         }
 
@@ -107,26 +105,8 @@ namespace YoutubeApisDemo
 
         private void refreshConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (IsConnected() == true)
-            {
-                lblNetworkStatus.Text = "Connected to YouTube Services";
-                lblMess.Text = "Choose features which you want to use";
-                MenuConnect.Visible = false;
-                lblNetworkStatus.ForeColor = Color.Green;
-                btnPlaylist.Enabled = true;
-                btnSearch.Enabled = true;
-                btnVideoInfo.Enabled = true;
-            }
-            else
-            {
-                lblNetworkStatus.Text = "Connection is lost! Check connection and press F5 to reconnect";
-                lblMess.Text = "You're not connected. Please check your Internet connection";
-                MenuConnect.Visible = false;
-                lblNetworkStatus.ForeColor = Color.Red;
-                btnPlaylist.Enabled = false;
-                btnSearch.Enabled = false;
-                btnVideoInfo.Enabled = false;
-            }
+            tmrDetectNetwork.Stop();
+            tmrDetectNetwork.Start();
         }
 
         private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
@@ -137,6 +117,40 @@ namespace YoutubeApisDemo
         private void frmHome_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MenuConnect_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (IsConnected() == true)
+                e.Cancel = true;
+            else
+                e.Cancel = false;
+        }
+
+        private void tmrDetectNetwork_Tick(object sender, EventArgs e)
+        {
+            //if (IsConnected() == true)
+            //{
+            //    lblNetworkStatus.Text = "Connected to YouTube Services";
+            //    lblMess.Text = "Choose features which you want to use";
+            //    lblMess.ForeColor = Color.DimGray;
+
+            //    lblNetworkStatus.ForeColor = Color.Green;
+            //    btnPlaylist.Enabled = true;
+            //    btnSearch.Enabled = true;
+            //    btnVideoInfo.Enabled = true;
+            //}
+            //else
+            //{
+            //    lblMess.ForeColor = Color.Red;
+            //    lblNetworkStatus.Text = "Connection is lost! Check connection and press F5 to reconnect";
+            //    lblMess.Text = "You're not connected. Please check your Internet connection";
+            //    lblNetworkStatus.ForeColor = Color.Red;
+
+            //    btnPlaylist.Enabled = false;
+            //    btnSearch.Enabled = false;
+            //    btnVideoInfo.Enabled = false;
+            //}
         }
     }
 }

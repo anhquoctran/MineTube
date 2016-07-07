@@ -14,10 +14,11 @@ namespace YoutubeApisDemo
 {
     public partial class frmInitializers : Form
     {
-        public frmInitializers(Form frmTarget)
+        public frmInitializers(Form frmTarget, string LoadInfoText)
         {
             InitializeComponent();
             form = frmTarget;
+            lblInfo.Text = LoadInfoText;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
         }
 

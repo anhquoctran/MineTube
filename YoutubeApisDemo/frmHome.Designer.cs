@@ -45,6 +45,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.lblNetworkStatus = new System.Windows.Forms.Label();
+            this.tmrDetectNetwork = new System.Windows.Forms.Timer(this.components);
             this.MenuConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(388, 468);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
+            this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Playlist Info";
             this.toolTip1.SetToolTip(this.label2, "Get Playlist Information");
@@ -83,7 +84,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(671, 468);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Video Info";
             this.toolTip1.SetToolTip(this.label3, "Get Video Information");
@@ -125,6 +126,7 @@
             this.MenuConnect.MouseState = MaterialSkin.MouseState.HOVER;
             this.MenuConnect.Name = "MenuConnect";
             this.MenuConnect.Size = new System.Drawing.Size(172, 26);
+            this.MenuConnect.Opening += new System.ComponentModel.CancelEventHandler(this.MenuConnect_Opening);
             // 
             // refreshConnectionToolStripMenuItem
             // 
@@ -144,7 +146,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(138, 468);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Search";
             this.toolTip1.SetToolTip(this.label4, "Search");
@@ -237,6 +239,11 @@
             this.lblNetworkStatus.TabIndex = 13;
             this.lblNetworkStatus.Text = "netstatus";
             // 
+            // tmrDetectNetwork
+            // 
+            this.tmrDetectNetwork.Interval = 50;
+            this.tmrDetectNetwork.Tick += new System.EventHandler(this.tmrDetectNetwork_Tick);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -287,5 +294,6 @@
         private System.Windows.Forms.Label lblNetworkStatus;
         private MaterialSkin.Controls.MaterialContextMenuStrip MenuConnect;
         private System.Windows.Forms.ToolStripMenuItem refreshConnectionToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrDetectNetwork;
     }
 }

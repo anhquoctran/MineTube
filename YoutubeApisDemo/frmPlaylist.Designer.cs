@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlaylist));
             this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
             this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnBack = new MaterialSkin.Controls.MaterialFlatButton();
             this.listVideos = new System.Windows.Forms.ListView();
@@ -71,6 +70,7 @@
             this.saveImg = new System.Windows.Forms.SaveFileDialog();
             this.picThumbs = new System.Windows.Forms.PictureBox();
             this.PublishDateCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblStatus = new System.Windows.Forms.Label();
             this.listDataMenu.SuspendLayout();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).BeginInit();
@@ -80,27 +80,12 @@
             // 
             this.prbStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.prbStatus.Depth = 0;
-            this.prbStatus.Location = new System.Drawing.Point(909, 700);
+            this.prbStatus.Location = new System.Drawing.Point(517, 517);
             this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.prbStatus.Name = "prbStatus";
-            this.prbStatus.Size = new System.Drawing.Size(240, 5);
+            this.prbStatus.Size = new System.Drawing.Size(237, 5);
             this.prbStatus.Step = 1;
             this.prbStatus.TabIndex = 10;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStatus.Depth = 0;
-            this.lblStatus.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblStatus.Location = new System.Drawing.Point(12, 479);
-            this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(1255, 29);
-            this.lblStatus.TabIndex = 9;
-            this.lblStatus.Text = "There are nothing to display";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStatus.UseCompatibleTextRendering = true;
             // 
             // txtboxUrl
             // 
@@ -352,7 +337,7 @@
             this.lblCounter.AutoSize = true;
             this.lblCounter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblCounter.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblCounter.Location = new System.Drawing.Point(9, 688);
+            this.lblCounter.Location = new System.Drawing.Point(24, 678);
             this.lblCounter.Name = "lblCounter";
             this.lblCounter.Size = new System.Drawing.Size(159, 17);
             this.lblCounter.TabIndex = 18;
@@ -498,13 +483,28 @@
             this.PublishDateCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PublishDateCol.Width = 105;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblStatus.Location = new System.Drawing.Point(10, 493);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(1254, 21);
+            this.lblStatus.TabIndex = 30;
+            this.lblStatus.Text = "There are nothing to display";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmPlaylist
             // 
+            this.AcceptButton = this.btnGrab;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.ControlBox = false;
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.prbStatus);
             this.Controls.Add(this.richDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblDate);
@@ -518,8 +518,6 @@
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.prbStatus);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtboxUrl);
             this.Controls.Add(this.listVideos);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -542,7 +540,6 @@
         #endregion
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxUrl;
         private MaterialSkin.Controls.MaterialProgressBar prbStatus;
-        private MaterialSkin.Controls.MaterialLabel lblStatus;
         private MaterialSkin.Controls.MaterialFlatButton btnBack;
         private System.Windows.Forms.ListView listVideos;
         private System.Windows.Forms.ColumnHeader TitleCol;
@@ -582,5 +579,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveThumbnailImageToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveImg;
         private System.Windows.Forms.ColumnHeader PublishDateCol;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
