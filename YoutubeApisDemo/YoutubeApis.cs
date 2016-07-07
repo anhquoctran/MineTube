@@ -11,13 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-
 namespace YoutubeApisDemo
 {
     public class YouTubeApis
     {
-        private static YouTubeService ytService = Auth();
-        
+        private static YouTubeService ytService = Auth();        
 
         private static YouTubeService Auth()
         {
@@ -38,14 +36,17 @@ namespace YoutubeApisDemo
                     
                 }
             }
-            catch(Exception ex)
+            catch(AggregateException ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName);
+                foreach (var e in ex.InnerExceptions)
+                {
+                    MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 return null;
             }
         
         }
-
+        static int PlaylistTotalResult = 0;
         public static void GetPlaylistInformation(YouTubePlaylist playlist)
         {
             try
@@ -60,6 +61,8 @@ namespace YoutubeApisDemo
                     playlist.OwnerID = result.Items[0].Snippet.ChannelId;
                     playlist.DatePublished = result.Items[0].Snippet.PublishedAt.Value;
                     playlist.Description = result.Items[0].Snippet.Description;
+                    playlist.TotalResults = PlaylistTotalResult;
+                    playlist.OwnerTitle = result.Items[0].Snippet.ChannelTitle;
                 }
             }
             catch (AggregateException ex)
@@ -76,9 +79,10 @@ namespace YoutubeApisDemo
             YoutubeVideo[] videosResults = null;
             try
             {
-                var playlistRequest = ytService.PlaylistItems.List("contentDetails");
+                var playlistRequest = ytService.PlaylistItems.List("contentDetails,snippet");
                 playlistRequest.PlaylistId = IdPlaylist;
                 playlistRequest.MaxResults = 50;
+                
                 var playlistResponse = playlistRequest.Execute();
                 
                 videosResults = new YoutubeVideo[playlistResponse.Items.Count];
@@ -87,17 +91,17 @@ namespace YoutubeApisDemo
                 {
                     videosResults[i++] = new YoutubeVideo(item.ContentDetails.VideoId);
                 }
+
+                PlaylistTotalResult = playlistResponse.PageInfo.TotalResults.Value;
             }
             catch(AggregateException ex)
             {
                 foreach (var e in ex.InnerExceptions)
                 {
                     MessageBox.Show(e.Message, Application.ProductName);
-                }
-                
+                }               
             }
             return videosResults;
-
         }
 
         public static void GetChannelInfo(YouTubeChannel channel)
@@ -120,9 +124,12 @@ namespace YoutubeApisDemo
                     channel.AvatarUrl = Response.Items[0].Snippet.Thumbnails.Medium.Url;
                 }              
             }
-            catch (Exception ex)
+            catch (AggregateException ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (var e in ex.InnerExceptions)
+                {
+                    MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

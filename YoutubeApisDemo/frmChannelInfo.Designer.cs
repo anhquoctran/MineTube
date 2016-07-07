@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChannelInfo));
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.picAvatar = new YoutubeApisDemo.CirclePictureBox();
+            this.close = new System.Windows.Forms.PictureBox();
             this.btnSubscriberCounter = new System.Windows.Forms.Button();
             this.lblView = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblCommentCounter = new System.Windows.Forms.Label();
             this.lblVideoCounter = new System.Windows.Forms.Label();
             this.lblChannelName = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.picAvatar = new YoutubeApisDemo.CirclePictureBox();
-            this.close = new System.Windows.Forms.PictureBox();
             this.picBanner = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
@@ -67,90 +67,6 @@
             this.pnlMain.TabIndex = 0;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
             // 
-            // btnSubscriberCounter
-            // 
-            this.btnSubscriberCounter.BackColor = System.Drawing.Color.Transparent;
-            this.btnSubscriberCounter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSubscriberCounter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSubscriberCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubscriberCounter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSubscriberCounter.ForeColor = System.Drawing.Color.Silver;
-            this.btnSubscriberCounter.Location = new System.Drawing.Point(206, 119);
-            this.btnSubscriberCounter.Name = "btnSubscriberCounter";
-            this.btnSubscriberCounter.Size = new System.Drawing.Size(85, 22);
-            this.btnSubscriberCounter.TabIndex = 9;
-            this.btnSubscriberCounter.TabStop = false;
-            this.btnSubscriberCounter.Text = "0";
-            this.toolTip1.SetToolTip(this.btnSubscriberCounter, "Tổng số lượt đăng ký");
-            this.btnSubscriberCounter.UseVisualStyleBackColor = false;
-            // 
-            // lblView
-            // 
-            this.lblView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblView.AutoSize = true;
-            this.lblView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblView.ForeColor = System.Drawing.Color.Gray;
-            this.lblView.Location = new System.Drawing.Point(391, 170);
-            this.lblView.Name = "lblView";
-            this.lblView.Size = new System.Drawing.Size(64, 17);
-            this.lblView.TabIndex = 8;
-            this.lblView.Text = "0 lượt xem";
-            this.lblView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.lblView, "Tổng số lượt xem");
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(132, 119);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 22);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Đăng ký";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // lblCommentCounter
-            // 
-            this.lblCommentCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCommentCounter.AutoSize = true;
-            this.lblCommentCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCommentCounter.ForeColor = System.Drawing.Color.Gray;
-            this.lblCommentCounter.Location = new System.Drawing.Point(21, 170);
-            this.lblCommentCounter.Name = "lblCommentCounter";
-            this.lblCommentCounter.Size = new System.Drawing.Size(68, 17);
-            this.lblCommentCounter.TabIndex = 5;
-            this.lblCommentCounter.Text = "0 bình luận";
-            this.toolTip1.SetToolTip(this.lblCommentCounter, "Số lượt bình luận");
-            // 
-            // lblVideoCounter
-            // 
-            this.lblVideoCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVideoCounter.AutoSize = true;
-            this.lblVideoCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVideoCounter.ForeColor = System.Drawing.Color.Gray;
-            this.lblVideoCounter.Location = new System.Drawing.Point(219, 170);
-            this.lblVideoCounter.Name = "lblVideoCounter";
-            this.lblVideoCounter.Size = new System.Drawing.Size(47, 17);
-            this.lblVideoCounter.TabIndex = 4;
-            this.lblVideoCounter.Text = "0 video";
-            this.lblVideoCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.lblVideoCounter, "Số lượng video đã tải lên");
-            // 
-            // lblChannelName
-            // 
-            this.lblChannelName.AutoEllipsis = true;
-            this.lblChannelName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChannelName.Location = new System.Drawing.Point(127, 91);
-            this.lblChannelName.Name = "lblChannelName";
-            this.lblChannelName.Size = new System.Drawing.Size(372, 25);
-            this.lblChannelName.TabIndex = 2;
-            this.lblChannelName.Text = "Channel name";
-            this.toolTip1.SetToolTip(this.lblChannelName, "Tên kênh");
-            // 
             // picAvatar
             // 
             this.picAvatar.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -176,6 +92,85 @@
             this.close.TabStop = false;
             this.toolTip1.SetToolTip(this.close, "Đóng");
             this.close.Click += new System.EventHandler(this.close_Click);
+            // 
+            // btnSubscriberCounter
+            // 
+            this.btnSubscriberCounter.BackColor = System.Drawing.Color.Transparent;
+            this.btnSubscriberCounter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSubscriberCounter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSubscriberCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubscriberCounter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSubscriberCounter.ForeColor = System.Drawing.Color.Silver;
+            this.btnSubscriberCounter.Location = new System.Drawing.Point(206, 119);
+            this.btnSubscriberCounter.Name = "btnSubscriberCounter";
+            this.btnSubscriberCounter.Size = new System.Drawing.Size(85, 22);
+            this.btnSubscriberCounter.TabIndex = 9;
+            this.btnSubscriberCounter.TabStop = false;
+            this.btnSubscriberCounter.Text = "0";
+            this.btnSubscriberCounter.UseVisualStyleBackColor = false;
+            // 
+            // lblView
+            // 
+            this.lblView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblView.AutoSize = true;
+            this.lblView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblView.ForeColor = System.Drawing.Color.Gray;
+            this.lblView.Location = new System.Drawing.Point(391, 170);
+            this.lblView.Name = "lblView";
+            this.lblView.Size = new System.Drawing.Size(69, 17);
+            this.lblView.TabIndex = 8;
+            this.lblView.Text = "0 lượt xems";
+            this.lblView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(132, 119);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 22);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Subscribers";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // lblCommentCounter
+            // 
+            this.lblCommentCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCommentCounter.AutoSize = true;
+            this.lblCommentCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCommentCounter.ForeColor = System.Drawing.Color.Gray;
+            this.lblCommentCounter.Location = new System.Drawing.Point(21, 170);
+            this.lblCommentCounter.Name = "lblCommentCounter";
+            this.lblCommentCounter.Size = new System.Drawing.Size(75, 17);
+            this.lblCommentCounter.TabIndex = 5;
+            this.lblCommentCounter.Text = "0 comments";
+            // 
+            // lblVideoCounter
+            // 
+            this.lblVideoCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVideoCounter.AutoSize = true;
+            this.lblVideoCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVideoCounter.ForeColor = System.Drawing.Color.Gray;
+            this.lblVideoCounter.Location = new System.Drawing.Point(219, 170);
+            this.lblVideoCounter.Name = "lblVideoCounter";
+            this.lblVideoCounter.Size = new System.Drawing.Size(52, 17);
+            this.lblVideoCounter.TabIndex = 4;
+            this.lblVideoCounter.Text = "0 videos";
+            this.lblVideoCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblChannelName
+            // 
+            this.lblChannelName.AutoEllipsis = true;
+            this.lblChannelName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChannelName.Location = new System.Drawing.Point(127, 91);
+            this.lblChannelName.Name = "lblChannelName";
+            this.lblChannelName.Size = new System.Drawing.Size(390, 25);
+            this.lblChannelName.TabIndex = 2;
+            this.lblChannelName.Text = "Channel name";
             // 
             // picBanner
             // 

@@ -11,12 +11,15 @@ namespace YoutubeApisDemo
     {
         public frmHome()
         {
+            
+            //load.ShowDialog();
             InitializeComponent();
+            
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green900, Primary.Green300, Accent.Green100, TextShade.WHITE);
-
+            
             if (IsConnected() == true)
             {
                 lblNetworkStatus.Text = "Connected to YouTube Services";
@@ -58,8 +61,7 @@ namespace YoutubeApisDemo
                     {
                         res = true;
                     }
-                }
-                
+                }               
             }
             catch (Exception)
             {
@@ -72,24 +74,28 @@ namespace YoutubeApisDemo
         private void btnVideoInfo_Click(object sender, EventArgs e)
         {
             Hide();
-            frmVideo Video = new frmVideo();
-            Video.ShowDialog();
+            frmInitializers Initial = new frmInitializers(new frmVideo());
+            Initial.ShowDialog();
+            
         }
        
         private void btnChannel_Click(object sender, EventArgs e)
         {
             Hide();
-            frmPlaylist playlist = new frmPlaylist();
-            playlist.ShowDialog();
+            frmInitializers Initial = new frmInitializers(new frmPlaylist());
+            Initial.ShowDialog();
+            this.Close();
+            
             
         }
-        //mai
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Hide();
-            frmSearch search = new frmSearch();
-            search.ShowDialog();
-            
+            frmInitializers Initial = new frmInitializers(new frmSearch());
+            Initial.ShowDialog();
+            this.Close();
+
         }
 
         private void btnAbout_Click(object sender, EventArgs e)

@@ -317,9 +317,9 @@ namespace YoutubeApisDemo
         private void btnClose_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.ShowDialog();
-            Close();
+            frmInitializers Initial = new frmInitializers(new frmHome());
+            Initial.ShowDialog();
+            this.Close();
         }
 
         [StructLayout(LayoutKind.Sequential)]

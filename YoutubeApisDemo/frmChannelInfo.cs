@@ -43,12 +43,12 @@ namespace YoutubeApisDemo
         {
             YouTubeChannel channel = new YouTubeChannel(Id);
             lblChannelName.Text = channel.ChannelName;
-            //lblCommentCounter.Text = channel.CommentCounter.Value.ToString("N0") + " bình luận";
-            lblView.Text = channel.ViewCounter.Value.ToString("N0") + " lượt xem";
-            lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " video";
+            
+            lblView.Text = channel.ViewCounter.Value.ToString("N0") + " views";
+            lblVideoCounter.Text = channel.VideoCounter.Value.ToString("N0") + " videos";
             btnSubscriberCounter.Text = channel.SubscribeCounter.Value.ToString("N0");
             picAvatar.ImageLocation = channel.AvatarUrl;
-            lblCommentCounter.Text = channel.CommentCounter.Value.ToString("N0") + " bình luận";
+            lblCommentCounter.Text = channel.CommentCounter.Value.ToString("N0") + " comments";
             if (channel.CoverPhotoUrl.Contains("default_banner"))
             {
                 picBanner.Image = Properties.Resources.blackPanel;

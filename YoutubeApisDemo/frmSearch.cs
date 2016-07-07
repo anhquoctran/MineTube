@@ -24,16 +24,15 @@ namespace YoutubeApisDemo
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             prbStatus.Visible = false;
-            radioBtnVideo.Checked = true;
-            
+            radioBtnVideo.Checked = true;           
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.ShowDialog();
-            Close();
+            frmInitializers Initial = new frmInitializers(new frmHome());
+            Initial.ShowDialog();
+            this.Close();
         }
 
         private void radioBtnVideo_CheckedChanged(object sender, EventArgs e)

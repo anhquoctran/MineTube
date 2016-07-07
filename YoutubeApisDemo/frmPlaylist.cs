@@ -1,15 +1,18 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using MaterialSkin;
-using MaterialSkin.Controls;
 
 namespace YoutubeApisDemo
 {
@@ -23,18 +26,23 @@ namespace YoutubeApisDemo
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             prbStatus.Visible = false;
-            
+            lblDate.Text = "n/a";
             listVideos.Columns[10].Dispose();
             btnNext.Visible = false;
             btnPrev.Visible = false;
+            ImageIsNullOrEmpty = true;
+            lblChannelOwner.Visible = false;
+            
         }
-        //string Id = "";
-
+        int count = 0;
+        bool ImageIsNullOrEmpty = false;
         private void btnGet_Click(object sender, EventArgs e)
         {
+            //prbStatus.Visible = true;
+            
             GetPlaylistInfo(txtboxUrl.Text);
         }
-
+        string ChannelId = "";
         private void GetPlaylistInfo(string inputId)
         {
             btnGrab.Enabled = false;
@@ -47,19 +55,31 @@ namespace YoutubeApisDemo
                 MessageBox.Show("Required field is not null!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {                          
+            {
                 YoutubeVideo[] videos = YouTubeApis.GetVideoOfPlaylist(inputId);
+                YouTubePlaylist playlist = new YouTubePlaylist(inputId);
                 try
-                {
+                {                  
+                    picThumbs.ImageLocation = playlist.Thumbs;
+                    ImageIsNullOrEmpty = false;
+                    lblTitlePlaylist.Text = playlist.PlaylistTitle;
+                    lblDate.Text = playlist.DatePublished.Day.ToString() + "/" + playlist.DatePublished.Month.ToString() + "/" + playlist.DatePublished.Year.ToString();
+                    richDescription.Text = playlist.Description;
+                    lblChannelOwner.Text = playlist.OwnerTitle;
+                    lblChannelOwner.Visible = true;
+                    ChannelId = playlist.OwnerID;
                     int index = 1;
+                    prbStatus.Maximum = videos.Length;
                     
                     foreach (var video in videos)
                     {
+                        
                         var item = new ListViewItem();
                         item.Text = index.ToString();
                         item.SubItems.Add(video.Title);
                         item.SubItems.Add(video.Duration);
                         item.SubItems.Add(video.ChannelTitle);
+                        item.SubItems.Add(video.DatePublished.Day.ToString() + "/" + video.DatePublished.Month.ToString() + "/" + video.DatePublished.Year.ToString());
                         item.SubItems.Add(video.View.Value.ToString("N0"));
                         item.SubItems.Add(video.CommentCount.Value.ToString("N0"));
                         item.SubItems.Add(video.Quality);
@@ -69,18 +89,17 @@ namespace YoutubeApisDemo
                         item.SubItems.Add(video.ChannelId);
 
                         listVideos.Items.Add(item);
+                        
                         index++;
                         
                     }
                     //listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
 
                     lblStatus.Visible = false;
-                    prbStatus.Visible = false;
+                    //prbStatus.Visible = false;
                     btnPrev.Visible = true;
                     btnPrev.Enabled = false;
                     btnNext.Visible = true;
-                    
-
                 }
                 catch(AggregateException ex)
                 {
@@ -89,9 +108,11 @@ namespace YoutubeApisDemo
                         MessageBox.Show(e.Message);
                     }
                 }
+                count = playlist.TotalResults;
+                lblCounter.Text = "Displayed " + listVideos.Items.Count.ToString() + " videos in " + playlist.TotalResults.ToString() + " videos total";
             }
             btnGrab.Enabled = true;
-            lblCounter.Text = listVideos.Items.Count.ToString() + " videos in 0 videos total";
+            
             Cursor.Current = Cursors.Default;
         }
 
@@ -106,9 +127,9 @@ namespace YoutubeApisDemo
         private void btnBack_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.ShowDialog();
-            Close();
+            frmInitializers Initial = new frmInitializers(new frmHome());
+            Initial.ShowDialog();
+            this.Close();
         }
 
         private void bwFetch_DoWork(object sender, DoWorkEventArgs e)
@@ -171,7 +192,8 @@ namespace YoutubeApisDemo
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listVideos.SelectedItems[0].Remove();
-            
+            lblCounter.Text = "Displayed " + listVideos.Items.Count.ToString() + " videos in " + count.ToString() + " videos total";
+
         }
 
         private void copyVideoURLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,11 +218,66 @@ namespace YoutubeApisDemo
         {
             listVideos.Items.Clear();
             lblStatus.Visible = true;
+            lblCounter.Visible = false;
         }
 
         private void frmPlaylist_Load(object sender, EventArgs e)
         {
             lblCounter.Text = "";
+        }
+
+        private void copyThumbnailURLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(picThumbs.ImageLocation);
+        }
+
+        private void menuThumbs_Opening(object sender, CancelEventArgs e)
+        {
+            if (ImageIsNullOrEmpty == true)
+            {
+                copyThumbnailURLToolStripMenuItem.Enabled = false;
+                saveThumbnailImageToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                copyThumbnailURLToolStripMenuItem.Enabled = true;
+                saveThumbnailImageToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void saveThumbnailImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //FileStream fs = new FileStream
+
+            saveImg.Filter = "JPG files (*.jpg)|*.jpg;*.jpeg|PNG files (*.png)|*.png";
+            var defDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            saveImg.InitialDirectory = defDirectory;
+            saveImg.RestoreDirectory = true;
+            saveImg.FileName = Path.GetFileName(picThumbs.ImageLocation);
+            saveImg.DefaultExt = "JPG files (*.jpg)|*.jpg;*.jpeg";
+            var saveResult = saveImg.ShowDialog();
+            if (saveResult == DialogResult.OK)
+            {
+                switch (Path.GetExtension(saveImg.FileName))
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        picThumbs.Image.Save(saveImg.FileName, ImageFormat.Jpeg);
+                        break;
+                    case ".png":
+                        picThumbs.Image.Save(saveImg.FileName, ImageFormat.Png);
+                        break;
+                    default:
+                        picThumbs.Image.Save(saveImg.FileName, ImageFormat.Jpeg);
+                        break;
+                }
+            }
+        }
+
+        private void lblChannelOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmChannelInfo info = new frmChannelInfo(ChannelId);
+            info.ShowDialog();
         }
     }
 }
