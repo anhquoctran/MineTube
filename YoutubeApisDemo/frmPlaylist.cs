@@ -23,8 +23,8 @@ namespace YoutubeApisDemo
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             prbStatus.Visible = false;
-            listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            listVideos.Columns[9].Dispose();
+            
+            listVideos.Columns[10].Dispose();
             btnNext.Visible = false;
             btnPrev.Visible = false;
         }
@@ -37,6 +37,10 @@ namespace YoutubeApisDemo
 
         private void GetPlaylistInfo(string inputId)
         {
+            btnGrab.Enabled = false;
+            lblCounter.Text = "Working on it...";
+            lblCounter.Visible = true;
+            Cursor.Current = Cursors.WaitCursor;
             listVideos.Items.Clear();
             if (inputId == "")
             {
@@ -44,14 +48,16 @@ namespace YoutubeApisDemo
             }
             else
             {                          
-                YoutubeVideo[] videos = YouTubeApis.GetPlaylistInfo(inputId);
+                YoutubeVideo[] videos = YouTubeApis.GetVideoOfPlaylist(inputId);
                 try
                 {
-                    btnGet.Enabled = false;
+                    int index = 1;
+                    
                     foreach (var video in videos)
                     {
                         var item = new ListViewItem();
-                        item.Text = video.Title;
+                        item.Text = index.ToString();
+                        item.SubItems.Add(video.Title);
                         item.SubItems.Add(video.Duration);
                         item.SubItems.Add(video.ChannelTitle);
                         item.SubItems.Add(video.View.Value.ToString("N0"));
@@ -63,25 +69,17 @@ namespace YoutubeApisDemo
                         item.SubItems.Add(video.ChannelId);
 
                         listVideos.Items.Add(item);
-
-                        //var data = new[]
-                        //{
-                        //    new [] {video.Title, video.Duration, video.ChannelTitle, video.View.Value.ToString("N0"), video.CommentCount.Value.ToString("N0"), video.Quality, video.Like.Value.ToString("N0"), video.Dislike.Value.ToString("N0"), "https://www.youtube.com/watch?v=" + video.Id, video.ChannelId}
-                        //};
-                        //foreach (var content in data)
-                        //{
-                        //    var item = new ListViewItem(content);
-                        //    listVideos.Items.Add(item);
-                        //}
+                        index++;
+                        
                     }
-                    listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    //listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
 
                     lblStatus.Visible = false;
                     prbStatus.Visible = false;
                     btnPrev.Visible = true;
                     btnPrev.Enabled = false;
                     btnNext.Visible = true;
-                    btnGet.Enabled = true;
+                    
 
                 }
                 catch(AggregateException ex)
@@ -91,7 +89,10 @@ namespace YoutubeApisDemo
                         MessageBox.Show(e.Message);
                     }
                 }
-            }          
+            }
+            btnGrab.Enabled = true;
+            lblCounter.Text = listVideos.Items.Count.ToString() + " videos in 0 videos total";
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -162,7 +163,7 @@ namespace YoutubeApisDemo
         private void getPublisherInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var publisherId = item.SubItems[4].Text;
+            var publisherId = item.SubItems[10].Text;
             frmChannelInfo channel = new frmChannelInfo(publisherId);
             channel.ShowDialog();
         }
@@ -176,14 +177,14 @@ namespace YoutubeApisDemo
         private void copyVideoURLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var urlVideo = item.SubItems[3].Text;
+            var urlVideo = item.SubItems[9].Text;
             Clipboard.SetText(urlVideo);
         }
 
         private void getVideoInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var urlVideo = item.SubItems[3].Text;
+            var urlVideo = item.SubItems[9].Text;
             var videoId = urlVideo.Substring(32);
             frmVideo video = new frmVideo(videoId);
             video.btnBack.Visible = false;
@@ -195,6 +196,11 @@ namespace YoutubeApisDemo
         {
             listVideos.Items.Clear();
             lblStatus.Visible = true;
-        }       
+        }
+
+        private void frmPlaylist_Load(object sender, EventArgs e)
+        {
+            lblCounter.Text = "";
+        }
     }
 }

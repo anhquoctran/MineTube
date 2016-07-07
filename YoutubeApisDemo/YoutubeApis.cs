@@ -46,7 +46,32 @@ namespace YoutubeApisDemo
         
         }
 
-        public static YoutubeVideo[] GetPlaylistInfo(string IdPlaylist)
+        public static void GetPlaylistInformation(YouTubePlaylist playlist)
+        {
+            try
+            {
+                var playlistRquest = ytService.Playlists.List("snippet");
+                playlistRquest.Id = playlist.Id;
+                var result = playlistRquest.Execute();
+                if (result.Items.Count > 0 )
+                {
+                    playlist.PlaylistTitle = result.Items[0].Snippet.Title;
+                    playlist.Thumbs = result.Items[0].Snippet.Thumbnails.Medium.Url;
+                    playlist.OwnerID = result.Items[0].Snippet.ChannelId;
+                    playlist.DatePublished = result.Items[0].Snippet.PublishedAt.Value;
+                    playlist.Description = result.Items[0].Snippet.Description;
+                }
+            }
+            catch (AggregateException ex)
+            {
+                foreach(var e in ex.InnerExceptions)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static YoutubeVideo[] GetVideoOfPlaylist(string IdPlaylist)
         {
             YoutubeVideo[] videosResults = null;
             try
@@ -69,7 +94,7 @@ namespace YoutubeApisDemo
                 {
                     MessageBox.Show(e.Message, Application.ProductName);
                 }
-                return null;
+                
             }
             return videosResults;
 
@@ -79,47 +104,21 @@ namespace YoutubeApisDemo
         {
             try
             {
-
-                var StatisticsRequest = ytService.Channels.List("statistics");
+                var StatisticsRequest = ytService.Channels.List("statistics,status,brandingSettings,snippet");
                 StatisticsRequest.Id = channel.Id;
-                var StatisticsResponse = StatisticsRequest.Execute();
+                var Response = StatisticsRequest.Execute();
 
-                if (StatisticsResponse.Items.Count > 0)
+                if (Response.Items.Count > 0)
                 {
-                    channel.SubscribeCounter = StatisticsResponse.Items[0].Statistics.SubscriberCount;
-                    channel.VideoCounter = StatisticsResponse.Items[0].Statistics.VideoCount;
-                    channel.ViewCounter = StatisticsResponse.Items[0].Statistics.ViewCount;
-                    channel.CommentCounter = StatisticsResponse.Items[0].Statistics.CommentCount;
-                    
-                }
-
-                var StatusRequest = ytService.Channels.List("status");
-                StatusRequest.Id = channel.Id;
-                var StatusResponse = StatusRequest.Execute();
-
-                if(StatusResponse.Items.Count > 0)
-                {
-                    channel.IsLinked = StatusResponse.Items[0].Status.IsLinked;
-                }
-
-                var BrandingRequest = ytService.Channels.List("brandingSettings");
-                BrandingRequest.Id = channel.Id;
-                var BrandingResponse = BrandingRequest.Execute();
-
-                if (BrandingResponse.Items.Count > 0)
-                {
-                    channel.CoverPhotoUrl = BrandingResponse.Items[0].BrandingSettings.Image.BannerImageUrl;
-                }
-
-                var SnippetRequest = ytService.Channels.List("snippet");
-                SnippetRequest.Id = channel.Id;
-                var SnippetResponse = SnippetRequest.Execute();
-
-                if (SnippetResponse.Items.Count > 0)
-                {
-                    channel.ChannelName = SnippetResponse.Items[0].Snippet.Title;
-                    channel.AvatarUrl = SnippetResponse.Items[0].Snippet.Thumbnails.Medium.Url;
-                }
+                    channel.SubscribeCounter = Response.Items[0].Statistics.SubscriberCount;
+                    channel.VideoCounter = Response.Items[0].Statistics.VideoCount;
+                    channel.ViewCounter = Response.Items[0].Statistics.ViewCount;
+                    channel.CommentCounter = Response.Items[0].Statistics.CommentCount;
+                    channel.IsLinked = Response.Items[0].Status.IsLinked;
+                    channel.CoverPhotoUrl = Response.Items[0].BrandingSettings.Image.BannerImageUrl;
+                    channel.ChannelName = Response.Items[0].Snippet.Title;
+                    channel.AvatarUrl = Response.Items[0].Snippet.Thumbnails.Medium.Url;
+                }              
             }
             catch (Exception ex)
             {
@@ -136,11 +135,6 @@ namespace YoutubeApisDemo
                 searchRequest.MaxResults = MaxResult;
                 var searchListResponse = await searchRequest.ExecuteAsync();
                 Dictionary<int, string> SearchResults = new Dictionary<int, string>();
-
-                //foreach (var searchResult in searchListResponse.Items)
-                //{
-                    
-                //}
             }
             catch (AggregateException ex)
             {
@@ -155,29 +149,17 @@ namespace YoutubeApisDemo
         {
             try
             {
-                var videoRequest = ytService.Videos.List("snippet");
+                var videoRequest = ytService.Videos.List("snippet,statistics,contentDetails");
                 videoRequest.Id = video.Id;
 
-                var request = ytService.Videos.List("statistics");
-                request.Id = video.Id;
-                var response1 = request.Execute();
+                var response = videoRequest.Execute();                
 
-                var response = videoRequest.Execute();
-
-                var request2 = ytService.Videos.List("contentDetails");
-                request2.Id = video.Id;
-                var response2 = request2.Execute();
-
-                if (response1.Items.Count > 0)
-                {
-                    video.CommentCount = response1.Items[0].Statistics.CommentCount;
-                    video.View = response1.Items[0].Statistics.ViewCount;
-                    video.Like = response1.Items[0].Statistics.LikeCount;
-                    video.Dislike = response1.Items[0].Statistics.DislikeCount;
-                    
-                }
                 if (response.Items.Count > 0)
                 {
+                    video.CommentCount = response.Items[0].Statistics.CommentCount;
+                    video.View = response.Items[0].Statistics.ViewCount;
+                    video.Like = response.Items[0].Statistics.LikeCount;
+                    video.Dislike = response.Items[0].Statistics.DislikeCount;
                     video.Title = response.Items[0].Snippet.Title;
                     video.Description = response.Items[0].Snippet.Description;
                     video.DatePublished = response.Items[0].Snippet.PublishedAt.Value;
@@ -185,7 +167,6 @@ namespace YoutubeApisDemo
                     video.ThumbUrl = response.Items[0].Snippet.Thumbnails.High.Url;
                     video.ChannelId = response.Items[0].Snippet.ChannelId;
                     video.CategoryId = response.Items[0].Snippet.CategoryId;
-
                     if (response.Items[0].Snippet.Tags != null)
                     {
                         video.VideoTags = new string[response.Items[0].Snippet.Tags.Count];
@@ -195,16 +176,15 @@ namespace YoutubeApisDemo
                     {
                         video.VideoTags = new string[] { "Không có thẻ nào" };
                     }
-                }
-                if (response2.Items.Count > 0)
-                {
-                    video.Dimension = response2.Items[0].ContentDetails.Dimension.ToUpper();
-                    video.Quality = response2.Items[0].ContentDetails.Definition.ToUpper();
-                    string s = response2.Items[0].ContentDetails.Duration;
+
+                    video.Dimension = response.Items[0].ContentDetails.Dimension.ToUpper();
+                    video.Quality = response.Items[0].ContentDetails.Definition.ToUpper();
+                    string s = response.Items[0].ContentDetails.Duration;
                     TimeSpan ts = XmlConvert.ToTimeSpan(s);
 
                     video.Duration = FormatTime(ts);
                 }
+                
                 else
                 {
                     MessageBox.Show("Không thể tìm thấy video!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace YoutubeApisDemo
 {
-    public class YouTubePlaylists
+    public class YouTubePlaylist
     {
-        public YouTubePlaylists(string playlistId)
+        public YouTubePlaylist(string playlistId)
         {
             Id = playlistId;
+            YouTubeApis.GetPlaylistInformation(this);
         }
 
         public string Id { get; set; }
@@ -18,5 +19,10 @@ namespace YoutubeApisDemo
         public int TotalResults { get; set; }
         public int ResultPerPage { get; set; }
         public string PageToken { get; set; }
+        public string PlaylistTitle { get; set; }
+        public string OwnerID { get; set; }
+        public string Thumbs { get; set; }
+        public DateTime DatePublished { get; set; }
+        public string Description { get; set; }
     }
 }

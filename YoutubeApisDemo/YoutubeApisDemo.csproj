@@ -251,7 +251,6 @@
     <Compile Include="CustomControls\PlaceholderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IYouTubeSong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomControls\RoundButton.cs">
@@ -259,7 +258,7 @@
     </Compile>
     <Compile Include="YouTubeApis.cs" />
     <Compile Include="YouTubeChannel.cs" />
-    <Compile Include="YouTubePlaylists.cs" />
+    <Compile Include="YouTubePlaylist.cs" />
     <Compile Include="YoutubeVideo.cs" />
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
