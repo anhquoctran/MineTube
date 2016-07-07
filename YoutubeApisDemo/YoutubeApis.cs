@@ -36,7 +36,7 @@ namespace YoutubeApisDemo
                     
                 }
             }
-            catch(AggregateException ex)
+            catch (AggregateException ex)
             {
                 foreach (var e in ex.InnerExceptions)
                 {
@@ -94,7 +94,7 @@ namespace YoutubeApisDemo
 
                 PlaylistTotalResult = playlistResponse.PageInfo.TotalResults.Value;
             }
-            catch(AggregateException ex)
+            catch (AggregateException ex)
             {
                 foreach (var e in ex.InnerExceptions)
                 {
@@ -133,24 +133,24 @@ namespace YoutubeApisDemo
             }
         }
 
-        public async Task SearchEngine(string keyword, long? MaxResult, string typeSearch = "youtube#video")
-        {
-            try
-            {
-                var searchRequest = ytService.Search.List("snippet");
-                searchRequest.Q = keyword;
-                searchRequest.MaxResults = MaxResult;
-                var searchListResponse = await searchRequest.ExecuteAsync();
-                Dictionary<int, string> SearchResults = new Dictionary<int, string>();
-            }
-            catch (AggregateException ex)
-            {
-                foreach (var e in ex.InnerExceptions)
-                {
-                    MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+        //public async Task SearchEngine(string keyword, long? MaxResult, string typeSearch = "youtube#video")
+        //{
+        //    try
+        //    {
+        //        var searchRequest = ytService.Search.List("snippet");
+        //        searchRequest.Q = keyword;
+        //        searchRequest.MaxResults = MaxResult;
+        //        var searchListResponse = await searchRequest.ExecuteAsync();
+        //        Dictionary<int, string> SearchResults = new Dictionary<int, string>();
+        //    }
+        //    catch (AggregateException ex)
+        //    {
+        //        foreach (var e in ex.InnerExceptions)
+        //        {
+        //            MessageBox.Show(e.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
 
         public static void GetVideoInfo(YoutubeVideo video)
         {

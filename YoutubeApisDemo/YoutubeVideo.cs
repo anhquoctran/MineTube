@@ -19,8 +19,6 @@ namespace YoutubeApisDemo
         {
             Id = VideoId;
             YouTubeApis.GetVideoInfo(this);
-        }
-
-        
+        }  
     }
 }
