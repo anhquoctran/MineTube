@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace YoutubeApisDemo
 {
@@ -62,7 +64,7 @@ namespace YoutubeApisDemo
                 materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red100, TextShade.WHITE);
                 lblVersion.Text = "Current version: " + Application.ProductVersion + " - Copyright © 2016 Anh Quoc Tran";
-
+                ImageIsNullOrEmpty = true;
                 lblLoadStatus.Visible = false;
             }
             else
@@ -70,12 +72,11 @@ namespace YoutubeApisDemo
                 MessageBox.Show("Can't connect to the Internet! Please try again!");
                 Close();
             }
-            
-                      
+                               
         }
 
         protected string VideoUrl = "";
-
+        bool ImageIsNullOrEmpty = true;
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string input = txtboxSearch.Text;
@@ -111,16 +112,18 @@ namespace YoutubeApisDemo
             YoutubeVideo Video = new YoutubeVideo(Id);
             lblVideoTitle.Text = Video.Title;
             lblPub.Text = Video.ChannelTitle;
-            lblDate.Text = "Published date: " + Video.DatePublished.Hour.ToString() + " hours " + Video.DatePublished.Month + " min " + Video.DatePublished.Second.ToString() + " sec - " + Video.DatePublished.Day.ToString() + "/" + Video.DatePublished.Month.ToString() + "/" + Video.DatePublished.Year.ToString();
+            lblDate.Text = "Published date: " + Video.DatePublished.Day.ToString() + "/" + Video.DatePublished.Month.ToString() + "/" + Video.DatePublished.Year.ToString();
             lblDescription.Text = Video.Description;
             lblDuration.Visible = true;
             if (Video.ThumbUrl == null)
             {
                 picVideoThumb.Image = Properties.Resources.thumbnail_video;
+                ImageIsNullOrEmpty = true;
             }
             else
             {
                 picVideoThumb.ImageLocation = Video.ThumbUrl;
+                ImageIsNullOrEmpty = false;
             }
 
             if (Video.Quality == "HD")
@@ -319,6 +322,7 @@ namespace YoutubeApisDemo
             Hide();
             frmInitializers Initial = new frmInitializers(new frmHome(), "Backing to Home...");
             Initial.ShowDialog();
+            
             this.Close();
         }
 
@@ -344,6 +348,54 @@ namespace YoutubeApisDemo
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearch_Click(sender, e);
+            }
+        }
+
+        private void copyImageURLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(picVideoThumb.ImageLocation);
+        }
+
+        private void saveImageAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveImg = new SaveFileDialog();
+            saveImg.Title = "Save image as...";
+            saveImg.FileName = Path.GetFileName(picVideoThumb.ImageLocation);
+            var defaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            saveImg.InitialDirectory = defaultDirectory;
+            saveImg.RestoreDirectory = true;
+            saveImg.Filter = "JPG Image (*.jpg)|*.jpg;*.jpeg|PNG Image (*.png)|*.png";
+            saveImg.DefaultExt = "JPG Image (*.jpg)|*.jpg;*.jpeg";
+            var saveResult = saveImg.ShowDialog();
+            if (saveResult == DialogResult.OK)
+            {
+                switch (Path.GetExtension(saveImg.FileName))
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        picVideoThumb.Image.Save(saveImg.FileName, ImageFormat.Jpeg);
+                        break;
+                    case ".png":
+                        picVideoThumb.Image.Save(saveImg.FileName, ImageFormat.Png);
+                        break;
+                    default:
+                        picVideoThumb.Image.Save(saveImg.FileName, ImageFormat.Jpeg);
+                        break;
+                }
+            }
+        }
+
+        private void menuThumbs_Opening(object sender, CancelEventArgs e)
+        {
+            if (ImageIsNullOrEmpty == true)
+            {
+                copyImageURLToolStripMenuItem.Enabled = false;
+                saveImageAsToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                copyImageURLToolStripMenuItem.Enabled = true;
+                saveImageAsToolStripMenuItem.Enabled = true;
             }
         }
     }

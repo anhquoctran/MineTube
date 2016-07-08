@@ -56,10 +56,14 @@
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.menuThumbs = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.copyImageURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveImageAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).BeginInit();
+            this.menuThumbs.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVideoInfo
@@ -244,13 +248,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.BackColor = System.Drawing.Color.White;
             this.lblDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblDescription.BulletIndent = 1;
             this.lblDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblDescription.ForeColor = System.Drawing.Color.Black;
             this.lblDescription.Location = new System.Drawing.Point(0, 3);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.ReadOnly = true;
-            this.lblDescription.Size = new System.Drawing.Size(675, 250);
+            this.lblDescription.Size = new System.Drawing.Size(675, 236);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.TabStop = false;
             this.lblDescription.Text = "";
@@ -319,6 +324,7 @@
             // 
             // picVideoThumb
             // 
+            this.picVideoThumb.ContextMenuStrip = this.menuThumbs;
             this.picVideoThumb.Location = new System.Drawing.Point(0, 16);
             this.picVideoThumb.Name = "picVideoThumb";
             this.picVideoThumb.Size = new System.Drawing.Size(219, 144);
@@ -405,6 +411,33 @@
             this.lblVersion.TabIndex = 21;
             this.lblVersion.Text = "label2";
             // 
+            // menuThumbs
+            // 
+            this.menuThumbs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuThumbs.Depth = 0;
+            this.menuThumbs.DropShadowEnabled = false;
+            this.menuThumbs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyImageURLToolStripMenuItem,
+            this.saveImageAsToolStripMenuItem});
+            this.menuThumbs.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuThumbs.Name = "menuThumbs";
+            this.menuThumbs.Size = new System.Drawing.Size(163, 70);
+            this.menuThumbs.Opening += new System.ComponentModel.CancelEventHandler(this.menuThumbs_Opening);
+            // 
+            // copyImageURLToolStripMenuItem
+            // 
+            this.copyImageURLToolStripMenuItem.Name = "copyImageURLToolStripMenuItem";
+            this.copyImageURLToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.copyImageURLToolStripMenuItem.Text = "Copy image URL";
+            this.copyImageURLToolStripMenuItem.Click += new System.EventHandler(this.copyImageURLToolStripMenuItem_Click);
+            // 
+            // saveImageAsToolStripMenuItem
+            // 
+            this.saveImageAsToolStripMenuItem.Name = "saveImageAsToolStripMenuItem";
+            this.saveImageAsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveImageAsToolStripMenuItem.Text = "Save image as...";
+            this.saveImageAsToolStripMenuItem.Click += new System.EventHandler(this.saveImageAsToolStripMenuItem_Click);
+            // 
             // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,6 +463,7 @@
             this.groupBox2.ResumeLayout(false);
             this.pnlDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).EndInit();
+            this.menuThumbs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,6 +496,9 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnSearch;
         private System.Windows.Forms.Label lblVersion;
         public MaterialSkin.Controls.MaterialRaisedButton btnBack;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuThumbs;
+        private System.Windows.Forms.ToolStripMenuItem copyImageURLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveImageAsToolStripMenuItem;
     }
 }
 

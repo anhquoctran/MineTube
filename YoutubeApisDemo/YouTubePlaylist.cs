@@ -18,12 +18,13 @@ namespace YoutubeApisDemo
         public int MaxResult { get; set; }
         public int TotalResults { get; set; }
         public int ResultPerPage { get; set; }
-        public string PageToken { get; set; }
         public string PlaylistTitle { get; set; }
         public string OwnerID { get; set; }
         public string OwnerTitle { get; set; }
         public string Thumbs { get; set; }
         public DateTime DatePublished { get; set; }
         public string Description { get; set; }
+        public string NextPageToken { get; set; }
+        public string PrevPageToken { get; set; }
     }
 }

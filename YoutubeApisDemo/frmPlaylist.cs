@@ -1,6 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 
+using YoutubeExtractor;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace YoutubeApisDemo
 {
@@ -27,9 +30,8 @@ namespace YoutubeApisDemo
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             prbStatus.Visible = false;
             lblDate.Text = "n/a";
-            listVideos.Columns[10].Dispose();
-            btnNext.Visible = false;
-            btnPrev.Visible = false;
+            listVideos.Columns[11].Dispose();
+            
             ImageIsNullOrEmpty = true;
             lblChannelOwner.Visible = false;
             
@@ -72,8 +74,7 @@ namespace YoutubeApisDemo
                     prbStatus.Maximum = videos.Length;
                     
                     foreach (var video in videos)
-                    {
-                        
+                    {                       
                         var item = new ListViewItem();
                         item.Text = index.ToString();
                         item.SubItems.Add(video.Title);
@@ -87,19 +88,20 @@ namespace YoutubeApisDemo
                         item.SubItems.Add(video.Dislike.Value.ToString("N0"));
                         item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
                         item.SubItems.Add(video.ChannelId);
-
-                        listVideos.Items.Add(item);
-                        
-                        index++;
-                        
+                        listVideos.Items.Add(item);                      
+                        index++;                        
                     }
-                    //listVideos.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-
+                                  
                     lblStatus.Visible = false;
-                    //prbStatus.Visible = false;
-                    btnPrev.Visible = true;
-                    btnPrev.Enabled = false;
-                    btnNext.Visible = true;
+                    
+                    if (playlist.NextPageToken == "")
+                    {
+                        btnNext.Enabled = false;
+                    }
+                    if(playlist.NextPageToken != "")
+                    {
+                        btnNext.Enabled = true;
+                    }
                 }
                 catch(AggregateException ex)
                 {
@@ -114,21 +116,13 @@ namespace YoutubeApisDemo
             btnGrab.Enabled = true;
             
             Cursor.Current = Cursors.Default;
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmHome home = new frmHome();
-            home.ShowDialog();
-            Close();
-        }
+        }       
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Hide();
             frmInitializers Initial = new frmInitializers(new frmHome(), "Backing to Home...");
-            Initial.ShowDialog();
+            Initial.ShowDialog();            
             this.Close();
         }
 
@@ -177,6 +171,15 @@ namespace YoutubeApisDemo
                 copyVideoURLToolStripMenuItem.Enabled = true;
                 clearToolStripMenuItem.Enabled = true;
                 clearAllItemsToolStripMenuItem.Enabled = true;
+                ListViewItem item = listVideos.SelectedItems[0];
+                //if(item.SubItems[1].Text.Contains("[Downloading] "))
+                //{
+                //    downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = false;
+                //}
+                //else
+                //{
+                //    downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = true;
+                //}
             }
             
         }
@@ -184,7 +187,7 @@ namespace YoutubeApisDemo
         private void getPublisherInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var publisherId = item.SubItems[10].Text;
+            var publisherId = item.SubItems[11].Text;
             frmChannelInfo channel = new frmChannelInfo(publisherId);
             channel.ShowDialog();
         }
@@ -199,14 +202,14 @@ namespace YoutubeApisDemo
         private void copyVideoURLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var urlVideo = item.SubItems[9].Text;
+            var urlVideo = item.SubItems[10].Text;
             Clipboard.SetText(urlVideo);
         }
 
         private void getVideoInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listVideos.SelectedItems[0];
-            var urlVideo = item.SubItems[9].Text;
+            var urlVideo = item.SubItems[10].Text;
             var videoId = urlVideo.Substring(32);
             frmVideo video = new frmVideo(videoId);
             video.btnBack.Visible = false;
@@ -249,7 +252,7 @@ namespace YoutubeApisDemo
         {
             //FileStream fs = new FileStream
 
-            saveImg.Filter = "JPG files (*.jpg)|*.jpg;*.jpeg|PNG files (*.png)|*.png";
+            saveImg.Filter = "JPG Image (*.jpg)|*.jpg;*.jpeg|PNG Image (*.png)|*.png";
             var defDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             saveImg.InitialDirectory = defDirectory;
             saveImg.RestoreDirectory = true;
@@ -278,6 +281,42 @@ namespace YoutubeApisDemo
         {
             frmChannelInfo info = new frmChannelInfo(ChannelId);
             info.ShowDialog();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void downloadWithOurDownloadToolcomingSoonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = listVideos.SelectedItems[0];
+            var urlVideo = item.SubItems[10].Text;
+            frmDownload download = new frmDownload(urlVideo, item.SubItems[1].Text);
+            item.SubItems[1].Text = "[Downloading] " + item.SubItems[1].Text;
+            
+            download.Show();
+        }
+
+        private void downloadWithInternetDownloadManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = listVideos.SelectedItems[0];
+            var UrlVideo = item.SubItems[10].Text;
+            IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(UrlVideo);
+            VideoInfo video = videoInfos.First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
+            var videoDownloadUrl = video.DownloadUrl;
+
+            Process.Start("C:\\Program Files (x86)\\Internet Download Manager\\IDMan.exe", "/a /d " + videoDownloadUrl);
+        }
+
+        private void listVideos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

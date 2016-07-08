@@ -63,6 +63,8 @@ namespace YoutubeApisDemo
                     playlist.Description = result.Items[0].Snippet.Description;
                     playlist.TotalResults = PlaylistTotalResult;
                     playlist.OwnerTitle = result.Items[0].Snippet.ChannelTitle;
+                    playlist.NextPageToken = result.NextPageToken;
+                    playlist.PrevPageToken = result.PrevPageToken;
                 }
             }
             catch (AggregateException ex)

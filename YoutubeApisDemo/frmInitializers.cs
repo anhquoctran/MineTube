@@ -14,10 +14,11 @@ namespace YoutubeApisDemo
 {
     public partial class frmInitializers : Form
     {
-        public frmInitializers(Form frmTarget, string LoadInfoText)
+        
+        public frmInitializers(Form FormTarget, string LoadInfoText)
         {
             InitializeComponent();
-            form = frmTarget;
+            form = FormTarget;
             lblInfo.Text = LoadInfoText;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
         }
@@ -43,8 +44,7 @@ namespace YoutubeApisDemo
             this.Hide();
             loading.Stop();
             form.FormClosed += (s, args) => this.Close();
-            form.Show();
-            
+            form.Show();            
         }
     }
 }
