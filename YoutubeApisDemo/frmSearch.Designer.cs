@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearch));
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.materialRadioButton3 = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
@@ -38,8 +37,8 @@
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblStatusList = new MaterialSkin.Controls.MaterialLabel();
-            this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.imageListView1 = new Manina.Windows.Forms.ImageListView();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,28 +55,6 @@
             this.btnBack.Text = "Go Home";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // materialListView1
-            // 
-            this.materialListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Roboto", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(12, 227);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.ShowGroups = false;
-            this.materialListView1.Size = new System.Drawing.Size(798, 480);
-            this.materialListView1.TabIndex = 5;
-            this.materialListView1.TileSize = new System.Drawing.Size(64, 64);
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Tile;
             // 
             // groupBox2
             // 
@@ -149,7 +126,6 @@
             this.materialSingleLineTextField1.ForeColor = System.Drawing.Color.Gray;
             this.materialSingleLineTextField1.Hint = "Enter your keyword to search...";
             this.materialSingleLineTextField1.Location = new System.Drawing.Point(12, 86);
-            this.materialSingleLineTextField1.MaxLength = 32767;
             this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
             this.materialSingleLineTextField1.PasswordChar = '\0';
@@ -188,17 +164,6 @@
             this.lblStatusList.Text = "There are nothing to display";
             this.lblStatusList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // prbStatus
-            // 
-            this.prbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.prbStatus.Depth = 0;
-            this.prbStatus.Location = new System.Drawing.Point(284, 441);
-            this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.prbStatus.Name = "prbStatus";
-            this.prbStatus.Size = new System.Drawing.Size(253, 5);
-            this.prbStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.prbStatus.TabIndex = 8;
-            // 
             // lblVersion
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -211,6 +176,18 @@
             this.lblVersion.TabIndex = 9;
             this.lblVersion.Text = "label1";
             // 
+            // imageListView1
+            // 
+            this.imageListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.imageListView1.ColumnHeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.imageListView1.GroupHeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.imageListView1.Location = new System.Drawing.Point(12, 194);
+            this.imageListView1.Name = "imageListView1";
+            this.imageListView1.PersistentCacheDirectory = "";
+            this.imageListView1.PersistentCacheSize = ((long)(100));
+            this.imageListView1.Size = new System.Drawing.Size(798, 513);
+            this.imageListView1.TabIndex = 11;
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -222,10 +199,9 @@
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.materialSingleLineTextField1);
-            this.Controls.Add(this.prbStatus);
             this.Controls.Add(this.lblStatusList);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.imageListView1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -244,12 +220,13 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
         private System.Windows.Forms.GroupBox groupBox2;
         private MaterialSkin.Controls.MaterialRaisedButton btnBack;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
+        //private MaterialSkin.Controls.MaterialListView materialListView1;
         private MaterialSkin.Controls.MaterialRadioButton materialRadioButton3;
         private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
         private MaterialSkin.Controls.MaterialRadioButton radioBtnVideo;
         private MaterialSkin.Controls.MaterialLabel lblStatusList;
-        private MaterialSkin.Controls.MaterialProgressBar prbStatus;
+        //private MaterialSkin.Controls.MaterialProgressBar prbStatus;
         private System.Windows.Forms.Label lblVersion;
+        private Manina.Windows.Forms.ImageListView imageListView1;
     }
 }

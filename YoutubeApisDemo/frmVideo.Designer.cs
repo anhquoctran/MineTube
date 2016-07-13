@@ -50,15 +50,15 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.lblVideoTitle = new System.Windows.Forms.Label();
             this.picVideoThumb = new System.Windows.Forms.PictureBox();
+            this.menuThumbs = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.copyImageURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveImageAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtboxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnPaste = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.menuThumbs = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.copyImageURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveImageAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
@@ -189,7 +189,7 @@
             // lblPub
             // 
             this.lblPub.ActiveLinkColor = System.Drawing.Color.DarkRed;
-            this.lblPub.AutoSize = true;
+            this.lblPub.AutoEllipsis = true;
             this.lblPub.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblPub.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblPub.LinkColor = System.Drawing.Color.Red;
@@ -332,6 +332,33 @@
             this.picVideoThumb.TabIndex = 0;
             this.picVideoThumb.TabStop = false;
             // 
+            // menuThumbs
+            // 
+            this.menuThumbs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuThumbs.Depth = 0;
+            this.menuThumbs.DropShadowEnabled = false;
+            this.menuThumbs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyImageURLToolStripMenuItem,
+            this.saveImageAsToolStripMenuItem});
+            this.menuThumbs.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuThumbs.Name = "menuThumbs";
+            this.menuThumbs.Size = new System.Drawing.Size(163, 48);
+            this.menuThumbs.Opening += new System.ComponentModel.CancelEventHandler(this.menuThumbs_Opening);
+            // 
+            // copyImageURLToolStripMenuItem
+            // 
+            this.copyImageURLToolStripMenuItem.Name = "copyImageURLToolStripMenuItem";
+            this.copyImageURLToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.copyImageURLToolStripMenuItem.Text = "Copy image URL";
+            this.copyImageURLToolStripMenuItem.Click += new System.EventHandler(this.copyImageURLToolStripMenuItem_Click);
+            // 
+            // saveImageAsToolStripMenuItem
+            // 
+            this.saveImageAsToolStripMenuItem.Name = "saveImageAsToolStripMenuItem";
+            this.saveImageAsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveImageAsToolStripMenuItem.Text = "Save image as...";
+            this.saveImageAsToolStripMenuItem.Click += new System.EventHandler(this.saveImageAsToolStripMenuItem_Click);
+            // 
             // txtboxSearch
             // 
             this.txtboxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -339,7 +366,7 @@
             this.txtboxSearch.Depth = 0;
             this.txtboxSearch.Hint = "Enter or paste YouTube video URL...";
             this.txtboxSearch.Location = new System.Drawing.Point(15, 86);
-            this.txtboxSearch.MaxLength = 32767;
+            //this.txtboxSearch.MaxLength = 32767;
             this.txtboxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxSearch.Name = "txtboxSearch";
             this.txtboxSearch.PasswordChar = '\0';
@@ -410,33 +437,6 @@
             this.lblVersion.Size = new System.Drawing.Size(38, 13);
             this.lblVersion.TabIndex = 21;
             this.lblVersion.Text = "label2";
-            // 
-            // menuThumbs
-            // 
-            this.menuThumbs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.menuThumbs.Depth = 0;
-            this.menuThumbs.DropShadowEnabled = false;
-            this.menuThumbs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyImageURLToolStripMenuItem,
-            this.saveImageAsToolStripMenuItem});
-            this.menuThumbs.MouseState = MaterialSkin.MouseState.HOVER;
-            this.menuThumbs.Name = "menuThumbs";
-            this.menuThumbs.Size = new System.Drawing.Size(163, 70);
-            this.menuThumbs.Opening += new System.ComponentModel.CancelEventHandler(this.menuThumbs_Opening);
-            // 
-            // copyImageURLToolStripMenuItem
-            // 
-            this.copyImageURLToolStripMenuItem.Name = "copyImageURLToolStripMenuItem";
-            this.copyImageURLToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.copyImageURLToolStripMenuItem.Text = "Copy image URL";
-            this.copyImageURLToolStripMenuItem.Click += new System.EventHandler(this.copyImageURLToolStripMenuItem_Click);
-            // 
-            // saveImageAsToolStripMenuItem
-            // 
-            this.saveImageAsToolStripMenuItem.Name = "saveImageAsToolStripMenuItem";
-            this.saveImageAsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.saveImageAsToolStripMenuItem.Text = "Save image as...";
-            this.saveImageAsToolStripMenuItem.Click += new System.EventHandler(this.saveImageAsToolStripMenuItem_Click);
             // 
             // frmVideo
             // 

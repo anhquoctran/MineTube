@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlaylist));
-            this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            //this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnBack = new MaterialSkin.Controls.MaterialFlatButton();
             this.listVideos = new System.Windows.Forms.ListView();
@@ -81,14 +81,14 @@
             // 
             // prbStatus
             // 
-            this.prbStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.prbStatus.Depth = 0;
-            this.prbStatus.Location = new System.Drawing.Point(511, 517);
-            this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.prbStatus.Name = "prbStatus";
-            this.prbStatus.Size = new System.Drawing.Size(249, 5);
-            this.prbStatus.Step = 1;
-            this.prbStatus.TabIndex = 10;
+            //this.prbStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            //this.prbStatus.Depth = 0;
+            //this.prbStatus.Location = new System.Drawing.Point(679, 563);
+            //this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            //this.prbStatus.Name = "prbStatus";
+            //this.prbStatus.Size = new System.Drawing.Size(249, 5);
+            //this.prbStatus.Step = 1;
+            //this.prbStatus.TabIndex = 10;
             // 
             // txtboxUrl
             // 
@@ -97,14 +97,14 @@
             this.txtboxUrl.Depth = 0;
             this.txtboxUrl.Hint = "Enter a playlist ID";
             this.txtboxUrl.Location = new System.Drawing.Point(12, 115);
-            this.txtboxUrl.MaxLength = 32767;
+            //this.txtboxUrl.MaxLength = 32767;
             this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxUrl.Name = "txtboxUrl";
             this.txtboxUrl.PasswordChar = '\0';
             this.txtboxUrl.SelectedText = "";
             this.txtboxUrl.SelectionLength = 0;
             this.txtboxUrl.SelectionStart = 0;
-            this.txtboxUrl.Size = new System.Drawing.Size(1146, 23);
+            this.txtboxUrl.Size = new System.Drawing.Size(1482, 23);
             this.txtboxUrl.TabIndex = 8;
             this.txtboxUrl.TabStop = false;
             this.txtboxUrl.UseSystemPasswordChar = false;
@@ -155,7 +155,7 @@
             this.listVideos.Name = "listVideos";
             this.listVideos.ShowGroups = false;
             this.listVideos.ShowItemToolTips = true;
-            this.listVideos.Size = new System.Drawing.Size(1255, 354);
+            this.listVideos.Size = new System.Drawing.Size(1591, 400);
             this.listVideos.TabIndex = 14;
             this.listVideos.UseCompatibleStateImageBehavior = false;
             this.listVideos.View = System.Windows.Forms.View.Details;
@@ -246,7 +246,7 @@
             this.clearAllItemsToolStripMenuItem});
             this.listDataMenu.MouseState = MaterialSkin.MouseState.HOVER;
             this.listDataMenu.Name = "listDataMenu";
-            this.listDataMenu.Size = new System.Drawing.Size(204, 192);
+            this.listDataMenu.Size = new System.Drawing.Size(204, 214);
             this.listDataMenu.Opening += new System.ComponentModel.CancelEventHandler(this.listDataMenu_Opening);
             // 
             // getPublisherInformationToolStripMenuItem
@@ -295,7 +295,6 @@
             // 
             // downloadWithOurDownloadToolcomingSoonToolStripMenuItem
             // 
-            this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = false;
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Image")));
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Name = "downloadWithOurDownloadToolcomingSoonToolStripMenuItem";
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
@@ -345,7 +344,7 @@
             this.btnNext.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNext.Depth = 0;
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(1221, 669);
+            this.btnNext.Location = new System.Drawing.Point(1557, 715);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNext.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNext.Name = "btnNext";
@@ -363,7 +362,7 @@
             this.btnPrev.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPrev.Depth = 0;
             this.btnPrev.Enabled = false;
-            this.btnPrev.Location = new System.Drawing.Point(1167, 669);
+            this.btnPrev.Location = new System.Drawing.Point(1503, 715);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnPrev.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPrev.Name = "btnPrev";
@@ -380,7 +379,7 @@
             this.lblCounter.AutoSize = true;
             this.lblCounter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblCounter.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblCounter.Location = new System.Drawing.Point(24, 678);
+            this.lblCounter.Location = new System.Drawing.Point(24, 724);
             this.lblCounter.Name = "lblCounter";
             this.lblCounter.Size = new System.Drawing.Size(159, 17);
             this.lblCounter.TabIndex = 18;
@@ -394,7 +393,7 @@
             this.btnGrab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGrab.Font = new System.Drawing.Font("Roboto Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnGrab.ForeColor = System.Drawing.Color.White;
-            this.btnGrab.Location = new System.Drawing.Point(1164, 102);
+            this.btnGrab.Location = new System.Drawing.Point(1500, 102);
             this.btnGrab.Name = "btnGrab";
             this.btnGrab.Size = new System.Drawing.Size(104, 36);
             this.btnGrab.TabIndex = 20;
@@ -474,7 +473,7 @@
             this.richDescription.Location = new System.Drawing.Point(242, 213);
             this.richDescription.Name = "richDescription";
             this.richDescription.ReadOnly = true;
-            this.richDescription.Size = new System.Drawing.Size(1026, 75);
+            this.richDescription.Size = new System.Drawing.Size(1362, 75);
             this.richDescription.TabIndex = 28;
             this.richDescription.Text = "";
             // 
@@ -515,9 +514,9 @@
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblStatus.Location = new System.Drawing.Point(10, 473);
+            this.lblStatus.Location = new System.Drawing.Point(10, 519);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(1258, 41);
+            this.lblStatus.Size = new System.Drawing.Size(1594, 41);
             this.lblStatus.TabIndex = 30;
             this.lblStatus.Text = "There are nothing to display";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -548,10 +547,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1616, 766);
             this.ControlBox = false;
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.prbStatus);
+            //this.Controls.Add(this.prbStatus);
             this.Controls.Add(this.richDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblDate);
@@ -570,7 +569,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1616, 766);
             this.Name = "frmPlaylist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YouTube Playlist Information";
@@ -585,7 +584,7 @@
 
         #endregion
         private MaterialSkin.Controls.MaterialSingleLineTextField txtboxUrl;
-        private MaterialSkin.Controls.MaterialProgressBar prbStatus;
+        //private MaterialSkin.Controls.MaterialProgressBar prbStatus;
         private MaterialSkin.Controls.MaterialFlatButton btnBack;
         private System.Windows.Forms.ListView listVideos;
         private System.Windows.Forms.ColumnHeader TitleCol;

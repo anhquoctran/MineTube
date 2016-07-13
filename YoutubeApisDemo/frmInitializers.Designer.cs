@@ -43,16 +43,13 @@
             this.lblInfo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblInfo.Location = new System.Drawing.Point(97, 36);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(290, 21);
+            this.lblInfo.Size = new System.Drawing.Size(326, 21);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "Initializing components...";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // picLoader
             // 
-            this.picLoader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
             this.picLoader.Location = new System.Drawing.Point(0, 0);
             this.picLoader.Name = "picLoader";
@@ -71,8 +68,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(399, 91);
+            this.ClientSize = new System.Drawing.Size(435, 91);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.picLoader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

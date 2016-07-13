@@ -176,6 +176,7 @@ namespace YoutubeApisDemo
                     video.ThumbUrl = response.Items[0].Snippet.Thumbnails.High.Url;
                     video.ChannelId = response.Items[0].Snippet.ChannelId;
                     video.CategoryId = response.Items[0].Snippet.CategoryId;
+                    video.Url = "https://www.youtube.com/watch?v=" + video.Id;
                     if (response.Items[0].Snippet.Tags != null)
                     {
                         video.VideoTags = new string[response.Items[0].Snippet.Tags.Count];

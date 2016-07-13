@@ -18,6 +18,7 @@ namespace YoutubeApisDemo
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new frmInitializers(new frmHome(), "Welcome! Initializing..."));
+            //Application.Run(new frmInitializers(new frmHome(), "Initializing Components... "));
         }
     }
 }
