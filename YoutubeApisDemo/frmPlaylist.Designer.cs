@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlaylist));
-            //this.prbStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.txtboxUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnBack = new MaterialSkin.Controls.MaterialFlatButton();
             this.listVideos = new System.Windows.Forms.ListView();
@@ -45,17 +44,17 @@
             this.DislikeCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UrlCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.publisherIdCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listDataMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.getPublisherInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.getVideoInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuContextVideo = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.viewVideocomingSoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyVideoURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getPublisherInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getVideoInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadWithInternetDownloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bwFetch = new System.ComponentModel.BackgroundWorker();
             this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnPrev = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblCounter = new System.Windows.Forms.Label();
@@ -73,22 +72,10 @@
             this.saveImg = new System.Windows.Forms.SaveFileDialog();
             this.lblStatus = new System.Windows.Forms.Label();
             this.picThumbs = new System.Windows.Forms.PictureBox();
-            this.downloadWithInternetDownloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listDataMenu.SuspendLayout();
+            this.menuContextVideo.SuspendLayout();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).BeginInit();
             this.SuspendLayout();
-            // 
-            // prbStatus
-            // 
-            //this.prbStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            //this.prbStatus.Depth = 0;
-            //this.prbStatus.Location = new System.Drawing.Point(679, 563);
-            //this.prbStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            //this.prbStatus.Name = "prbStatus";
-            //this.prbStatus.Size = new System.Drawing.Size(249, 5);
-            //this.prbStatus.Step = 1;
-            //this.prbStatus.TabIndex = 10;
             // 
             // txtboxUrl
             // 
@@ -97,7 +84,6 @@
             this.txtboxUrl.Depth = 0;
             this.txtboxUrl.Hint = "Enter a playlist ID";
             this.txtboxUrl.Location = new System.Drawing.Point(12, 115);
-            //this.txtboxUrl.MaxLength = 32767;
             this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxUrl.Name = "txtboxUrl";
             this.txtboxUrl.PasswordChar = '\0';
@@ -145,7 +131,7 @@
             this.DislikeCol,
             this.UrlCol,
             this.publisherIdCol});
-            this.listVideos.ContextMenuStrip = this.listDataMenu;
+            this.listVideos.ContextMenuStrip = this.menuContextVideo;
             this.listVideos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.listVideos.FullRowSelect = true;
             this.listVideos.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -228,12 +214,12 @@
             this.publisherIdCol.Text = "Publisher ID";
             this.publisherIdCol.Width = 107;
             // 
-            // listDataMenu
+            // menuContextVideo
             // 
-            this.listDataMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listDataMenu.Depth = 0;
-            this.listDataMenu.DropShadowEnabled = false;
-            this.listDataMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuContextVideo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuContextVideo.Depth = 0;
+            this.menuContextVideo.DropShadowEnabled = false;
+            this.menuContextVideo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewVideocomingSoonToolStripMenuItem,
             this.copyVideoURLToolStripMenuItem,
             this.getPublisherInformationToolStripMenuItem,
@@ -244,10 +230,29 @@
             this.toolStripSeparator1,
             this.clearToolStripMenuItem,
             this.clearAllItemsToolStripMenuItem});
-            this.listDataMenu.MouseState = MaterialSkin.MouseState.HOVER;
-            this.listDataMenu.Name = "listDataMenu";
-            this.listDataMenu.Size = new System.Drawing.Size(204, 214);
-            this.listDataMenu.Opening += new System.ComponentModel.CancelEventHandler(this.listDataMenu_Opening);
+            this.menuContextVideo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuContextVideo.Name = "listDataMenu";
+            this.menuContextVideo.Size = new System.Drawing.Size(204, 192);
+            this.menuContextVideo.Opening += new System.ComponentModel.CancelEventHandler(this.listDataMenu_Opening);
+            // 
+            // viewVideocomingSoonToolStripMenuItem
+            // 
+            this.viewVideocomingSoonToolStripMenuItem.Enabled = false;
+            this.viewVideocomingSoonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewVideocomingSoonToolStripMenuItem.Image")));
+            this.viewVideocomingSoonToolStripMenuItem.Name = "viewVideocomingSoonToolStripMenuItem";
+            this.viewVideocomingSoonToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.viewVideocomingSoonToolStripMenuItem.Text = "Play";
+            // 
+            // copyVideoURLToolStripMenuItem
+            // 
+            this.copyVideoURLToolStripMenuItem.Enabled = false;
+            this.copyVideoURLToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyVideoURLToolStripMenuItem.Image")));
+            this.copyVideoURLToolStripMenuItem.Name = "copyVideoURLToolStripMenuItem";
+            this.copyVideoURLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyVideoURLToolStripMenuItem.ShowShortcutKeys = false;
+            this.copyVideoURLToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.copyVideoURLToolStripMenuItem.Text = "Copy video URL";
+            this.copyVideoURLToolStripMenuItem.Click += new System.EventHandler(this.copyVideoURLToolStripMenuItem_Click);
             // 
             // getPublisherInformationToolStripMenuItem
             // 
@@ -269,25 +274,6 @@
             this.getVideoInformationToolStripMenuItem.Text = "Get Video Information";
             this.getVideoInformationToolStripMenuItem.Click += new System.EventHandler(this.getVideoInformationToolStripMenuItem_Click);
             // 
-            // viewVideocomingSoonToolStripMenuItem
-            // 
-            this.viewVideocomingSoonToolStripMenuItem.Enabled = false;
-            this.viewVideocomingSoonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewVideocomingSoonToolStripMenuItem.Image")));
-            this.viewVideocomingSoonToolStripMenuItem.Name = "viewVideocomingSoonToolStripMenuItem";
-            this.viewVideocomingSoonToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.viewVideocomingSoonToolStripMenuItem.Text = "Play";
-            // 
-            // copyVideoURLToolStripMenuItem
-            // 
-            this.copyVideoURLToolStripMenuItem.Enabled = false;
-            this.copyVideoURLToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyVideoURLToolStripMenuItem.Image")));
-            this.copyVideoURLToolStripMenuItem.Name = "copyVideoURLToolStripMenuItem";
-            this.copyVideoURLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyVideoURLToolStripMenuItem.ShowShortcutKeys = false;
-            this.copyVideoURLToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.copyVideoURLToolStripMenuItem.Text = "Copy video URL";
-            this.copyVideoURLToolStripMenuItem.Click += new System.EventHandler(this.copyVideoURLToolStripMenuItem_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -300,6 +286,15 @@
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Text = "Download";
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Click += new System.EventHandler(this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem_Click);
+            // 
+            // downloadWithInternetDownloadManagerToolStripMenuItem
+            // 
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = false;
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadWithInternetDownloadManagerToolStripMenuItem.Image")));
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Name = "downloadWithInternetDownloadManagerToolStripMenuItem";
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Text = "Download with IDM";
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Click += new System.EventHandler(this.downloadWithInternetDownloadManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -329,13 +324,6 @@
             this.clearAllItemsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.clearAllItemsToolStripMenuItem.Text = "Clear all videos";
             this.clearAllItemsToolStripMenuItem.Click += new System.EventHandler(this.clearAllItemsToolStripMenuItem_Click);
-            // 
-            // bwFetch
-            // 
-            this.bwFetch.WorkerReportsProgress = true;
-            this.bwFetch.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwFetch_DoWork);
-            this.bwFetch.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwFetch_ProgressChanged);
-            this.bwFetch.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwFetch_RunWorkerCompleted);
             // 
             // btnNext
             // 
@@ -532,15 +520,6 @@
             this.picThumbs.TabIndex = 21;
             this.picThumbs.TabStop = false;
             // 
-            // downloadWithInternetDownloadManagerToolStripMenuItem
-            // 
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = false;
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadWithInternetDownloadManagerToolStripMenuItem.Image")));
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Name = "downloadWithInternetDownloadManagerToolStripMenuItem";
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Text = "Download with IDM";
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Click += new System.EventHandler(this.downloadWithInternetDownloadManagerToolStripMenuItem_Click);
-            // 
             // frmPlaylist
             // 
             this.AcceptButton = this.btnGrab;
@@ -550,7 +529,6 @@
             this.ClientSize = new System.Drawing.Size(1616, 766);
             this.ControlBox = false;
             this.Controls.Add(this.lblStatus);
-            //this.Controls.Add(this.prbStatus);
             this.Controls.Add(this.richDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblDate);
@@ -574,7 +552,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YouTube Playlist Information";
             this.Load += new System.EventHandler(this.frmPlaylist_Load);
-            this.listDataMenu.ResumeLayout(false);
+            this.menuContextVideo.ResumeLayout(false);
             this.menuThumbs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).EndInit();
             this.ResumeLayout(false);
@@ -591,8 +569,7 @@
         private System.Windows.Forms.ColumnHeader DurationCol;
         private System.Windows.Forms.ColumnHeader PublisherCol;
         private System.Windows.Forms.ColumnHeader UrlCol;
-        private System.ComponentModel.BackgroundWorker bwFetch;
-        private MaterialSkin.Controls.MaterialContextMenuStrip listDataMenu;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuContextVideo;
         private System.Windows.Forms.ToolStripMenuItem getPublisherInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getVideoInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyVideoURLToolStripMenuItem;
