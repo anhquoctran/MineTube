@@ -128,8 +128,8 @@ namespace YoutubeApisDemo
 
         public void SetQuality(string Extension, Size Dimension)
         {
-            this.VideoDimension = Dimension;
-            this.VideoExtension = Extension;
+            VideoDimension = Dimension;
+            VideoExtension = Extension;
         }
 
         
