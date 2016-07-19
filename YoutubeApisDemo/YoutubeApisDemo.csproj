@@ -124,6 +124,10 @@
       <HintPath>..\packages\Google.Apis.1.14.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Apis.Plus.v1, Version=1.14.0.562, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Plus.v1.1.14.0.562\lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Plus.v1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Apis.YouTube.v3, Version=1.14.0.529, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.YouTube.v3.1.14.0.529\lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.YouTube.v3.dll</HintPath>
       <Private>True</Private>
@@ -270,6 +274,8 @@
     <Compile Include="CustomControls\PlaceholderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GoogleAccount.cs" />
+    <Compile Include="GoogleAccountApis.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomControls\RoundButton.cs">
@@ -322,6 +328,7 @@
     <None Include="client_secret.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="google_plus.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -359,16 +366,14 @@
     <Content Include="1441267378_youtube_circle_color.ico" />
     <None Include="Resources\blackPanel.png" />
     <None Include="Resources\f3.png" />
-    <Content Include="lang\en-us.xml">
+    <Content Include="Globalization\en-us.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="lang\vi-vn.xml">
+    <Content Include="Globalization\vi-vn.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Preloader_11.gif" />
-    <Content Include="RegexPaternStored\pattern.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\avatar_720-vflYJnzBZ.png" />
     <Content Include="youtube-logotype.ico" />
   </ItemGroup>
   <ItemGroup>

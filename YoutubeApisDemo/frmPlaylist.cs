@@ -70,6 +70,7 @@ namespace YoutubeApisDemo
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
+
             
             lblDate.Text = "";
             listVideos.Columns[11].Dispose();
@@ -85,21 +86,25 @@ namespace YoutubeApisDemo
         private static string GetPlaylistIdFromUrl(string urlParams)
         {
             var res = "";
-            var urlPatern = "";
+            var urlPatern = @"/^.*(youtu.be\/|list=)([^#\&\?]*).*/";
             try
             {
-
+                var match = Regex.Match(urlParams, urlPatern);
+                if (match.Success)
+                {
+                    res = match.Value;
+                }
             }
             catch (Exception)
             {
-
-                throw;
+                res = "";
             }
             return res;
         }
 
         private void btnGet_Click(object sender, EventArgs e)
         {
+            
             btnGrab.Enabled = false;
             if (txtboxUrl.Text != "")
             {

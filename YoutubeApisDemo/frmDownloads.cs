@@ -6,6 +6,7 @@ using VideoLibrary;
 using System.Windows.Forms;
 using System.Threading;
 using YoutubeExtractor;
+using System.Drawing;
 
 namespace YoutubeApisDemo
 {
@@ -14,19 +15,27 @@ namespace YoutubeApisDemo
         #region Fields
         private bool IsAudioFormat = false;
         private string VideoName = "";
+        private string Url = "";
         private List<string> lstQuality;
         private string VideoSize = "";
         private string VideoFormat = "";
         private string Extension = "";
         private string AudioFormat = "";
         private string AudioBitrate = "";
-        private byte[] bytesToSave;
+        //private byte[] bytesToSave;
+        public AutoResetEvent autos = new AutoResetEvent(false);
+        private bool StopThread = false;
         #endregion
 
         #region Contructor
         public frmDownloads(string youtubeUrl)
         {
             InitializeComponent();
+
+            int x = Screen.PrimaryScreen.WorkingArea.Width - this.Width;
+            int y = Screen.PrimaryScreen.WorkingArea.Height - this.Height;
+            this.Location = new Point(x, y);
+            Url = youtubeUrl;
             GetVideoInfo(youtubeUrl);
             btnPause.Enabled = false;
             btnStop.Enabled = false;
@@ -164,7 +173,7 @@ namespace YoutubeApisDemo
             using (var services = Client.For(YouTube.Default))
             {
                 var video = services.GetVideo(VideoURL);
-                VideoName = video.Title;               
+                VideoName = video.Title;
                 AudioFormat = video.AudioFormat.ToString();
                 AudioBitrate = video.AudioBitrate.ToString();
                 var tempResolution = video.Resolution;
@@ -173,9 +182,11 @@ namespace YoutubeApisDemo
                 lstQuality = new List<string>();
                 lstQuality.Add(VideoFormat.ToUpper() + " - " + tempResolution + "p");
                 lstQuality.Add("Audio " + AudioFormat.ToUpper() + " - " + AudioBitrate + "Kbps");
-                
-                
+
+
             }
+
+            
         }
 
         private void GetVideSize(double val)
@@ -252,20 +263,25 @@ namespace YoutubeApisDemo
         private void btDownload_Click(object sender, EventArgs e)
         {
             btnDownload.Enabled = false;
+            btnDownload.Text = "Download";
             btnPause.Enabled = true;
             btnStop.Enabled = true;
-            if (bwDownload.IsBusy == true)
-            {
-                return;
-            }
-            else
-            {
-                btnPause.Visible = true;
-                pbStatus.Style = ProgressBarStyle.Blocks;
-                bwDownload.RunWorkerAsync();
-                
-            }
-            
+
+            //IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(Url);
+            //VideoInfo video = 
+
+            //if (bwDownload.IsBusy == true)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    btnPause.Visible = true;
+            //    
+            //    bwDownload.RunWorkerAsync();
+
+            //}
+
         }
 
         private void frmDownloads_Load(object sender, EventArgs e)
@@ -275,8 +291,19 @@ namespace YoutubeApisDemo
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-            bwDownload.CancelAsync();
+            StopThread = true;
+            btnPause.Enabled = false;
+            btnDownload.Text = "Resume";
+            btnDownload.Enabled = true;
         }
         #endregion
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            btnPause.Enabled = false;
+            btnStop.Enabled = false;
+            btnDownload.Text = "Download";
+            btnDownload.Enabled = true;
+        }
     }
 }

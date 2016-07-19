@@ -14,10 +14,10 @@ namespace YoutubeApisDemo
             //load.ShowDialog();
             InitializeComponent();
             
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green900, Primary.Green300, Accent.Green100, TextShade.WHITE);
+            //var materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green900, Primary.Green300, Accent.Green100, TextShade.WHITE);
 
             if (IsConnected() == true)
             {
@@ -122,6 +122,16 @@ namespace YoutubeApisDemo
                 e.Cancel = true;
             else
                 e.Cancel = false;
+        }
+
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picAvatarUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

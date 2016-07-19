@@ -85,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtboxUrl.Depth = 0;
             this.txtboxUrl.Hint = "Enter a playlist ID";
-            this.txtboxUrl.Location = new System.Drawing.Point(12, 152);
+            this.txtboxUrl.Location = new System.Drawing.Point(13, 152);
             this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxUrl.Name = "txtboxUrl";
             this.txtboxUrl.PasswordChar = '\0';

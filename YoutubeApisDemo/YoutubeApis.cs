@@ -3,8 +3,6 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Google.Apis.YouTube.v3;
 
-using VideoLibrary;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+
+using VideoLibrary;
 
 namespace YoutubeApisDemo
 {
@@ -208,11 +208,7 @@ namespace YoutubeApisDemo
                     video.Quality = response.Items[0].ContentDetails.Definition.ToUpper();
                     string s = response.Items[0].ContentDetails.Duration;
                     TimeSpan ts = XmlConvert.ToTimeSpan(s);
-                    video.Duration = FormatTime(ts);
-
-                    //var youtube = YouTube.Default;
-                    //var vid = youtube.GetVideo(video.Url);
-                    
+                    video.Duration = FormatTime(ts);              
                 }              
                 else
                 {
