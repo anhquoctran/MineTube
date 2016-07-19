@@ -85,7 +85,7 @@ namespace YoutubeApisDemo
             {
                 var playlistRequest = ytService.PlaylistItems.List("contentDetails,snippet");
                 playlistRequest.PlaylistId = IdPlaylist;
-                playlistRequest.MaxResults = 20;
+                playlistRequest.MaxResults = 50;
                 
                 var playlistResponse = playlistRequest.Execute();
                 

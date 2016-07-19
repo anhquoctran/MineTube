@@ -200,6 +200,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="YoutubeExtractor, Version=0.10.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YoutubeExtractor.0.10.11\lib\net35\YoutubeExtractor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
       <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
       <Private>True</Private>
@@ -238,6 +242,12 @@
     </Compile>
     <Compile Include="frmInitializers.Designer.cs">
       <DependentUpon>frmInitializers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOAuthScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOAuthScreen.Designer.cs">
+      <DependentUpon>frmOAuthScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPlaylist.cs">
       <SubType>Form</SubType>
@@ -283,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInitializers.resx">
       <DependentUpon>frmInitializers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOAuthScreen.resx">
+      <DependentUpon>frmOAuthScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlaylist.resx">
       <DependentUpon>frmPlaylist.cs</DependentUpon>
@@ -353,6 +366,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Preloader_11.gif" />
+    <Content Include="RegexPaternStored\pattern.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="youtube-logotype.ico" />
   </ItemGroup>
   <ItemGroup>

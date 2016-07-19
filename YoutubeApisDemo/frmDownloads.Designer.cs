@@ -37,11 +37,13 @@
             this.lblSize = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btDownload = new System.Windows.Forms.Button();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.saveFileDlg = new System.Windows.Forms.SaveFileDialog();
             this.pbStatus = new System.Windows.Forms.ProgressBar();
             this.lblStatus = new System.Windows.Forms.Label();
             this.bwDownload = new System.ComponentModel.BackgroundWorker();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -153,20 +155,20 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Video name:";
             // 
-            // btDownload
+            // btnDownload
             // 
-            this.btDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDownload.FlatAppearance.BorderSize = 0;
-            this.btDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDownload.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btDownload.ForeColor = System.Drawing.Color.Black;
-            this.btDownload.Location = new System.Drawing.Point(359, 252);
-            this.btDownload.Name = "btDownload";
-            this.btDownload.Size = new System.Drawing.Size(130, 35);
-            this.btDownload.TabIndex = 9;
-            this.btDownload.Text = "Download";
-            this.btDownload.UseVisualStyleBackColor = true;
-            this.btDownload.Click += new System.EventHandler(this.btDownload_Click);
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.FlatAppearance.BorderSize = 0;
+            this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDownload.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDownload.ForeColor = System.Drawing.Color.Black;
+            this.btnDownload.Location = new System.Drawing.Point(143, 252);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(130, 35);
+            this.btnDownload.TabIndex = 9;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btDownload_Click);
             // 
             // pbStatus
             // 
@@ -194,14 +196,45 @@
             this.bwDownload.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwDownload_ProgressChanged);
             this.bwDownload.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDownload_RunWorkerCompleted);
             // 
+            // btnPause
+            // 
+            this.btnPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPause.FlatAppearance.BorderSize = 0;
+            this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPause.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnPause.ForeColor = System.Drawing.Color.Black;
+            this.btnPause.Location = new System.Drawing.Point(279, 252);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(102, 35);
+            this.btnPause.TabIndex = 12;
+            this.btnPause.Text = "Pause";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnStop.ForeColor = System.Drawing.Color.Black;
+            this.btnStop.Location = new System.Drawing.Point(387, 252);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(102, 35);
+            this.btnStop.TabIndex = 13;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            // 
             // frmDownloads
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 299);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnPause);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.pbStatus);
-            this.Controls.Add(this.btDownload);
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblSize);
@@ -216,9 +249,11 @@
             this.MaximumSize = new System.Drawing.Size(501, 299);
             this.MinimumSize = new System.Drawing.Size(501, 299);
             this.Name = "frmDownloads";
+            this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Download";
+            this.Load += new System.EventHandler(this.frmDownloads_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,11 +270,13 @@
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btDownload;
+        private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.SaveFileDialog saveFileDlg;
         private System.Windows.Forms.ProgressBar pbStatus;
         private System.Windows.Forms.Label lblStatus;
         private System.ComponentModel.BackgroundWorker bwDownload;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnStop;
         //private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

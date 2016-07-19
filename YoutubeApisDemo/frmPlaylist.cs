@@ -1,14 +1,15 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.Win32;
 using VideoLibrary;
 
 namespace YoutubeApisDemo
@@ -61,7 +62,7 @@ namespace YoutubeApisDemo
 
         #endregion
 
-        #region
+        #region Constructor
         public frmPlaylist()
         {
             InitializeComponent();
@@ -80,99 +81,111 @@ namespace YoutubeApisDemo
         #endregion
 
         #region Controls's events
+
+        private static string GetPlaylistIdFromUrl(string urlParams)
+        {
+            var res = "";
+            var urlPatern = "";
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return res;
+        }
+
         private void btnGet_Click(object sender, EventArgs e)
         {
-            pbStatus.Visible = true;
-            lblStatus.Visible = true;
             btnGrab.Enabled = false;
-            
-            
-            lblStatus.Text = "Getting data. Please be patient...";
-            lblCounter.Text = "";
-            Cursor.Current = Cursors.WaitCursor;
-            listVideos.Items.Clear();
-            _IsProcessing = true;
+            if (txtboxUrl.Text != "")
+            {
+                pbStatus.Visible = true;
+                lblStatus.Visible = true;
+                ClearAll();
+                if (listVideos.Items.Count != 0)
+                {
+                    lblStatus.Text = "Refreshing...";
+                }
+                else
+                {
+                    lblStatus.Text = "Getting data from YouTube Service...";
+                }
 
-            //GetPlaylistInformation(txtboxUrl.Text);    
+                Cursor.Current = Cursors.WaitCursor;
+                listVideos.Items.Clear();
+                _IsProcessing = true;
 
-            //Thread t = new Thread(new ThreadStart(ThreadProcSafeSetGUI));
-            //t.Start();
-
-            bwFetch.RunWorkerAsync();
-            CheckPageTokenAvailable();
-
-            _IsProcessing = false;
-            btnGrab.Enabled = true;
-            Cursor.Current = Cursors.Default;
-            lblCounter.Visible = true;
-            
-            //lblCounter.Text = "Displayed " + _videoItems.Count.ToString() + " videos in " + _TotalResult.ToString() + " videos total";
-            
+                bwFetch.RunWorkerAsync(txtboxUrl.Text);   
+            }
         }
         
+        private void ClearAll()
+        {
+            lblDate.Text = "n/a";
+            lblCounter.Text = "n/a";
+            lblChannelOwner.Text = "";
+            lblTitlePlaylist.Text = "Data is not available";
+            picThumbs.Image = Properties.Resources.thumbnail_video;
+            richDescription.Clear();
+        }
+
         private void GetPlaylistInformation(string inputId)
-        {                                             
-            if (inputId == "")
+        {                                                       
+            YoutubeVideo[] videos = YouTubeApis.GetVideoOfPlaylist(inputId);
+            YouTubePlaylist playlist = new YouTubePlaylist(inputId);
+
+            _PlaylistTitle = playlist.PlaylistTitle;
+            _ThumbURL = playlist.Thumbs;
+            _PublishedDate = playlist.DatePublished.Day.ToString() + "/" + playlist.DatePublished.Month.ToString() + "/" + playlist.DatePublished.Year.ToString();
+            _Descrirption = playlist.Description;
+            _OwnerName = playlist.OwnerTitle;              
+            _ChannelId = playlist.OwnerID;
+            if (playlist.NextPageToken != null)
             {
-                MessageBox.Show("Required field is not null!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _PageNextToken = playlist.NextPageToken;
+                _IsNextPageTokenAvailable = true;
             }
             else
-            {             
-                YoutubeVideo[] videos = YouTubeApis.GetVideoOfPlaylist(inputId);
-                YouTubePlaylist playlist = new YouTubePlaylist(inputId);
+            {
+                _IsNextPageTokenAvailable = false;
+            }
 
-                _PlaylistTitle = playlist.PlaylistTitle;
-                _ThumbURL = playlist.Thumbs;
-                _PublishedDate = playlist.DatePublished.Day.ToString() + "/" + playlist.DatePublished.Month.ToString() + "/" + playlist.DatePublished.Year.ToString();
-                _Descrirption = playlist.Description;
-                _OwnerName = playlist.OwnerTitle;              
-                _ChannelId = playlist.OwnerID;
-                if (playlist.NextPageToken != null)
-                {
-                    _PageNextToken = playlist.NextPageToken;
-                    _IsNextPageTokenAvailable = true;
-                }
-                else
-                {
-                    _IsNextPageTokenAvailable = false;
-                }
+            if (playlist.PrevPageToken != null)
+            {
+                _PagePrevToken = playlist.PrevPageToken;
+                _IsPrevPageTokenAvailable = true;
+            }
+            else
+            {
+                _IsPrevPageTokenAvailable = false;
+            }
+            int index = 1;
+            _videoItems = new List<ListViewItem>();
+            foreach (var video in videos)
+            {
+                var item = new ListViewItem();
+                item.Text = index.ToString();
+                item.SubItems.Add(video.Title);
+                item.SubItems.Add(video.Duration);
+                item.SubItems.Add(video.ChannelTitle);
+                item.SubItems.Add(video.DatePublished.Day.ToString() + "/" + video.DatePublished.Month.ToString() + "/" + video.DatePublished.Year.ToString());
+                item.SubItems.Add(video.View.Value.ToString("N0"));
+                item.SubItems.Add(video.CommentCount.Value.ToString("N0"));
+                item.SubItems.Add(video.Quality);
+                item.SubItems.Add(video.Like.Value.ToString("N0"));
+                item.SubItems.Add(video.Dislike.Value.ToString("N0"));
+                item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
+                item.SubItems.Add(video.ChannelId);
+                index++;
 
-                if (playlist.PrevPageToken != null)
-                {
-                    _PagePrevToken = playlist.PrevPageToken;
-                    _IsPrevPageTokenAvailable = true;
-                }
-                else
-                {
-                    _IsPrevPageTokenAvailable = false;
-                }
-
-                
-
-                int index = 1;
-                _videoItems = new List<ListViewItem>();
-                foreach (var video in videos)
-                {
-                    var item = new ListViewItem();
-                    item.Text = index.ToString();
-                    item.SubItems.Add(video.Title);
-                    item.SubItems.Add(video.Duration);
-                    item.SubItems.Add(video.ChannelTitle);
-                    item.SubItems.Add(video.DatePublished.Day.ToString() + "/" + video.DatePublished.Month.ToString() + "/" + video.DatePublished.Year.ToString());
-                    item.SubItems.Add(video.View.Value.ToString("N0"));
-                    item.SubItems.Add(video.CommentCount.Value.ToString("N0"));
-                    item.SubItems.Add(video.Quality);
-                    item.SubItems.Add(video.Like.Value.ToString("N0"));
-                    item.SubItems.Add(video.Dislike.Value.ToString("N0"));
-                    item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
-                    item.SubItems.Add(video.ChannelId);                  
-                    index++;
-                    
-                    _videoItems.Add(item);
-                }
+                _videoItems.Add(item);
+            }
                           
-                _TotalResult = playlist.TotalResults;               
-            }    
+            _TotalResult = playlist.TotalResults;               
         }        
         
         protected void Back()
@@ -274,6 +287,8 @@ namespace YoutubeApisDemo
 
         private void clearAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ClearAll();
+            txtboxUrl.Clear();
             listVideos.Items.Clear();
             lblStatus.Text = "There are nothing to display";
             lblStatus.Visible = true;
@@ -523,23 +538,10 @@ namespace YoutubeApisDemo
             }
             else
             {
-                foreach(var item in lstItem)
+                foreach (var item in lstItem)
                 {
                     listVideos.Items.Add(item);
                 }
-            }
-        }
-        
-        private void UpdateProc(int value)
-        {
-            if (pbStatus.InvokeRequired)
-            {
-                UpdateProgress updateP = new UpdateProgress(UpdateProc);
-                pbStatus.Invoke(updateP, new object[] { value });
-            }
-            else
-            {
-                pbStatus.Value = value;
             }
         }
 
@@ -550,7 +552,60 @@ namespace YoutubeApisDemo
 
         private void bwFetch_DoWork(object sender, DoWorkEventArgs e)
         {
-            GetPlaylistInformation(txtboxUrl.Text);
+            var inputId = e.Argument.ToString();
+            
+            YoutubeVideo[] videos = YouTubeApis.GetVideoOfPlaylist(inputId);
+            YouTubePlaylist playlist = new YouTubePlaylist(inputId);
+
+            _PlaylistTitle = playlist.PlaylistTitle;
+            _ThumbURL = playlist.Thumbs;
+            _PublishedDate = playlist.DatePublished.Day.ToString() + "/" + playlist.DatePublished.Month.ToString() + "/" + playlist.DatePublished.Year.ToString();
+            _Descrirption = playlist.Description;
+            _OwnerName = playlist.OwnerTitle;
+            _ChannelId = playlist.OwnerID;
+            if (playlist.NextPageToken != null)
+            {
+                _PageNextToken = playlist.NextPageToken;
+                _IsNextPageTokenAvailable = true;
+            }
+            else
+            {
+                _IsNextPageTokenAvailable = false;
+            }
+
+            if (playlist.PrevPageToken != null)
+            {
+                _PagePrevToken = playlist.PrevPageToken;
+                _IsPrevPageTokenAvailable = true;
+            }
+            else
+            {
+                _IsPrevPageTokenAvailable = false;
+            }
+            int index = 1;
+            _videoItems = new List<ListViewItem>();
+            foreach (var video in videos)
+            {
+                var item = new ListViewItem();
+                item.Text = index.ToString();
+                item.SubItems.Add(video.Title);
+                item.SubItems.Add(video.Duration);
+                item.SubItems.Add(video.ChannelTitle);
+                item.SubItems.Add(video.DatePublished.Day.ToString() + "/" + video.DatePublished.Month.ToString() + "/" + video.DatePublished.Year.ToString());
+                item.SubItems.Add(video.View.Value.ToString("N0"));
+                item.SubItems.Add(video.CommentCount.Value.ToString("N0"));
+                item.SubItems.Add(video.Quality);
+                item.SubItems.Add(video.Like.Value.ToString("N0"));
+                item.SubItems.Add(video.Dislike.Value.ToString("N0"));
+                item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
+                item.SubItems.Add(video.ChannelId);
+                index++;
+
+                _videoItems.Add(item);
+            }
+            
+            _TotalResult = playlist.TotalResults;
+            
         }
 
         private void bwFetch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -558,12 +613,18 @@ namespace YoutubeApisDemo
             lblStatus.Visible = false;
             pbStatus.Visible = false;
             ThreadProcSafeSetGUI();
-
+            btnGrab.Enabled = true;
+            CheckPageTokenAvailable();
+            lblCounter.Text = "Displayed " + listVideos.Items.Count.ToString() + " videos in " + _TotalResult.ToString() + " videos total";
+            _IsProcessing = false;
+            Cursor.Current = Cursors.Default;
+            lblCounter.Visible = true;
         }
 
         private void bwFetch_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            UpdateProc(e.ProgressPercentage);
+            
+            
         }
         #endregion
     }

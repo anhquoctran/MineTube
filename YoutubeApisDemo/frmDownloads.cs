@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using VideoLibrary;
 using System.Windows.Forms;
+using System.Threading;
+using YoutubeExtractor;
 
 namespace YoutubeApisDemo
 {
@@ -26,7 +28,8 @@ namespace YoutubeApisDemo
         {
             InitializeComponent();
             GetVideoInfo(youtubeUrl);
-            
+            btnPause.Enabled = false;
+            btnStop.Enabled = false;
             lblSize.Text = VideoSize;
             lblName.Text = VideoName;
             foreach (var item in lstQuality)
@@ -183,7 +186,7 @@ namespace YoutubeApisDemo
             var temp3 = Math.Round(space.Value, 2);
             VideoSize = string.Format("{0} {1}", temp3, space.Key);
         }
-        #endregion
+        
 
         private void cbQuality_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -222,33 +225,58 @@ namespace YoutubeApisDemo
 
         private void bwDownload_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            File.WriteAllBytes(saveFileDlg.FileName, bytesToSave);
+            for(int i = 0; i <= 100; i++)
+            {
+                Thread.Sleep(100);
+                bwDownload.ReportProgress(i);
+            }
+            
         }
 
         private void bwDownload_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             pbStatus.Value = e.ProgressPercentage;
+            lblStatus.Text = "Downloading " + pbStatus.Value.ToString() + "%...";
         }
 
         private void bwDownload_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-
+            lblStatus.Text = "Completed!";
+            //pbStatus.Style = ProgressBarStyle.Blocks;
+            btnDownload.Enabled = true;
+            btnDownload.Text = "Re-download";
+            btnPause.Enabled = false;
+            btnStop.Enabled = false;
         }
 
         private void btDownload_Click(object sender, EventArgs e)
         {
-            btDownload.Enabled = false;
+            btnDownload.Enabled = false;
+            btnPause.Enabled = true;
+            btnStop.Enabled = true;
             if (bwDownload.IsBusy == true)
             {
                 return;
             }
             else
             {
-                
+                btnPause.Visible = true;
+                pbStatus.Style = ProgressBarStyle.Blocks;
                 bwDownload.RunWorkerAsync();
                 
             }
-            btDownload.Enabled = true;
+            
         }
+
+        private void frmDownloads_Load(object sender, EventArgs e)
+        {
+            lblStatus.Text = "Ready";
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            bwDownload.CancelAsync();
+        }
+        #endregion
     }
 }
