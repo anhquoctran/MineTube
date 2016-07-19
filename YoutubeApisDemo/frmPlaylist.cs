@@ -8,6 +8,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using VideoLibrary;
 
 namespace YoutubeApisDemo
 {
@@ -55,6 +57,8 @@ namespace YoutubeApisDemo
 
         delegate void SetListViewItem(List<ListViewItem> item);
 
+        delegate void UpdateProgress(int i);
+
         #endregion
 
         #region
@@ -66,11 +70,11 @@ namespace YoutubeApisDemo
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
             
-            lblDate.Text = "n/a";
+            lblDate.Text = "";
             listVideos.Columns[11].Dispose();
-            
+            pbStatus.Visible = false;
             _ImageIsNullOrEmpty = true;
-            lblChannelOwner.Visible = false;
+            lblChannelOwner.Text = "";
             
         }
         #endregion
@@ -78,20 +82,31 @@ namespace YoutubeApisDemo
         #region Controls's events
         private void btnGet_Click(object sender, EventArgs e)
         {
+            pbStatus.Visible = true;
+            lblStatus.Visible = true;
             btnGrab.Enabled = false;
+            
+            
+            lblStatus.Text = "Getting data. Please be patient...";
+            lblCounter.Text = "";
             Cursor.Current = Cursors.WaitCursor;
             listVideos.Items.Clear();
             _IsProcessing = true;
 
-            GetPlaylistInformation(txtboxUrl.Text);    
-                   
-            Thread t = new Thread(new ThreadStart(ThreadProcSafeSetGUI));
-            t.Start();
+            //GetPlaylistInformation(txtboxUrl.Text);    
+
+            //Thread t = new Thread(new ThreadStart(ThreadProcSafeSetGUI));
+            //t.Start();
+
+            bwFetch.RunWorkerAsync();
             CheckPageTokenAvailable();
 
             _IsProcessing = false;
             btnGrab.Enabled = true;
             Cursor.Current = Cursors.Default;
+            lblCounter.Visible = true;
+            
+            //lblCounter.Text = "Displayed " + _videoItems.Count.ToString() + " videos in " + _TotalResult.ToString() + " videos total";
             
         }
         
@@ -112,7 +127,7 @@ namespace YoutubeApisDemo
                 _Descrirption = playlist.Description;
                 _OwnerName = playlist.OwnerTitle;              
                 _ChannelId = playlist.OwnerID;
-                if (playlist.NextPageToken != "")
+                if (playlist.NextPageToken != null)
                 {
                     _PageNextToken = playlist.NextPageToken;
                     _IsNextPageTokenAvailable = true;
@@ -122,20 +137,20 @@ namespace YoutubeApisDemo
                     _IsNextPageTokenAvailable = false;
                 }
 
-                if (playlist.PrevPageToken != "")
+                if (playlist.PrevPageToken != null)
                 {
                     _PagePrevToken = playlist.PrevPageToken;
                     _IsPrevPageTokenAvailable = true;
                 }
                 else
                 {
-                    _IsPrevPageTokenAvailable = true;
+                    _IsPrevPageTokenAvailable = false;
                 }
 
-                _PagePrevToken = playlist.PrevPageToken;
+                
 
                 int index = 1;
-
+                _videoItems = new List<ListViewItem>();
                 foreach (var video in videos)
                 {
                     var item = new ListViewItem();
@@ -150,15 +165,14 @@ namespace YoutubeApisDemo
                     item.SubItems.Add(video.Like.Value.ToString("N0"));
                     item.SubItems.Add(video.Dislike.Value.ToString("N0"));
                     item.SubItems.Add("https://www.youtube.com/watch?v=" + video.Id);
-                    item.SubItems.Add(video.ChannelId);
-                   
+                    item.SubItems.Add(video.ChannelId);                  
                     index++;
-                    _videoItems = new List<ListViewItem>();
+                    
                     _videoItems.Add(item);
-                }            
+                }
+                          
                 _TotalResult = playlist.TotalResults;               
-            }
-            
+            }    
         }        
         
         protected void Back()
@@ -191,7 +205,7 @@ namespace YoutubeApisDemo
                 e.Cancel = true;
             }
 
-            if(listVideos.SelectedItems.Count == 0 && listVideos.Items.Count > 0)
+            if(listVideos.SelectedItems.Count == 0 || listVideos.Items.Count < 0)
             {
                 e.Cancel = false;
                 getPublisherInformationToolStripMenuItem.Enabled = false;
@@ -199,6 +213,8 @@ namespace YoutubeApisDemo
                 copyVideoURLToolStripMenuItem.Enabled = false;
                 clearToolStripMenuItem.Enabled = false;
                 clearAllItemsToolStripMenuItem.Enabled = true;
+                downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = false;
+                downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = false;
             }
 
             if (listVideos.SelectedItems.Count > 0)
@@ -211,12 +227,14 @@ namespace YoutubeApisDemo
                 clearAllItemsToolStripMenuItem.Enabled = true;
                 ListViewItem item = listVideos.SelectedItems[0];
 
-                if (item.SubItems[1].Text.Contains("[Q] "))
+                if (item.SubItems[1].Text.Contains("[Queued] "))
                 {
+                    downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = false;
                     downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = false;
                 }
                 else
                 {
+                    downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = true;
                     downloadWithOurDownloadToolcomingSoonToolStripMenuItem.Enabled = true;
                 }
             }           
@@ -257,6 +275,7 @@ namespace YoutubeApisDemo
         private void clearAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listVideos.Items.Clear();
+            lblStatus.Text = "There are nothing to display";
             lblStatus.Visible = true;
             lblCounter.Visible = false;
         }
@@ -340,15 +359,16 @@ namespace YoutubeApisDemo
         {
             ListViewItem item = listVideos.SelectedItems[0];
             var urlVideo = item.SubItems[10].Text;
-            //frmDownload download = new frmDownload(urlVideo, item.SubItems[1].Text);
-            item.SubItems[1].Text = "[Q] " + item.SubItems[1].Text;
+            item.SubItems[1].Text = "[Queued] " + item.SubItems[1].Text;
+            frmDownloads download = new frmDownloads(urlVideo);
+            download.Show();
         }
 
         private static string GetIDMInstallationFolderDependOnOSArch()
         {
             var res = "";
             string name = "SOFTWARE\\DownloadManager";
-            Microsoft.Win32.RegistryKey registryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(name);
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(name);
             res = registryKey.GetValue("ExePath", "").ToString();
             return res;
         }
@@ -356,18 +376,34 @@ namespace YoutubeApisDemo
         private void downloadWithInternetDownloadManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var IDMPath = GetIDMInstallationFolderDependOnOSArch();
-            var video = new YoutubeVideo();
-            var DownloadUrl = video.DownloadUrl;
-            var VideoName = video.Title;
+            var item = listVideos.SelectedItems[0];
+            var urlVideo = item.SubItems[10].Text;
+            var videoTemp = item.SubItems[1].Text;
+            var videoName = "";
+            if (videoTemp.Contains("[Queued] "))
+            {
+                videoName = videoTemp.Substring(8);
+            }
+            else
+            {
+                videoName = videoTemp;
+            }
+            var urlDownload = "";
+
+            using (var service = Client.For(YouTube.Default))
+            {
+                var video = service.GetVideo(urlVideo);
+                urlDownload = video.Uri;
+            }
+
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = IDMPath,
-                    Arguments = "idman /d " + DownloadUrl + " /f " + video.Title
+                    Arguments = "idman /d " + urlDownload + " /f " + videoName
                 }
-            };
-
+            };         
             process.Start();
             process.WaitForExit();
         }
@@ -398,7 +434,7 @@ namespace YoutubeApisDemo
             if (lblTitlePlaylist.InvokeRequired)
             {
                 SetTitle setTitle = new SetTitle(UpdateTitle);
-                Invoke(setTitle, new object[] { Title });
+                lblTitlePlaylist.Invoke(setTitle, new object[] { Title });
             }
             else
                 lblTitlePlaylist.Text = Title;
@@ -409,7 +445,7 @@ namespace YoutubeApisDemo
             if (lblChannelOwner.InvokeRequired)
             {
                 SetOwner setOwner = new SetOwner(UpdateOwnerName);
-                Invoke(setOwner, new object[] { OwnerName });
+                lblChannelOwner.Invoke(setOwner, new object[] { OwnerName });
             }
             else
                 lblChannelOwner.Text = OwnerName;
@@ -420,7 +456,7 @@ namespace YoutubeApisDemo
             if (richDescription.InvokeRequired)
             {
                 SetDescription setDescription = new SetDescription(UpdateDescription);
-                Invoke(setDescription, new object[] { Description });
+                richDescription.Invoke(setDescription, new object[] { Description });
             }
             else
                 richDescription.Text = Description;
@@ -430,23 +466,29 @@ namespace YoutubeApisDemo
         {
             if (lblDate.InvokeRequired)
             {
-                SetDate setDate = new SetDate(UpdateDescription);
-                Invoke(setDate, new object[] { Date });
+                SetDate setDate = new SetDate(UpdatePublishDate);
+                lblDate.Invoke(setDate, new object[] { Date });
             }
             else
                 lblDate.Text = Date;
         }
 
-        private void UpdateThumbURL(string URL = "")
+        private void UpdateThumbURL(string Url = "")
         {
-            if (picThumbs.InvokeRequired)
+            if (Url != "")
             {
-                SetThumbs setThumbURL = new SetThumbs(UpdateThumbURL);
-                Invoke(setThumbURL, new object[] { URL });
+                if (picThumbs.InvokeRequired)
+                {
+                    SetThumbs setThumbURL = new SetThumbs(UpdateThumbURL);
+                    picThumbs.Invoke(setThumbURL, new object[] { Url });
+                }
+                else
+                {
+                    picThumbs.ImageLocation = Url;
+                    _ImageIsNullOrEmpty = false;
+                }
             }
-            else
-             picThumbs.ImageLocation = URL;
-            _ImageIsNullOrEmpty = false;
+            
         }
 
         private void UpdatePrevToken(string PrevToken)
@@ -486,7 +528,43 @@ namespace YoutubeApisDemo
                     listVideos.Items.Add(item);
                 }
             }
-        }    
+        }
+        
+        private void UpdateProc(int value)
+        {
+            if (pbStatus.InvokeRequired)
+            {
+                UpdateProgress updateP = new UpdateProgress(UpdateProc);
+                pbStatus.Invoke(updateP, new object[] { value });
+            }
+            else
+            {
+                pbStatus.Value = value;
+            }
+        }
+
+        private void txtboxUrl_Click(object sender, EventArgs e)
+        {
+            txtboxUrl.SelectAll();
+        }
+
+        private void bwFetch_DoWork(object sender, DoWorkEventArgs e)
+        {
+            GetPlaylistInformation(txtboxUrl.Text);
+        }
+
+        private void bwFetch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            lblStatus.Visible = false;
+            pbStatus.Visible = false;
+            ThreadProcSafeSetGUI();
+
+        }
+
+        private void bwFetch_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            UpdateProc(e.ProgressPercentage);
+        }
         #endregion
     }
 }

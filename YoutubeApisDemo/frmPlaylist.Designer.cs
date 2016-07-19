@@ -72,6 +72,8 @@
             this.saveImg = new System.Windows.Forms.SaveFileDialog();
             this.lblStatus = new System.Windows.Forms.Label();
             this.picThumbs = new System.Windows.Forms.PictureBox();
+            this.pbStatus = new System.Windows.Forms.ProgressBar();
+            this.bwFetch = new System.ComponentModel.BackgroundWorker();
             this.menuContextVideo.SuspendLayout();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).BeginInit();
@@ -94,6 +96,7 @@
             this.txtboxUrl.TabIndex = 8;
             this.txtboxUrl.TabStop = false;
             this.txtboxUrl.UseSystemPasswordChar = false;
+            this.txtboxUrl.Click += new System.EventHandler(this.txtboxUrl_Click);
             // 
             // btnBack
             // 
@@ -289,11 +292,10 @@
             // 
             // downloadWithInternetDownloadManagerToolStripMenuItem
             // 
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Enabled = false;
             this.downloadWithInternetDownloadManagerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadWithInternetDownloadManagerToolStripMenuItem.Image")));
             this.downloadWithInternetDownloadManagerToolStripMenuItem.Name = "downloadWithInternetDownloadManagerToolStripMenuItem";
             this.downloadWithInternetDownloadManagerToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.downloadWithInternetDownloadManagerToolStripMenuItem.Text = "Download with IDM";
+            this.downloadWithInternetDownloadManagerToolStripMenuItem.Text = "Send link to IDM";
             this.downloadWithInternetDownloadManagerToolStripMenuItem.Click += new System.EventHandler(this.downloadWithInternetDownloadManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -376,11 +378,12 @@
             // btnGrab
             // 
             this.btnGrab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.btnGrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGrab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnGrab.FlatAppearance.BorderSize = 0;
             this.btnGrab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrab.Font = new System.Drawing.Font("Roboto Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnGrab.ForeColor = System.Drawing.Color.White;
+            this.btnGrab.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGrab.ForeColor = System.Drawing.Color.Black;
             this.btnGrab.Location = new System.Drawing.Point(1500, 102);
             this.btnGrab.Name = "btnGrab";
             this.btnGrab.Size = new System.Drawing.Size(104, 36);
@@ -457,7 +460,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richDescription.BackColor = System.Drawing.Color.White;
             this.richDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richDescription.ForeColor = System.Drawing.Color.White;
+            this.richDescription.ForeColor = System.Drawing.Color.Black;
             this.richDescription.Location = new System.Drawing.Point(242, 213);
             this.richDescription.Name = "richDescription";
             this.richDescription.ReadOnly = true;
@@ -520,6 +523,24 @@
             this.picThumbs.TabIndex = 21;
             this.picThumbs.TabStop = false;
             // 
+            // pbStatus
+            // 
+            this.pbStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus.Location = new System.Drawing.Point(673, 563);
+            this.pbStatus.MarqueeAnimationSpeed = 5;
+            this.pbStatus.Name = "pbStatus";
+            this.pbStatus.Size = new System.Drawing.Size(263, 10);
+            this.pbStatus.Step = 2;
+            this.pbStatus.TabIndex = 31;
+            // 
+            // bwFetch
+            // 
+            this.bwFetch.WorkerReportsProgress = true;
+            this.bwFetch.WorkerSupportsCancellation = true;
+            this.bwFetch.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwFetch_DoWork);
+            this.bwFetch.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwFetch_ProgressChanged);
+            this.bwFetch.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwFetch_RunWorkerCompleted);
+            // 
             // frmPlaylist
             // 
             this.AcceptButton = this.btnGrab;
@@ -528,6 +549,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1616, 766);
             this.ControlBox = false;
+            this.Controls.Add(this.pbStatus);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.richDescription);
             this.Controls.Add(this.label3);
@@ -605,5 +627,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem downloadWithOurDownloadToolcomingSoonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadWithInternetDownloadManagerToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar pbStatus;
+        private System.ComponentModel.BackgroundWorker bwFetch;
     }
 }

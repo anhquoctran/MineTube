@@ -85,7 +85,7 @@ namespace YoutubeApisDemo
             {
                 var playlistRequest = ytService.PlaylistItems.List("contentDetails,snippet");
                 playlistRequest.PlaylistId = IdPlaylist;
-                playlistRequest.MaxResults = 50;
+                playlistRequest.MaxResults = 20;
                 
                 var playlistResponse = playlistRequest.Execute();
                 
@@ -97,7 +97,7 @@ namespace YoutubeApisDemo
                 }
 
                 PlaylistTotalResult = playlistResponse.PageInfo.TotalResults.Value;
-            }
+           }
             catch (AggregateException ex)
             {
                 foreach (var e in ex.InnerExceptions)
@@ -141,6 +141,7 @@ namespace YoutubeApisDemo
         {
             try
             {
+                
                 var videoRequest = ytService.Videos.List("snippet,statistics,contentDetails");
                 videoRequest.Id = video.Id;
 
@@ -148,10 +149,42 @@ namespace YoutubeApisDemo
 
                 if (response.Items.Count > 0)
                 {
-                    video.CommentCount = response.Items[0].Statistics.CommentCount;
-                    video.View = response.Items[0].Statistics.ViewCount;
-                    video.Like = response.Items[0].Statistics.LikeCount;
-                    video.Dislike = response.Items[0].Statistics.DislikeCount;
+                    if (response.Items[0].Statistics.CommentCount == null)
+                    {
+                        video.CommentCount = 0;
+                    }
+                    else
+                    {
+                        video.CommentCount = response.Items[0].Statistics.CommentCount;
+                    }
+
+                    if (response.Items[0].Statistics.ViewCount == null)
+                    {
+                        video.View = 0;
+                    }
+                    else
+                    {
+                        video.View = video.View = response.Items[0].Statistics.ViewCount;
+                    }
+
+                    if (response.Items[0].Statistics.LikeCount == null)
+                    {
+                        video.Like = 0;
+                    }
+                    else
+                    {
+                        video.Like = response.Items[0].Statistics.LikeCount;
+                    }
+
+                    if (response.Items[0].Statistics.DislikeCount == null)
+                    {
+                        video.Dislike = 0;
+                    }
+                    else
+                    {
+                        video.Dislike = response.Items[0].Statistics.DislikeCount;
+                    }
+                    
                     video.Title = response.Items[0].Snippet.Title;
                     video.Description = response.Items[0].Snippet.Description;
                     video.DatePublished = response.Items[0].Snippet.PublishedAt.Value;
@@ -160,6 +193,7 @@ namespace YoutubeApisDemo
                     video.ChannelId = response.Items[0].Snippet.ChannelId;
                     video.CategoryId = response.Items[0].Snippet.CategoryId;
                     video.Url = "https://www.youtube.com/watch?v=" + video.Id;
+                    //var size = response.Items[0].FileDetails.FileType;
                     if (response.Items[0].Snippet.Tags != null)
                     {
                         video.VideoTags = new string[response.Items[0].Snippet.Tags.Count];
@@ -176,11 +210,10 @@ namespace YoutubeApisDemo
                     TimeSpan ts = XmlConvert.ToTimeSpan(s);
                     video.Duration = FormatTime(ts);
 
-                    var youtube = YouTube.Default;
-                    var vid = youtube.GetVideo(video.Url);
+                    //var youtube = YouTube.Default;
+                    //var vid = youtube.GetVideo(video.Url);
                     
-                }
-                
+                }              
                 else
                 {
                     MessageBox.Show("Không thể tìm thấy video!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
