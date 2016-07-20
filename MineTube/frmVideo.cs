@@ -322,8 +322,8 @@ namespace MineTube
             Hide();
             frmInitializers Initial = new frmInitializers(new frmHome(), "Backing to Home...");
             Initial.ShowDialog();
-            
-            this.Close();
+
+            Close();
         }
 
         [StructLayout(LayoutKind.Sequential)]

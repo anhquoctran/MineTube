@@ -298,7 +298,8 @@ namespace MineTube
                 bwDownload.RunWorkerAsync();
             }
 
-            
+            btnOpenFolder.Visible = false;
+            btnOpen.Visible = false;
             cbQuality.Enabled = false;
             btnChoose.Enabled = false;
             btnDownload.Enabled = true;

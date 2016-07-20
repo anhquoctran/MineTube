@@ -32,8 +32,8 @@ namespace MineTube
             Hide();
             frmInitializers Initial = new frmInitializers(new frmHome(), "Backing to Home...");
             Initial.ShowDialog();
-            
-            this.Close();
+
+            Close();
         }
 
         private void radioBtnVideo_CheckedChanged(object sender, EventArgs e)

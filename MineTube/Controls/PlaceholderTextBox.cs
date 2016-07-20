@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MineTube
+namespace MineTube.Controls
 {
 	/// <summary>
 	/// Represents a Windows text box control with placeholder.

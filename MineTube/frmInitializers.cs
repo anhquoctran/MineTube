@@ -41,9 +41,9 @@ namespace MineTube
 
         private void loading_Tick(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             loading.Stop();
-            form.FormClosed += (s, args) => this.Close();
+            form.FormClosed += (s, args) => Close();
             form.Show();            
         }
     }

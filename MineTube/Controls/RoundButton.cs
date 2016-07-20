@@ -6,7 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
-namespace MineTube
+namespace MineTube.Controls
 {
 	/// <summary>
 	/// Summary description for RoundButton.

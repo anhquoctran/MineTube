@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace MineTube.CustomControls
+namespace MineTube.Controls
 {
     public class AutoClosingMessageBox
     {
