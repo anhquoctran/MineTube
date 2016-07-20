@@ -59,7 +59,7 @@
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.picAvatarUser = new MineTube.CirclePictureBox();
+            this.picAvatarUser = new Controls.CirclePictureBox();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
@@ -513,7 +513,7 @@
         private MaterialSkin.Controls.MaterialContextMenuStrip menuThumbs;
         private System.Windows.Forms.ToolStripMenuItem copyImageURLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageAsToolStripMenuItem;
-        private CirclePictureBox picAvatarUser;
+        private Controls.CirclePictureBox picAvatarUser;
     }
 }
 

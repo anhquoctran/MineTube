@@ -43,9 +43,9 @@
             this.btnPlaylist = new System.Windows.Forms.Button();
             this.btnVideoInfo = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.picAvatarUser = new Controls.CirclePictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblNetworkStatus = new System.Windows.Forms.Label();
+            this.picAvatarUser = new MineTube.Controls.CirclePictureBox();
             this.MenuConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).BeginInit();
             this.SuspendLayout();
@@ -213,20 +213,6 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // picAvatarUser
-            // 
-            this.picAvatarUser.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.picAvatarUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAvatarUser.Image = global::MineTube.Properties.Resources.null_avatar;
-            this.picAvatarUser.Location = new System.Drawing.Point(825, 28);
-            this.picAvatarUser.Name = "picAvatarUser";
-            this.picAvatarUser.Size = new System.Drawing.Size(32, 32);
-            this.picAvatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAvatarUser.TabIndex = 15;
-            this.picAvatarUser.TabStop = false;
-            this.toolTip1.SetToolTip(this.picAvatarUser, "Google Account");
-            this.picAvatarUser.Click += new System.EventHandler(this.picAvatarUser_Click);
-            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -253,6 +239,20 @@
             this.lblNetworkStatus.Size = new System.Drawing.Size(55, 13);
             this.lblNetworkStatus.TabIndex = 13;
             this.lblNetworkStatus.Text = "netstatus";
+            // 
+            // picAvatarUser
+            // 
+            this.picAvatarUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picAvatarUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAvatarUser.Image = global::MineTube.Properties.Resources.null_avatar;
+            this.picAvatarUser.Location = new System.Drawing.Point(825, 28);
+            this.picAvatarUser.Name = "picAvatarUser";
+            this.picAvatarUser.Size = new System.Drawing.Size(32, 32);
+            this.picAvatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatarUser.TabIndex = 15;
+            this.picAvatarUser.TabStop = false;
+            this.toolTip1.SetToolTip(this.picAvatarUser, "Google Account");
+            this.picAvatarUser.Click += new System.EventHandler(this.picAvatarUser_Click);
             // 
             // frmHome
             // 

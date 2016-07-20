@@ -224,6 +224,12 @@
     <Compile Include="Controls\CirclePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Downloader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Downloader.Designer.cs">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,9 @@
     <Compile Include="YouTubeChannel.cs" />
     <Compile Include="YouTubePlaylist.cs" />
     <Compile Include="YoutubeVideo.cs" />
+    <EmbeddedResource Include="Controls\Downloader.resx">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +328,7 @@
     <EmbeddedResource Include="frmVideo.resx">
       <DependentUpon>frmVideo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -381,6 +391,7 @@
     </Content>
     <None Include="Resources\Preloader_11.gif" />
     <None Include="Resources\avatar_720-vflYJnzBZ.png" />
+    <None Include="Resources\download.png" />
     <Content Include="youtube-logotype.ico" />
   </ItemGroup>
   <ItemGroup>

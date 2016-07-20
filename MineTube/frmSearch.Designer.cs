@@ -39,7 +39,7 @@
             this.lblStatusList = new MaterialSkin.Controls.MaterialLabel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.imageListView1 = new Manina.Windows.Forms.ImageListView();
-            this.circlePictureBox1 = new MineTube.CirclePictureBox();
+            this.circlePictureBox1 = new Controls.CirclePictureBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -243,6 +243,6 @@
         //private MaterialSkin.Controls.MaterialProgressBar prbStatus;
         private System.Windows.Forms.Label lblVersion;
         private Manina.Windows.Forms.ImageListView imageListView1;
-        private CirclePictureBox circlePictureBox1;
+        private Controls.CirclePictureBox circlePictureBox1;
     }
 }

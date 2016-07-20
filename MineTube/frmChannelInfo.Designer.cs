@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChannelInfo));
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.picAvatar = new MineTube.CirclePictureBox();
+            this.picAvatar = new Controls.CirclePictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.btnSubscriberCounter = new System.Windows.Forms.Button();
             this.lblView = new System.Windows.Forms.Label();
@@ -222,6 +222,6 @@
         private System.Windows.Forms.Button btnSubscriberCounter;
         private System.Windows.Forms.Label lblView;
         private System.Windows.Forms.PictureBox close;
-        private CirclePictureBox picAvatar;
+        private Controls.CirclePictureBox picAvatar;
     }
 }

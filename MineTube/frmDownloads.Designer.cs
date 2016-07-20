@@ -50,6 +50,9 @@
             this.lblUrl = new System.Windows.Forms.Label();
             this.menuCopy = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSpeed = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuCopy.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +103,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(13, 153);
+            this.label2.Location = new System.Drawing.Point(11, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 3;
@@ -111,7 +114,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(11, 123);
+            this.label3.Location = new System.Drawing.Point(13, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 4;
@@ -124,7 +127,7 @@
             this.cbQuality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbQuality.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbQuality.FormattingEnabled = true;
-            this.cbQuality.Location = new System.Drawing.Point(113, 150);
+            this.cbQuality.Location = new System.Drawing.Point(141, 121);
             this.cbQuality.Name = "cbQuality";
             this.cbQuality.Size = new System.Drawing.Size(161, 28);
             this.cbQuality.TabIndex = 5;
@@ -135,8 +138,8 @@
             this.lblSize.AutoSize = true;
             this.lblSize.BackColor = System.Drawing.Color.Transparent;
             this.lblSize.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblSize.ForeColor = System.Drawing.Color.DimGray;
-            this.lblSize.Location = new System.Drawing.Point(112, 123);
+            this.lblSize.ForeColor = System.Drawing.Color.Black;
+            this.lblSize.Location = new System.Drawing.Point(139, 161);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(77, 20);
             this.lblSize.TabIndex = 6;
@@ -148,7 +151,7 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblName.ForeColor = System.Drawing.Color.Black;
-            this.lblName.Location = new System.Drawing.Point(109, 94);
+            this.lblName.Location = new System.Drawing.Point(139, 94);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(377, 20);
             this.lblName.TabIndex = 8;
@@ -174,7 +177,7 @@
             this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDownload.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDownload.ForeColor = System.Drawing.Color.Black;
-            this.btnDownload.Location = new System.Drawing.Point(291, 252);
+            this.btnDownload.Location = new System.Drawing.Point(291, 288);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(142, 35);
             this.btnDownload.TabIndex = 9;
@@ -186,23 +189,23 @@
             // 
             this.pbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatus.Location = new System.Drawing.Point(12, 226);
+            this.pbStatus.Location = new System.Drawing.Point(12, 262);
             this.pbStatus.Name = "pbStatus";
             this.pbStatus.Size = new System.Drawing.Size(569, 20);
             this.pbStatus.TabIndex = 10;
             // 
             // lblStatus
             // 
-            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoEllipsis = true;
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(13, 200);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Black;
+            this.lblStatus.Location = new System.Drawing.Point(139, 222);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(568, 23);
+            this.lblStatus.Size = new System.Drawing.Size(442, 23);
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = "progress_status";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bwDownload
             // 
@@ -220,7 +223,7 @@
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnStop.ForeColor = System.Drawing.Color.Black;
-            this.btnStop.Location = new System.Drawing.Point(439, 252);
+            this.btnStop.Location = new System.Drawing.Point(439, 288);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(142, 35);
             this.btnStop.TabIndex = 12;
@@ -237,7 +240,7 @@
             this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpen.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOpen.ForeColor = System.Drawing.Color.Black;
-            this.btnOpen.Location = new System.Drawing.Point(12, 252);
+            this.btnOpen.Location = new System.Drawing.Point(12, 288);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(125, 35);
             this.btnOpen.TabIndex = 15;
@@ -253,7 +256,7 @@
             this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenFolder.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOpenFolder.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenFolder.Location = new System.Drawing.Point(143, 252);
+            this.btnOpenFolder.Location = new System.Drawing.Point(143, 288);
             this.btnOpenFolder.Name = "btnOpenFolder";
             this.btnOpenFolder.Size = new System.Drawing.Size(142, 35);
             this.btnOpenFolder.TabIndex = 16;
@@ -265,7 +268,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.Location = new System.Drawing.Point(12, 64);
+            this.label4.Location = new System.Drawing.Point(13, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 20);
             this.label4.TabIndex = 17;
@@ -277,10 +280,10 @@
             this.lblUrl.BackColor = System.Drawing.Color.Transparent;
             this.lblUrl.ContextMenuStrip = this.menuCopy;
             this.lblUrl.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblUrl.ForeColor = System.Drawing.Color.DimGray;
-            this.lblUrl.Location = new System.Drawing.Point(109, 64);
+            this.lblUrl.ForeColor = System.Drawing.Color.Gray;
+            this.lblUrl.Location = new System.Drawing.Point(143, 64);
             this.lblUrl.Name = "lblUrl";
-            this.lblUrl.Size = new System.Drawing.Size(467, 20);
+            this.lblUrl.Size = new System.Drawing.Size(433, 20);
             this.lblUrl.TabIndex = 18;
             this.lblUrl.Text = "url_video";
             this.lblUrl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -303,12 +306,49 @@
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
+            // lblSpeed
+            // 
+            this.lblSpeed.AutoSize = true;
+            this.lblSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.lblSpeed.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.lblSpeed.ForeColor = System.Drawing.Color.Black;
+            this.lblSpeed.Location = new System.Drawing.Point(139, 190);
+            this.lblSpeed.Name = "lblSpeed";
+            this.lblSpeed.Size = new System.Drawing.Size(90, 20);
+            this.lblSpeed.TabIndex = 20;
+            this.lblSpeed.Text = "speed_value";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label7.Location = new System.Drawing.Point(12, 190);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 20);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Download speed:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.Location = new System.Drawing.Point(13, 223);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 20);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Status:";
+            // 
             // frmDownloads
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(593, 299);
+            this.ClientSize = new System.Drawing.Size(593, 335);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblSpeed);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblUrl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOpenFolder);
@@ -364,6 +404,9 @@
         private System.Windows.Forms.Label lblUrl;
         private MaterialSkin.Controls.MaterialContextMenuStrip menuCopy;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.Label lblSpeed;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
         //private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

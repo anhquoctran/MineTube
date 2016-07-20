@@ -41,11 +41,24 @@ namespace MineTube
             lblSize.Text = VideoSize;
             lblName.Text = VideoName;
             lblUrl.Text = DownloadUrl;
-            foreach (var item in lstQuality)
+            lblSpeed.Text = "n/a";
+            if (lstQuality.Count > 0)
             {
-                cbQuality.Items.Add(item);
+                cbQuality.Items.Clear();
+                foreach (var item in lstQuality)
+                {
+                    cbQuality.Items.Add(item);
+                    
+                }
+                cbQuality.SelectedIndex = 0;
+  
             }
-            cbQuality.SelectedIndex = 0;
+
+            if (lstQuality.Count == 0)
+            {
+                cbQuality.Items.Add("n/a");
+                cbQuality.SelectedIndex = 0;
+            }
             saveFileDlg.Title = "Save video to...";
 
             if (IsAudioFormat == false)
@@ -183,6 +196,7 @@ namespace MineTube
                 lstQuality.Add(VideoFormat.ToUpper() + " - " + tempResolution + "p");
                 lstQuality.Add("Audio " + AudioFormat.ToUpper() + " - " + AudioBitrate + "Kbps");
                 DownloadUrl = video.Uri;
+                
             }          
         }
 
@@ -235,11 +249,7 @@ namespace MineTube
         {
             try
             {
-                for (int i = 0; i <= 100; i++)
-                {
-                    Thread.Sleep(100);
-                    bwDownload.ReportProgress(i);
-                }
+                
             }
             catch (Exception ex)
             {

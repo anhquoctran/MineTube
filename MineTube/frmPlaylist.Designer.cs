@@ -69,12 +69,12 @@
             this.btnGrab = new MaterialSkin.Controls.MaterialRaisedButton();
             this.picThumbs = new System.Windows.Forms.PictureBox();
             this.viewVideocomingSoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyVideoURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyVideoURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadWithOurDownloadToolcomingSoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadWithInternetDownloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.picAvatarUser = new MineTube.CirclePictureBox();
+            this.picAvatarUser = new Controls.CirclePictureBox();
             this.menuContextVideo.SuspendLayout();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).BeginInit();
@@ -638,6 +638,6 @@
         private System.ComponentModel.BackgroundWorker bwFetch;
         private MaterialSkin.Controls.MaterialRaisedButton btnGrab;
         public System.Windows.Forms.ListView listVideos;
-        private CirclePictureBox picAvatarUser;
+        private Controls.CirclePictureBox picAvatarUser;
     }
 }
