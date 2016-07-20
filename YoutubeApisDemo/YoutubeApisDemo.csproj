@@ -195,6 +195,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -214,6 +215,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\AutoClosingMessageBox.cs" />
     <Compile Include="CustomControls\CirclePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>

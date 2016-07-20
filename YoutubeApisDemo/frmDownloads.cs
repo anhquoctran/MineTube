@@ -5,12 +5,11 @@ using System.IO;
 using VideoLibrary;
 using System.Windows.Forms;
 using System.Threading;
-using YoutubeExtractor;
 using System.Drawing;
 
 namespace YoutubeApisDemo
 {
-    public partial class frmDownloads : MaterialForm
+    public partial class frmDownloads : Form
     {
         #region Fields
         private bool IsAudioFormat = false;
@@ -22,6 +21,7 @@ namespace YoutubeApisDemo
         private string Extension = "";
         private string AudioFormat = "";
         private string AudioBitrate = "";
+        
         //private byte[] bytesToSave;
         public AutoResetEvent autos = new AutoResetEvent(false);
         private bool StopThread = false;
@@ -182,11 +182,7 @@ namespace YoutubeApisDemo
                 lstQuality = new List<string>();
                 lstQuality.Add(VideoFormat.ToUpper() + " - " + tempResolution + "p");
                 lstQuality.Add("Audio " + AudioFormat.ToUpper() + " - " + AudioBitrate + "Kbps");
-
-
-            }
-
-            
+            }          
         }
 
         private void GetVideSize(double val)
@@ -248,40 +244,47 @@ namespace YoutubeApisDemo
         {
             pbStatus.Value = e.ProgressPercentage;
             lblStatus.Text = "Downloading " + pbStatus.Value.ToString() + "%...";
+            Text = lblStatus.Text;
         }
 
         private void bwDownload_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            lblStatus.Text = "Completed!";
-            //pbStatus.Style = ProgressBarStyle.Blocks;
-            btnDownload.Enabled = true;
-            btnDownload.Text = "Re-download";
-            btnPause.Enabled = false;
-            btnStop.Enabled = false;
+            if (chkAutoClose.Checked == true)
+            {
+                Close();
+            }
+            else
+            {
+                lblStatus.Text = "Completed!";
+                Text = "Download completed";
+                btnDownload.Enabled = true;
+                btnDownload.Text = "Re-download";
+                btnPause.Enabled = false;
+                btnStop.Enabled = false;
+                cbQuality.Enabled = true;
+                btnChoose.Enabled = true;
+                chkAutoClose.Enabled = true;
+            }
         }
 
         private void btDownload_Click(object sender, EventArgs e)
         {
+            lblStatus.Text = "Connecting... ";
+            if (bwDownload.IsBusy == true)
+            {
+                return;
+            }
+            else
+            {
+                bwDownload.RunWorkerAsync();
+            }
+            cbQuality.Enabled = false;
+            btnChoose.Enabled = false;
             btnDownload.Enabled = false;
             btnDownload.Text = "Download";
             btnPause.Enabled = true;
             btnStop.Enabled = true;
-
-            //IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(Url);
-            //VideoInfo video = 
-
-            //if (bwDownload.IsBusy == true)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    btnPause.Visible = true;
-            //    
-            //    bwDownload.RunWorkerAsync();
-
-            //}
-
+            chkAutoClose.Enabled = false;
         }
 
         private void frmDownloads_Load(object sender, EventArgs e)
@@ -292,6 +295,7 @@ namespace YoutubeApisDemo
         private void btnPause_Click(object sender, EventArgs e)
         {
             StopThread = true;
+            lblStatus.Text = "Paused";
             btnPause.Enabled = false;
             btnDownload.Text = "Resume";
             btnDownload.Enabled = true;
@@ -300,6 +304,10 @@ namespace YoutubeApisDemo
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            if (bwDownload.IsBusy == true)
+            {
+                bwDownload.CancelAsync();
+            }
             btnPause.Enabled = false;
             btnStop.Enabled = false;
             btnDownload.Text = "Download";

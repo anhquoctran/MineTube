@@ -59,11 +59,13 @@
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.picAvatarUser = new YoutubeApisDemo.CirclePictureBox();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).BeginInit();
             this.menuThumbs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVideoInfo
@@ -366,7 +368,6 @@
             this.txtboxSearch.Depth = 0;
             this.txtboxSearch.Hint = "Enter or paste YouTube video URL...";
             this.txtboxSearch.Location = new System.Drawing.Point(15, 86);
-            //this.txtboxSearch.MaxLength = 32767;
             this.txtboxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxSearch.Name = "txtboxSearch";
             this.txtboxSearch.PasswordChar = '\0';
@@ -438,6 +439,17 @@
             this.lblVersion.TabIndex = 21;
             this.lblVersion.Text = "label2";
             // 
+            // picAvatarUser
+            // 
+            this.picAvatarUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picAvatarUser.Image = global::YoutubeApisDemo.Properties.Resources.null_avatar;
+            this.picAvatarUser.Location = new System.Drawing.Point(658, 29);
+            this.picAvatarUser.Name = "picAvatarUser";
+            this.picAvatarUser.Size = new System.Drawing.Size(32, 32);
+            this.picAvatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatarUser.TabIndex = 22;
+            this.picAvatarUser.TabStop = false;
+            // 
             // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +457,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(701, 747);
             this.ControlBox = false;
+            this.Controls.Add(this.picAvatarUser);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.pnlVideoInfo);
@@ -464,6 +477,7 @@
             this.pnlDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).EndInit();
             this.menuThumbs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,6 +513,7 @@
         private MaterialSkin.Controls.MaterialContextMenuStrip menuThumbs;
         private System.Windows.Forms.ToolStripMenuItem copyImageURLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageAsToolStripMenuItem;
+        private CirclePictureBox picAvatarUser;
     }
 }
 

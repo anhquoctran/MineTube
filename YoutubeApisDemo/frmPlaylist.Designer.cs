@@ -74,9 +74,11 @@
             this.downloadWithInternetDownloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picAvatarUser = new YoutubeApisDemo.CirclePictureBox();
             this.menuContextVideo.SuspendLayout();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).BeginInit();
             this.SuspendLayout();
             // 
             // txtboxUrl
@@ -85,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtboxUrl.Depth = 0;
             this.txtboxUrl.Hint = "Enter a playlist ID";
-            this.txtboxUrl.Location = new System.Drawing.Point(13, 152);
+            this.txtboxUrl.Location = new System.Drawing.Point(13, 151);
             this.txtboxUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtboxUrl.Name = "txtboxUrl";
             this.txtboxUrl.PasswordChar = '\0';
@@ -536,6 +538,17 @@
             this.clearAllItemsToolStripMenuItem.Text = "Clear all videos";
             this.clearAllItemsToolStripMenuItem.Click += new System.EventHandler(this.clearAllItemsToolStripMenuItem_Click);
             // 
+            // picAvatarUser
+            // 
+            this.picAvatarUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picAvatarUser.Image = global::YoutubeApisDemo.Properties.Resources.null_avatar;
+            this.picAvatarUser.Location = new System.Drawing.Point(1572, 29);
+            this.picAvatarUser.Name = "picAvatarUser";
+            this.picAvatarUser.Size = new System.Drawing.Size(32, 32);
+            this.picAvatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatarUser.TabIndex = 33;
+            this.picAvatarUser.TabStop = false;
+            // 
             // frmPlaylist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -543,6 +556,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1616, 766);
             this.ControlBox = false;
+            this.Controls.Add(this.picAvatarUser);
             this.Controls.Add(this.btnGrab);
             this.Controls.Add(this.pbStatus);
             this.Controls.Add(this.lblStatus);
@@ -571,6 +585,7 @@
             this.menuContextVideo.ResumeLayout(false);
             this.menuThumbs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picThumbs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -623,5 +638,6 @@
         private System.ComponentModel.BackgroundWorker bwFetch;
         private MaterialSkin.Controls.MaterialRaisedButton btnGrab;
         public System.Windows.Forms.ListView listVideos;
+        private CirclePictureBox picAvatarUser;
     }
 }

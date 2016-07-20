@@ -45,14 +45,15 @@
             this.bwDownload = new System.ComponentModel.BackgroundWorker();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.chkAutoClose = new MaterialSkin.Controls.MaterialCheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(12, 85);
+            this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 0;
@@ -63,11 +64,11 @@
             this.lblPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPath.AutoEllipsis = true;
-            this.lblPath.BackColor = System.Drawing.Color.White;
+            this.lblPath.BackColor = System.Drawing.Color.Transparent;
             this.lblPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPath.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblPath.ForeColor = System.Drawing.Color.Silver;
-            this.lblPath.Location = new System.Drawing.Point(77, 85);
+            this.lblPath.Location = new System.Drawing.Point(77, 19);
             this.lblPath.Name = "lblPath";
             this.lblPath.Size = new System.Drawing.Size(319, 20);
             this.lblPath.TabIndex = 1;
@@ -76,24 +77,25 @@
             // btnChoose
             // 
             this.btnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChoose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnChoose.FlatAppearance.BorderSize = 0;
             this.btnChoose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChoose.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnChoose.ForeColor = System.Drawing.Color.Black;
-            this.btnChoose.Location = new System.Drawing.Point(402, 78);
+            this.btnChoose.Location = new System.Drawing.Point(402, 12);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(87, 35);
             this.btnChoose.TabIndex = 2;
             this.btnChoose.Text = "Choose";
-            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.UseVisualStyleBackColor = false;
             this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(13, 183);
+            this.label2.Location = new System.Drawing.Point(13, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 3;
@@ -102,9 +104,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(11, 153);
+            this.label3.Location = new System.Drawing.Point(11, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 4;
@@ -112,10 +114,12 @@
             // 
             // cbQuality
             // 
+            this.cbQuality.BackColor = System.Drawing.Color.Gainsboro;
             this.cbQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbQuality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbQuality.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbQuality.FormattingEnabled = true;
-            this.cbQuality.Location = new System.Drawing.Point(116, 180);
+            this.cbQuality.Location = new System.Drawing.Point(116, 114);
             this.cbQuality.Name = "cbQuality";
             this.cbQuality.Size = new System.Drawing.Size(161, 28);
             this.cbQuality.TabIndex = 5;
@@ -124,22 +128,22 @@
             // lblSize
             // 
             this.lblSize.AutoSize = true;
-            this.lblSize.BackColor = System.Drawing.Color.White;
+            this.lblSize.BackColor = System.Drawing.Color.Transparent;
             this.lblSize.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblSize.ForeColor = System.Drawing.Color.DimGray;
-            this.lblSize.Location = new System.Drawing.Point(112, 153);
+            this.lblSize.Location = new System.Drawing.Point(112, 87);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(50, 20);
+            this.lblSize.Size = new System.Drawing.Size(77, 20);
             this.lblSize.TabIndex = 6;
-            this.lblSize.Text = "label4";
+            this.lblSize.Text = "video_size";
             // 
             // lblName
             // 
             this.lblName.AutoEllipsis = true;
-            this.lblName.BackColor = System.Drawing.Color.White;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblName.ForeColor = System.Drawing.Color.Black;
-            this.lblName.Location = new System.Drawing.Point(109, 124);
+            this.lblName.Location = new System.Drawing.Point(109, 58);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(377, 20);
             this.lblName.TabIndex = 8;
@@ -148,9 +152,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(11, 124);
+            this.label5.Location = new System.Drawing.Point(11, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 7;
@@ -159,23 +163,25 @@
             // btnDownload
             // 
             this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDownload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDownload.FlatAppearance.BorderSize = 0;
             this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDownload.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDownload.ForeColor = System.Drawing.Color.Black;
-            this.btnDownload.Location = new System.Drawing.Point(143, 266);
+            this.btnDownload.Location = new System.Drawing.Point(143, 228);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(130, 35);
             this.btnDownload.TabIndex = 9;
             this.btnDownload.Text = "Download";
-            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.UseVisualStyleBackColor = false;
             this.btnDownload.Click += new System.EventHandler(this.btDownload_Click);
             // 
             // pbStatus
             // 
             this.pbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatus.Location = new System.Drawing.Point(12, 239);
+            this.pbStatus.Location = new System.Drawing.Point(12, 212);
             this.pbStatus.Name = "pbStatus";
             this.pbStatus.Size = new System.Drawing.Size(477, 10);
             this.pbStatus.TabIndex = 10;
@@ -184,13 +190,13 @@
             // 
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
-            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(13, 220);
+            this.lblStatus.Location = new System.Drawing.Point(13, 193);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(85, 15);
+            this.lblStatus.Size = new System.Drawing.Size(88, 15);
             this.lblStatus.TabIndex = 11;
-            this.lblStatus.Text = "progress_value";
+            this.lblStatus.Text = "progress_status";
             // 
             // bwDownload
             // 
@@ -203,38 +209,58 @@
             // btnPause
             // 
             this.btnPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPause.FlatAppearance.BorderSize = 0;
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnPause.ForeColor = System.Drawing.Color.Black;
-            this.btnPause.Location = new System.Drawing.Point(279, 266);
+            this.btnPause.Location = new System.Drawing.Point(279, 228);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(102, 35);
             this.btnPause.TabIndex = 12;
             this.btnPause.Text = "Pause";
-            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.UseVisualStyleBackColor = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnStop
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStop.FlatAppearance.BorderSize = 0;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnStop.ForeColor = System.Drawing.Color.Black;
-            this.btnStop.Location = new System.Drawing.Point(387, 266);
+            this.btnStop.Location = new System.Drawing.Point(387, 228);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(102, 35);
             this.btnStop.TabIndex = 13;
             this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // chkAutoClose
+            // 
+            this.chkAutoClose.AutoSize = true;
+            this.chkAutoClose.Depth = 0;
+            this.chkAutoClose.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkAutoClose.Location = new System.Drawing.Point(12, 154);
+            this.chkAutoClose.Margin = new System.Windows.Forms.Padding(0);
+            this.chkAutoClose.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkAutoClose.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkAutoClose.Name = "chkAutoClose";
+            this.chkAutoClose.Ripple = true;
+            this.chkAutoClose.Size = new System.Drawing.Size(212, 30);
+            this.chkAutoClose.TabIndex = 14;
+            this.chkAutoClose.Text = "Auto closing when completed";
+            this.chkAutoClose.UseVisualStyleBackColor = true;
             // 
             // frmDownloads
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 313);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(501, 275);
+            this.Controls.Add(this.chkAutoClose);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.lblStatus);
@@ -250,11 +276,11 @@
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(501, 299);
             this.Name = "frmDownloads";
-            this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Download";
@@ -282,6 +308,7 @@
         private System.ComponentModel.BackgroundWorker bwDownload;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnStop;
+        private MaterialSkin.Controls.MaterialCheckBox chkAutoClose;
         //private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

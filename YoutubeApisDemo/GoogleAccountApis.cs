@@ -1,4 +1,5 @@
 ﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Plus.v1;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
@@ -16,7 +17,7 @@ namespace YoutubeApisDemo
     public class GoogleAccountApis
     {
         private PlusService pService = Auth();
-
+        private TokenResponse tokenResponse;
         private static PlusService Auth()
         {
             try
@@ -25,7 +26,7 @@ namespace YoutubeApisDemo
                 using (var stream = new FileStream("google_plus.json", FileMode.Open, FileAccess.Read))
                 {
                     creds = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                            GoogleClientSecrets.Load(stream).Secrets, new[] { PlusService.Scope.UserinfoProfile }, "user", CancellationToken.None, new FileDataStore("GooglePlusSignedIn")).Result;
+                            GoogleClientSecrets.Load(stream).Secrets, new[] { PlusService.Scope.PlusLogin }, "user", CancellationToken.None, new FileDataStore("GooglePlusSignedIn")).Result;
                 }
 
                 var service = new PlusService(new BaseClientService.Initializer()
@@ -49,7 +50,7 @@ namespace YoutubeApisDemo
         {
             try
             {
-                //var accountRequest = pService.
+                
             }
             catch (AggregateException ex)
             {

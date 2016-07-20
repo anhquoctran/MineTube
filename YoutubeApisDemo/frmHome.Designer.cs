@@ -247,7 +247,7 @@
             this.picAvatarUser.Image = global::YoutubeApisDemo.Properties.Resources.null_avatar;
             this.picAvatarUser.Location = new System.Drawing.Point(825, 28);
             this.picAvatarUser.Name = "picAvatarUser";
-            this.picAvatarUser.Size = new System.Drawing.Size(28, 28);
+            this.picAvatarUser.Size = new System.Drawing.Size(32, 32);
             this.picAvatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAvatarUser.TabIndex = 15;
             this.picAvatarUser.TabStop = false;

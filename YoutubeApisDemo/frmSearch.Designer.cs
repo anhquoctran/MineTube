@@ -39,7 +39,9 @@
             this.lblStatusList = new MaterialSkin.Controls.MaterialLabel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.imageListView1 = new Manina.Windows.Forms.ImageListView();
+            this.circlePictureBox1 = new YoutubeApisDemo.CirclePictureBox();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.circlePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBack
@@ -188,6 +190,17 @@
             this.imageListView1.Size = new System.Drawing.Size(798, 513);
             this.imageListView1.TabIndex = 11;
             // 
+            // circlePictureBox1
+            // 
+            this.circlePictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.circlePictureBox1.Image = global::YoutubeApisDemo.Properties.Resources.null_avatar;
+            this.circlePictureBox1.Location = new System.Drawing.Point(780, 29);
+            this.circlePictureBox1.Name = "circlePictureBox1";
+            this.circlePictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.circlePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.circlePictureBox1.TabIndex = 12;
+            this.circlePictureBox1.TabStop = false;
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -195,6 +208,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(824, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.circlePictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnSearch);
@@ -210,6 +224,7 @@
             this.Text = "YouTube Search";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.circlePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +243,6 @@
         //private MaterialSkin.Controls.MaterialProgressBar prbStatus;
         private System.Windows.Forms.Label lblVersion;
         private Manina.Windows.Forms.ImageListView imageListView1;
+        private CirclePictureBox circlePictureBox1;
     }
 }
