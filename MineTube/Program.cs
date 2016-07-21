@@ -16,8 +16,9 @@ namespace MineTube
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmInitializers(new frmHome(), "Initializing Components..."));
-            Application.Run(new frmDownloads("https://www.youtube.com/watch?v=hhSttje4Dx4"));
+            Application.Run(new frmInitializers(new frmHome(), "Initializing Components..."));
+            //Application.Run(new frmDownloads("https://www.youtube.com/watch?v=hhSttje4Dx4"));
+            
         }
     }
 }

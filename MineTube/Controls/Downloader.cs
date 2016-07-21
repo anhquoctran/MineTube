@@ -14,43 +14,136 @@ namespace MineTube.Controls
     public partial class Downloader : UserControl
     {
         #region Properties and Fields
+
+        //Fields
+        private string videoUrl = "";
+        private string FileLocation = "";
+        private List<string> DownloadUri;
+        private List<string> videoQual;    
+        private byte buffers;
+        private byte[] bytesReceiced;
+        private byte fileSizeInByte;
+
+        //Properties
         /// <summary>
         /// Gets or sets YouTube URL Video.
         /// </summary>
-        public string URL { get; set; }
+        public string URL
+        {
+            get
+            {
+                return lblURL.Text;
+            }
+            set
+            {
+                lblURL.Text = value;
+            }
+        }
         /// <summary>
         /// Gets YouTube Download URL.
         /// </summary>
-        public string DownloadURL { get; private set; }
+        public string DownloadURL
+        {
+            get
+            {
+                return lblURL.Text;
+            }
+            private set
+            {
+                lblURL.Text = value;
+            }
+        }
         /// <summary>
         /// Gets or sets location (file path) to save video after downloaded.
         /// </summary>
-        public string SaveAs { get; set; }
+        public string SaveAs
+        {
+            get
+            {
+                return lblPath.Text;
+            }
+            set
+            {
+                lblPath.Text = value;
+            }
+        }
         /// <summary>
         /// Gets all available quality of video.
         /// </summary>
-        public List<string> Quality { get; private set; }
+        public ComboBox.ObjectCollection Quality
+        {
+            get
+            {
+                ComboBox.ObjectCollection temp = new ComboBox.ObjectCollection(cbQuality);
+                for (int i = 0; i < cbQuality.Items.Count; i++)
+                {
+                    string value = cbQuality.GetItemText(cbQuality.Items[i]);
+                    temp.Add(value);
+                }
+                return temp;
+            }
+            private set
+            {
+                cbQuality.Items.Add(value);
+            }
+        }
+
         /// <summary>
         /// Gets all available size in bytes of current video.
         /// </summary>
-        public string FileSize { get; private set; }
+        public string FileSize
+        {
+            get
+            {
+                return lblSize.Text;
+            }
+            private set
+            {
+                lblSize.Text = value;
+            }
+        }
         /// <summary>
         /// Gets current download speed.
         /// </summary>
-        public string Speed { get; private set; }
+        private string Speed
+        {
+            get
+            {
+                return lblSpeed.Text;
+            }
+            set
+            {
+                lblSpeed.Text = value;
+            }
+        }
         /// <summary>
         /// Gets status of current process and represent in String.
         /// </summary>
-        public string Status { get; private set; }
-        /// <summary>
-        /// Size of this Control is read-only and cannot change.
-        /// </summary>
-        public new Size Size { get; private set; }
+        private string Status
+        {
+            get
+            {
+                return lblStatus.Text;
+            }
+            set
+            {
+                lblStatus.Text = value;
+            }
+        }
         /// <summary>
         /// Gets name of current video.
         /// </summary>
-        public string VideoName { get; private set; }
-        string filename = "download.png";
+        private string VideoName
+        {
+            get
+            {
+                return lblVideoName.Text;
+            }
+            set
+            {
+                lblVideoName.Text = value;
+            }
+        }
         #endregion
 
         #region Contructors
@@ -74,14 +167,15 @@ namespace MineTube.Controls
 
         #region Methods used
         private void InitializeControl()
-        {
-            Size = new Size(609, 319);
+        {       
             BackColor = Color.White;
-            lblPath.Text = SaveAs;
+            lblPath.Text = "Your file path will be place in here...";
             lblURL.Text = URL;
             lblSpeed.Text = Speed;
             lblSize.Text = FileSize;
             lblVideoName.Text = VideoName;
+            lblStatus.Text = Status;
+            
         }
         private void btnChoose_Click(object sender, EventArgs e)
         {

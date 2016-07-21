@@ -59,13 +59,18 @@
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.picAvatarUser = new Controls.CirclePictureBox();
+            this.picAvatarUser = new MineTube.Controls.CirclePictureBox();
+            this.btnDownloadOption = new System.Windows.Forms.Button();
+            this.menuOptionDownload = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.downloadUsingIDMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadUsingDefaultDownloaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVideoInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).BeginInit();
             this.menuThumbs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).BeginInit();
+            this.menuOptionDownload.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVideoInfo
@@ -450,6 +455,50 @@
             this.picAvatarUser.TabIndex = 22;
             this.picAvatarUser.TabStop = false;
             // 
+            // btnDownloadOption
+            // 
+            this.btnDownloadOption.BackColor = System.Drawing.Color.Transparent;
+            this.btnDownloadOption.ContextMenuStrip = this.menuOptionDownload;
+            this.btnDownloadOption.FlatAppearance.BorderSize = 0;
+            this.btnDownloadOption.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDownloadOption.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDownloadOption.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDownloadOption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDownloadOption.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadOption.Image")));
+            this.btnDownloadOption.Location = new System.Drawing.Point(612, 29);
+            this.btnDownloadOption.Name = "btnDownloadOption";
+            this.btnDownloadOption.Size = new System.Drawing.Size(32, 32);
+            this.btnDownloadOption.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.btnDownloadOption, "Download this video");
+            this.btnDownloadOption.UseVisualStyleBackColor = false;
+            this.btnDownloadOption.Click += new System.EventHandler(this.btnDownloadOption_Click);
+            // 
+            // menuOptionDownload
+            // 
+            this.menuOptionDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuOptionDownload.Depth = 0;
+            this.menuOptionDownload.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.downloadUsingIDMToolStripMenuItem,
+            this.downloadUsingDefaultDownloaderToolStripMenuItem});
+            this.menuOptionDownload.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuOptionDownload.Name = "menuOptionDownload";
+            this.menuOptionDownload.Size = new System.Drawing.Size(267, 48);
+            // 
+            // downloadUsingIDMToolStripMenuItem
+            // 
+            this.downloadUsingIDMToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadUsingIDMToolStripMenuItem.Image")));
+            this.downloadUsingIDMToolStripMenuItem.Name = "downloadUsingIDMToolStripMenuItem";
+            this.downloadUsingIDMToolStripMenuItem.ShowShortcutKeys = false;
+            this.downloadUsingIDMToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.downloadUsingIDMToolStripMenuItem.Text = "Download using IDM";
+            // 
+            // downloadUsingDefaultDownloaderToolStripMenuItem
+            // 
+            this.downloadUsingDefaultDownloaderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadUsingDefaultDownloaderToolStripMenuItem.Image")));
+            this.downloadUsingDefaultDownloaderToolStripMenuItem.Name = "downloadUsingDefaultDownloaderToolStripMenuItem";
+            this.downloadUsingDefaultDownloaderToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.downloadUsingDefaultDownloaderToolStripMenuItem.Text = "Download using default downloader";
+            // 
             // frmVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,6 +506,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(701, 747);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDownloadOption);
             this.Controls.Add(this.picAvatarUser);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblVersion);
@@ -478,6 +528,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picVideoThumb)).EndInit();
             this.menuThumbs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatarUser)).EndInit();
+            this.menuOptionDownload.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,6 +565,10 @@
         private System.Windows.Forms.ToolStripMenuItem copyImageURLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageAsToolStripMenuItem;
         private Controls.CirclePictureBox picAvatarUser;
+        private System.Windows.Forms.Button btnDownloadOption;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuOptionDownload;
+        private System.Windows.Forms.ToolStripMenuItem downloadUsingIDMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadUsingDefaultDownloaderToolStripMenuItem;
     }
 }
 

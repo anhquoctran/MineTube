@@ -42,7 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.pbDownloader = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -54,32 +54,35 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(3, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.Size = new System.Drawing.Size(69, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Location:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPath
             // 
             this.lblPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPath.AutoEllipsis = true;
+            this.lblPath.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblPath.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblPath.ForeColor = System.Drawing.Color.LightGray;
-            this.lblPath.Location = new System.Drawing.Point(78, 13);
+            this.lblPath.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPath.Location = new System.Drawing.Point(72, 13);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(439, 29);
+            this.lblPath.Size = new System.Drawing.Size(451, 29);
             this.lblPath.TabIndex = 1;
-            this.lblPath.Text = "place_your_file_path_here";
+            this.lblPath.Text = "Your file path will be place in here...";
             this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnChoose
             // 
             this.btnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChoose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnChoose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChoose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnChoose.FlatAppearance.BorderSize = 0;
             this.btnChoose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -107,7 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblURL.AutoEllipsis = true;
             this.lblURL.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblURL.ForeColor = System.Drawing.Color.LightGray;
+            this.lblURL.ForeColor = System.Drawing.Color.DarkGray;
             this.lblURL.Location = new System.Drawing.Point(105, 59);
             this.lblURL.Name = "lblURL";
             this.lblURL.Size = new System.Drawing.Size(501, 20);
@@ -210,15 +213,15 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Status:";
             // 
-            // label8
+            // lblStatus
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label8.Location = new System.Drawing.Point(105, 209);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 20);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "status";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblStatus.Location = new System.Drawing.Point(105, 209);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(47, 20);
+            this.lblStatus.TabIndex = 14;
+            this.lblStatus.Text = "status";
             // 
             // pbDownloader
             // 
@@ -311,7 +314,7 @@
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pbDownloader);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblSpeed);
             this.Controls.Add(this.label6);
@@ -352,7 +355,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblSpeed;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ProgressBar pbDownloader;
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.Button btnStop;

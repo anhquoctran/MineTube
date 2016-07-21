@@ -14,6 +14,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using System.IO;
 using System.Drawing.Imaging;
+using MineTube.Controls;
 
 namespace MineTube
 {
@@ -83,16 +84,20 @@ namespace MineTube
             lblLoadStatus.Visible = true;
             if (input == "")
                 MessageBox.Show("Do not empty textbox URL!");
+            else if (!input.Contains("https://www.youtube.com/watch?v=") || !input.Contains("https://youtu.be/"))
+            {
+                MessageBox.Show("YouTube URL invalid!", Application.ProductName);
+            }
             else if (input.Contains("https://www.youtube.com/watch?v="))
             {
-                
+
                 var stringResult = input.Substring(32);
                 GetInfo(stringResult);
                 VideoUrl = "https://www.youtube.com/v/" + stringResult;
             }
             else if (input.Contains("https://youtu.be/"))
             {
-                
+
                 var stringResult = input.Substring(17);
                 GetInfo(stringResult);
                 VideoUrl = "https://www.youtube.com/v/" + stringResult;
@@ -397,6 +402,14 @@ namespace MineTube
                 copyImageURLToolStripMenuItem.Enabled = true;
                 saveImageAsToolStripMenuItem.Enabled = true;
             }
+        }
+
+        private void btnDownloadOption_Click(object sender, EventArgs e)
+        {
+            Button btnSender = (Button)sender;
+            Point ptLowerLeft = new Point(0, btnSender.Height);
+            ptLowerLeft = btnSender.PointToScreen(ptLowerLeft);
+            menuOptionDownload.Show(ptLowerLeft);
         }
     }
 }

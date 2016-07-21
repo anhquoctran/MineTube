@@ -13,11 +13,12 @@ namespace MineTube
         {         
             //load.ShowDialog();
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red100, TextShade.WHITE);
             
-            //var materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green900, Primary.Green300, Accent.Green100, TextShade.WHITE);
 
             if (IsConnected() == true)
             {
@@ -132,6 +133,13 @@ namespace MineTube
         private void picAvatarUser_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPreferences_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmInitializers init = new frmInitializers(new frmPreferences(), "Processing...");
+            init.ShowDialog();
         }
     }
 }
