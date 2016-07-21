@@ -1,3 +1,3 @@
-# YoutubeApisDemo
+# MineTube
 This is demo application for YouTube Apis Demo
-Publish app
+App is building... Please wait...
